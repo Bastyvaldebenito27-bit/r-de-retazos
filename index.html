@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>R de Retazos</title>
 <meta name="description" content="Textiles hechos a mano en Santo Domingo, Chile. Moños, scrunchies, tote bags en denim reciclado, cojines, delantales y regalos personalizados. Pedidos por Instagram.">
 <meta property="og:title" content="R de Retazos — Hecho a mano">
@@ -25,11 +30,13 @@
   --carbon:#2E2A26;      /* texto principal, nunca negro puro   */
   --taupe:#6B6057;       /* texto secundario                    */
   --rosa:#DCAEA6;        /* rosa empolvado                      */
-  --mauve:#A8808A;       /* rosa viejo                          */
+  --mauve:#9F7983;       /* rosa viejo, para texto grande       */
+  --mauve-texto:#7F6168; /* el mismo, oscurecido hasta 4.5:1    */
   --salvia:#5E6E52;      /* verde salvia: el color de la acción */
   --salvia-2:#4B5942;
   --salvia-claro:#AFBDA0;
-  --terracota:#A85A42;   /* acento puntual, sólo en etiquetas   */
+  --terracota:#A85A42;      /* acento puntual: filetes y reglas */
+  --terracota-texto:#9F553E;/* el mismo, para texto pequeño     */
   --blanco:#FFFFFF;
 
   --display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
@@ -64,8 +71,8 @@ section[id],div[id]{scroll-margin-top:86px}
 .seccion{padding-block:clamp(3.75rem,9vw,7rem)}
 .seccion--arena{background:var(--arena)}
 .rotulo{
-  font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--terracota);margin:0 0 1rem;display:flex;align-items:center;gap:.7rem
+  font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--terracota-texto);margin:0 0 1rem;display:flex;align-items:center;gap:.7rem
 }
 .rotulo::before{content:"";width:26px;height:1px;background:var(--terracota);opacity:.55;flex:0 0 auto}
 .titulo{font-size:clamp(2rem,5.4vw,3.35rem);letter-spacing:-.005em}
@@ -106,7 +113,7 @@ section[id],div[id]{scroll-margin-top:86px}
   flex:0 0 auto
 }
 .marca__t{font-family:var(--display);font-size:1.18rem;color:var(--carbon);line-height:1.1}
-.marca__t small{display:block;font-family:var(--texto);font-size:.56rem;letter-spacing:.24em;
+.marca__t small{display:block;font-family:var(--texto);font-size:.64rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--taupe)}
 .nav{display:none;margin-left:auto;gap:1.6rem;align-items:center}
 .nav a{text-decoration:none;font-size:.88rem;font-weight:600;color:var(--taupe);
@@ -128,7 +135,7 @@ section[id],div[id]{scroll-margin-top:86px}
 .b--p{background:var(--salvia);color:var(--blanco);border-color:var(--salvia)}
 .b--p:hover{background:var(--salvia-2);border-color:var(--salvia-2)}
 .b--l{background:transparent;color:var(--carbon);border-color:var(--lino)}
-.b--l:hover{border-color:var(--mauve);color:var(--mauve)}
+.b--l:hover{border-color:var(--mauve);color:var(--mauve-texto)}
 .b--sm{padding:.52rem 1rem;font-size:.82rem}
 .cabecera .b{flex:0 0 auto}
 
@@ -156,9 +163,9 @@ section[id],div[id]{scroll-margin-top:86px}
     repeating-linear-gradient(-45deg,rgba(94,110,82,.09) 0 2px,transparent 2px 12px),
     linear-gradient(155deg,var(--rosa) 0%,#E3D6C6 48%,var(--salvia-claro) 100%)}
 .marco__n{position:absolute;inset:auto 0 0 0;padding:.7rem .85rem;
-  background:linear-gradient(to top,rgba(46,42,38,.84),rgba(46,42,38,0));
-  color:#FAF6F0;font-size:.75rem;font-weight:600;line-height:1.35}
-.marco__n b{display:block;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;opacity:.82}
+  background:linear-gradient(to top,rgba(46,42,38,.93) 0%,rgba(46,42,38,.82) 62%,rgba(46,42,38,0) 100%);
+  color:#FAF6F0;font-size:.78rem;font-weight:600;line-height:1.35}
+.marco__n b{display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
 .marco img{width:100%;height:100%;object-fit:cover}
 
 /* --- Tira de valores ----------------------------------------------------- */
@@ -182,7 +189,7 @@ section[id],div[id]{scroll-margin-top:86px}
 .t__f{overflow:hidden}
 .t__f .marco__t,.t__f img{transition:transform .65s var(--curva)}
 .t:hover .t__f .marco__t,.t:hover .t__f img{transform:scale(1.045)}
-.t__c{margin-top:1rem;font-size:.64rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--mauve)}
+.t__c{margin-top:1rem;font-size:.7rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--mauve-texto)}
 .t__n{margin-top:.35rem;font-size:1.3rem}
 .t__d{margin-top:.5rem;font-size:.9rem;line-height:1.56}
 .t__p{margin-top:auto;padding-top:1.05rem;display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .85rem;
@@ -190,7 +197,7 @@ section[id],div[id]{scroll-margin-top:86px}
 @media (max-width:619px){
   .t__n{font-size:1.08rem}
   .t__d{font-size:.83rem;line-height:1.5}
-  .t__c{font-size:.6rem;letter-spacing:.14em}
+  .t__c{font-size:.66rem;letter-spacing:.14em}
   .t__p{padding-top:.8rem;gap:.45rem .6rem}
   .precio,.precio--c{font-size:.95rem}
 }
@@ -211,7 +218,7 @@ section[id],div[id]{scroll-margin-top:86px}
 @media (min-width:1040px){.pasos{grid-template-columns:repeat(4,1fr)}}
 .paso{min-width:0;padding-top:1.05rem;border-top:1.5px solid var(--rosa);counter-increment:p}
 .paso::before{content:counter(p,decimal-leading-zero);display:block;font-family:var(--texto);
-  font-size:.68rem;font-weight:700;letter-spacing:.18em;color:var(--terracota);margin-bottom:.7rem}
+  font-size:.7rem;font-weight:700;letter-spacing:.18em;color:var(--terracota-texto);margin-bottom:.7rem}
 .paso h3{font-size:1.22rem}
 .paso p{margin-top:.4rem;font-size:.9rem}
 
@@ -249,7 +256,7 @@ section[id],div[id]{scroll-margin-top:86px}
   font-family:var(--display);font-size:1.3rem;color:var(--carbon)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";position:absolute;right:.2rem;top:50%;transform:translateY(-50%);
-  font-family:var(--texto);font-size:1.2rem;color:var(--terracota)}
+  font-family:var(--texto);font-size:1.2rem;color:var(--terracota-texto)}
 .faq details[open] summary::after{content:"\2013"}
 .faq p{padding-bottom:1.25rem;font-size:.95rem;max-width:64ch}
 
@@ -272,14 +279,14 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
   border:1px solid var(--lino);background:var(--marfil);color:var(--carbon);font-size:1.1rem;
   line-height:1;cursor:pointer}
 .fp__cerrar:hover{border-color:var(--mauve)}
-.fp__cat{font-size:.64rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--mauve)}
+.fp__cat{font-size:.7rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--mauve-texto)}
 .fp__n{margin-top:.4rem;font-size:1.85rem}
 .fp__d{margin-top:.7rem;font-size:.95rem}
 .fp__p{margin-top:1.1rem;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem .9rem}
 .fp__acc{margin-top:auto;padding-top:1.4rem;display:flex;flex-wrap:wrap;gap:.6rem}
 .t__abre{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
 .t__abre::after{content:"";position:absolute;inset:0;border-radius:var(--r-g)}
-.t__abre:hover{color:var(--mauve)}
+.t__abre:hover{color:var(--mauve-texto)}
 .t__n{transition:color .25s}
 .t:has(.t__abre:focus-visible){outline:2.5px solid var(--salvia);outline-offset:6px;border-radius:var(--r-g)}
 .t:has(.t__abre:focus-visible) .t__abre:focus-visible{outline:none}
@@ -288,7 +295,7 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
 
 .pie{background:var(--carbon);color:#CFC5BA;padding-block:2.8rem;font-size:.87rem}
 .pie__f{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between}
-.pie a{color:#EFE6DC}
+.pie a{color:#EFE6DC;display:inline-block;padding-block:.3rem}
 
 .flot{position:fixed;z-index:100;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));
   display:inline-flex;align-items:center;gap:.5rem;background:var(--salvia);color:var(--blanco);
@@ -298,7 +305,8 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
 /* Mientras el flotante exista, el documento termina más arriba que él. */
 @media (max-width:979px){body{padding-bottom:4.25rem}}
 </style>
-
+</head>
+<body>
 <a class="salta" href="#catalogo">Saltar al catálogo</a>
 
 <div class="borrador" id="borrador" hidden>
@@ -1039,3 +1047,6 @@ const DATOS = {
   document.head.appendChild(sc);
 })();
 </script>
+
+</body>
+</html>
