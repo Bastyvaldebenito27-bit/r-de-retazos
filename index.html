@@ -8,11 +8,15 @@
 <meta property="og:title" content="R de Retazos — Hecho a mano">
 <meta property="og:description" content="Piezas textiles hechas a mano, una por una, dándole una nueva vida a telas que ya existían.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="es_CL">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Karla:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Karla:wght@400;600;700&display=swap">
 
 <style>
 /* ===========================================================================
@@ -165,7 +169,9 @@ section[id],div[id]{scroll-margin-top:86px}
 .marco__n{position:absolute;inset:auto 0 0 0;padding:.7rem .85rem;
   background:linear-gradient(to top,rgba(46,42,38,.93) 0%,rgba(46,42,38,.82) 62%,rgba(46,42,38,0) 100%);
   color:#FAF6F0;font-size:.78rem;font-weight:600;line-height:1.35}
-.marco__n b{display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+/* Peso explícito: <b> hereda `bolder`, que sobre el 600 del padre computa
+   900 — un peso que no existe en Karla y que el navegador falseaba. */
+.marco__n b{display:block;font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
 .marco img{width:100%;height:100%;object-fit:cover}
 
 /* --- Tira de valores ----------------------------------------------------- */
@@ -176,7 +182,8 @@ section[id],div[id]{scroll-margin-top:86px}
 /* --- Catálogo ------------------------------------------------------------ */
 .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
 .chip{font:inherit;font-size:.83rem;font-weight:700;cursor:pointer;padding:.46rem 1.05rem;
-  border-radius:999px;border:1.5px solid var(--lino);background:var(--marfil);color:var(--taupe);transition:all .22s}
+  border-radius:999px;border:1.5px solid var(--lino);background:var(--marfil);color:var(--taupe);
+  transition:background-color .22s,border-color .22s,color .22s}
 .chip:hover{border-color:var(--mauve)}
 .chip[aria-pressed="true"]{background:var(--carbon);border-color:var(--carbon);color:var(--marfil)}
 /* Dos columnas ya en el teléfono: a una sola el catálogo medía diez pantallas
@@ -241,7 +248,7 @@ section[id],div[id]{scroll-margin-top:86px}
 .campo input,.campo select,.campo textarea{font:inherit;font-size:.94rem;color:var(--carbon);
   background:var(--marfil);border:1.5px solid var(--lino);border-radius:var(--r);padding:.68rem .85rem;width:100%}
 .campo textarea{resize:vertical;min-height:5.5rem}
-.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--salvia);outline:none}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--salvia)}
 .form__p{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:1.6rem}
 .nota{font-size:.84rem;margin:0}
 
@@ -290,6 +297,9 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
 .t__n{transition:color .25s}
 .t:has(.t__abre:focus-visible){outline:2.5px solid var(--salvia);outline-offset:6px;border-radius:var(--r-g)}
 .t:has(.t__abre:focus-visible) .t__abre:focus-visible{outline:none}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.pie__arriba{text-decoration:underline;text-underline-offset:3px}
 .pend{display:inline-block;font-size:.73rem;font-weight:700;letter-spacing:.05em;
   background:var(--rosa);color:#4A2520;padding:.18rem .55rem;border-radius:6px}
 
@@ -388,6 +398,7 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
         <p class="bajada">Los primeros son los que más me piden. Casi todo se puede hacer en otra tela o en otra combinación: si algo te gusta pero lo quieres distinto, escríbeme y lo vemos.</p>
       </div>
       <div class="chips rev" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+      <p class="sr" id="estado-catalogo" role="status"></p>
       <ul class="rejilla" id="rejilla"></ul>
       <p class="nota rev" id="nota-precios" style="margin-top:2rem"></p>
     </div>
@@ -441,7 +452,8 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
           <div class="campos">
             <div class="campo">
               <label for="f-nombre">Tu nombre</label>
-              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required
+                     aria-describedby="form-nota">
             </div>
             <div class="campo">
               <label for="f-que">¿Qué te gustaría?</label>
@@ -466,7 +478,7 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
           </div>
           <div class="form__p">
             <button class="b b--p" type="submit" id="f-enviar">Enviar</button>
-            <p class="nota" id="form-nota"></p>
+            <p class="nota" id="form-nota" role="status"></p>
           </div>
         </form>
       </div>
@@ -560,6 +572,7 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
 <footer class="pie">
   <div class="contenedor pie__f">
     <p>R de Retazos · Hecho a mano en Santo Domingo, Chile</p>
+    <p><a class="pie__arriba" href="#inicio">Volver arriba</a></p>
     <p id="pie-redes"></p>
   </div>
 </footer>
@@ -728,7 +741,7 @@ const DATOS = {
 
     const b = crear("a", "b b--l b--sm");
     b.href = enlace("Hola! Quiero consultar por " + p.nombre + " de R de Retazos.");
-    b.innerHTML = "Consultar" + '<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> por ' + esc(p.nombre) + " por " + esc(CORTA) + "</span>";
+    b.innerHTML = "Consultar" + '<span class="sr"> por ' + esc(p.nombre) + " por " + esc(CORTA) + "</span>";
     fuera(b);
     pie.appendChild(b);
 
@@ -740,6 +753,7 @@ const DATOS = {
      <dialog> nativo: el foco queda dentro, Esc cierra y el fondo se inerta sin
      escribir una línea de ello. Se construye una vez y se rellena al abrir. */
   const dlg = crear("dialog", "ficha-p");
+  dlg.setAttribute("aria-labelledby", "fp-titulo");
   dlg.innerHTML =
     '<button class="fp__cerrar" type="button" aria-label="Cerrar la ficha">&times;</button>' +
     '<div class="fp__r"><div class="fp__izq"></div><div class="fp__der"></div></div>';
@@ -777,7 +791,7 @@ const DATOS = {
     const cab = crear("div");
     cab.innerHTML =
       '<p class="fp__cat">' + esc(nombreCat(p)) + "</p>" +
-      '<h2 class="fp__n">' + esc(p.nombre) + "</h2>" +
+      '<h2 class="fp__n" id="fp-titulo">' + esc(p.nombre) + "</h2>" +
       '<p class="fp__d">' + esc(p.desc) + "</p>";
     fpDer.appendChild(cab);
 
@@ -811,7 +825,27 @@ const DATOS = {
 
   function pinta() {
     rejilla.textContent = "";
-    DATOS.productos.filter((p) => filtro === "todo" || p.cat === filtro).forEach((p) => rejilla.appendChild(tarjeta(p)));
+    const visibles = DATOS.productos.filter((p) => filtro === "todo" || p.cat === filtro);
+    visibles.forEach((p) => rejilla.appendChild(tarjeta(p)));
+
+    /* Si una categoría se queda sin nada, la rejilla no se queda en blanco. */
+    if (!visibles.length) {
+      const li = crear("li");
+      li.style.gridColumn = "1/-1";
+      li.innerHTML = '<p class="nota">Ahora mismo no tengo nada en esta categoría. ' +
+        "Escríbeme y lo hacemos por encargo.</p>";
+      rejilla.appendChild(li);
+    }
+
+    /* Cambiar el filtro repinta la rejilla sin mover el foco: quien usa lector
+       de pantalla no se entera de nada si no se le dice. */
+    const estado = document.getElementById("estado-catalogo");
+    if (estado) {
+      const cat = DATOS.categorias.find((c) => c.id === filtro);
+      estado.textContent = visibles.length
+        ? visibles.length + " de " + DATOS.productos.length + " productos" + (cat ? " en " + cat.nombre : "")
+        : "Sin productos en " + (cat ? cat.nombre : "esta categoría");
+    }
   }
 
   const lista = [{ id:"todo", nombre:"Todo" }].concat(DATOS.categorias);
@@ -947,7 +981,13 @@ const DATOS = {
   $("#form").addEventListener("submit", (e) => {
     e.preventDefault();
     const nota = $("#form-nota"), nom = $("#f-nombre");
-    if (!nom.value.trim()) { nota.textContent = "Escribe tu nombre para saber con quién hablo."; nom.focus(); return; }
+    if (!nom.value.trim()) {
+      nota.textContent = "Escribe tu nombre para saber con quién hablo.";
+      nom.setAttribute("aria-invalid", "true");
+      nom.focus();
+      return;
+    }
+    nom.removeAttribute("aria-invalid");
 
     const l = [
       "Hola! Soy " + nom.value.trim() + " y quiero una cotización.",

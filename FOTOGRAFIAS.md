@@ -34,7 +34,7 @@ salen como miniaturas dentro de la ficha.
 | El taller | `fotos/empaque.jpg` | 1:1 | El empaque terminado: caja, cinta y tarjeta |
 | Sobre mí | `fotos/retrato.jpg` | 3:4 vertical | Ella en el taller. Es la que más confianza genera de todas |
 | Instagram | `fotos/ig-1.jpg` … `ig-6.jpg` | 1:1 | Seis publicaciones que quiera destacar |
-| Compartir | `fotos/og.jpg` | 1200 × 630 | La que sale al pegar el enlace en WhatsApp o Instagram |
+| Compartir | `og.png` | 1200 × 630 | La que sale al pegar el enlace en WhatsApp o Instagram. **Ya hay una provisional** con el nombre en tipografía; sustitúyela por una foto real |
 
 ## Logo
 

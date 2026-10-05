@@ -82,6 +82,15 @@ nada pendiente, desaparece entera sin tocar código.
 - Confirmar si la cajita de 3 scrunchies sigue a $5.000.
 - Confirmar si las prendas intervenidas (camisas) se venden.
 
+## Archivos
+
+| | |
+|---|---|
+| `index.html` | El sitio entero |
+| `404.html` | Página de "no existe", con la misma identidad |
+| `og.png` | La tarjeta que se ve al pegar el enlace. **Provisional**: es tipográfica, hay que cambiarla por una foto |
+| `favicon.svg` | **Provisional**: monograma tipográfico, no el logo real |
+
 ## Decisiones técnicas
 
 - **Una sola página con anclas.** El tráfico llega desde el enlace de la bio de
