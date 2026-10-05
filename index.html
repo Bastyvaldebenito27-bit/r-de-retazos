@@ -1,0 +1,1041 @@
+<title>R de Retazos</title>
+<meta name="description" content="Textiles hechos a mano en Santo Domingo, Chile. Moños, scrunchies, tote bags en denim reciclado, cojines, delantales y regalos personalizados. Pedidos por Instagram.">
+<meta property="og:title" content="R de Retazos — Hecho a mano">
+<meta property="og:description" content="Piezas textiles hechas a mano, una por una, dándole una nueva vida a telas que ya existían.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Karla:wght@400;500;600;700&display=swap">
+
+<style>
+/* ===========================================================================
+   R de Retazos — una página, marfil de fondo, la tela manda.
+   La paleta sale de sus propias plantillas de Instagram: marfil, arena, taupe,
+   rosa empolvado, mauve, salvia, y terracota en un solo sitio.
+   Tema único claro, a propósito: la marca vive en fondos claros.
+   =========================================================================== */
+:root{
+  color-scheme: light;
+
+  --marfil:#FAF6F0;      /* fondo general                       */
+  --arena:#F2EAE0;       /* superficies secundarias             */
+  --lino:#E7DACB;        /* bordes y reglas                     */
+  --carbon:#2E2A26;      /* texto principal, nunca negro puro   */
+  --taupe:#6B6057;       /* texto secundario                    */
+  --rosa:#DCAEA6;        /* rosa empolvado                      */
+  --mauve:#A8808A;       /* rosa viejo                          */
+  --salvia:#5E6E52;      /* verde salvia: el color de la acción */
+  --salvia-2:#4B5942;
+  --salvia-claro:#AFBDA0;
+  --terracota:#A85A42;   /* acento puntual, sólo en etiquetas   */
+  --blanco:#FFFFFF;
+
+  --display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --texto:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;
+
+  --ancho:1180px;
+  --gutter:20px;
+  --r:12px;
+  --r-g:20px;
+  --curva:cubic-bezier(.22,.72,.28,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--marfil);color:var(--taupe);
+  font-family:var(--texto);font-size:16px;line-height:1.68;
+  -webkit-font-smoothing:antialiased
+}
+h1,h2,h3{font-family:var(--display);color:var(--carbon);margin:0;line-height:1.08;font-weight:500;text-wrap:balance}
+p{margin:0}
+img{max-width:100%;display:block}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--salvia);outline-offset:3px;border-radius:4px}
+
+.contenedor{width:100%;max-width:var(--ancho);margin-inline:auto;padding-inline:var(--gutter)}
+/* Los enlaces del menú llevan a anclas, y la cabecera es pegajosa: sin esto el
+   título de la sección aterriza justo debajo de ella y no se lee. */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+section[id],div[id]{scroll-margin-top:86px}
+.seccion{padding-block:clamp(3.75rem,9vw,7rem)}
+.seccion--arena{background:var(--arena)}
+.rotulo{
+  font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--terracota);margin:0 0 1rem;display:flex;align-items:center;gap:.7rem
+}
+.rotulo::before{content:"";width:26px;height:1px;background:var(--terracota);opacity:.55;flex:0 0 auto}
+.titulo{font-size:clamp(2rem,5.4vw,3.35rem);letter-spacing:-.005em}
+.titulo em{font-style:italic;color:var(--mauve)}
+.bajada{margin-top:1.1rem;max-width:56ch;font-size:1.02rem}
+
+/* --- Revelado al bajar --------------------------------------------------- */
+.js .rev{opacity:0;transform:translateY(22px)}
+.js .rev.visto{opacity:1;transform:none;transition:opacity .75s var(--curva),transform .75s var(--curva)}
+@media (prefers-reduced-motion:reduce){
+  .js .rev{opacity:1!important;transform:none!important}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+
+.salta{position:absolute;left:var(--gutter);top:-200px;z-index:130;background:var(--salvia);
+  color:var(--blanco);padding:.7rem 1.1rem;border-radius:0 0 var(--r) var(--r);font-weight:700;text-decoration:none}
+.salta:focus{top:0}
+
+/* --- Barra de borrador --------------------------------------------------- */
+.borrador{background:var(--carbon);color:#EFE6DC;font-size:.85rem}
+.borrador__fila{display:flex;align-items:center;gap:.9rem;padding-block:.6rem;flex-wrap:wrap}
+.borrador__texto{flex:1 1 17rem;min-width:0}
+.borrador__b{background:none;border:1px solid rgba(255,255,255,.32);color:inherit;font:inherit;
+  font-weight:700;padding:.28rem .8rem;border-radius:999px;cursor:pointer}
+.borrador__b:hover{background:rgba(255,255,255,.12)}
+.borrador__lista{margin:0 0 .85rem;padding-left:1.1rem;list-style:disc;columns:2;column-gap:2rem}
+.borrador__lista li{margin-bottom:.22rem;break-inside:avoid}
+@media (max-width:640px){.borrador__lista{columns:1}}
+
+/* --- Cabecera ------------------------------------------------------------ */
+.cabecera{position:sticky;top:env(safe-area-inset-top,0px);z-index:110;
+  background:rgba(250,246,240,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--lino)}
+.cab__fila{display:flex;align-items:center;gap:.9rem;padding-block:.75rem}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex:0 0 auto}
+.marca__r{
+  width:38px;height:38px;border-radius:50%;border:1px solid var(--carbon);
+  display:grid;place-items:center;font-family:var(--display);font-size:1.3rem;color:var(--carbon);
+  flex:0 0 auto
+}
+.marca__t{font-family:var(--display);font-size:1.18rem;color:var(--carbon);line-height:1.1}
+.marca__t small{display:block;font-family:var(--texto);font-size:.56rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--taupe)}
+.nav{display:none;margin-left:auto;gap:1.6rem;align-items:center}
+.nav a{text-decoration:none;font-size:.88rem;font-weight:600;color:var(--taupe);
+  padding-block:.15rem;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+.nav a:hover{color:var(--carbon);border-bottom-color:var(--rosa)}
+.menu-b{margin-left:auto;background:none;border:1px solid var(--lino);border-radius:999px;
+  padding:.45rem .85rem;font:inherit;font-size:.82rem;font-weight:700;color:var(--carbon);cursor:pointer}
+.panel{border-top:1px solid var(--lino);padding-block:.4rem 1rem}
+.panel a{display:block;text-decoration:none;font-weight:600;color:var(--carbon);
+  padding:.65rem .2rem;border-bottom:1px solid var(--lino)}
+.panel a:last-child{border-bottom:0}
+@media (min-width:980px){.nav{display:flex}.menu-b{display:none}.panel{display:none!important}}
+
+/* --- Botones ------------------------------------------------------------- */
+.b{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--texto);
+  font-size:.92rem;font-weight:700;text-decoration:none;padding:.78rem 1.45rem;border-radius:999px;
+  border:1.5px solid transparent;cursor:pointer;transition:background-color .25s,border-color .25s,color .25s,transform .12s}
+.b:active{transform:scale(.98)}
+.b--p{background:var(--salvia);color:var(--blanco);border-color:var(--salvia)}
+.b--p:hover{background:var(--salvia-2);border-color:var(--salvia-2)}
+.b--l{background:transparent;color:var(--carbon);border-color:var(--lino)}
+.b--l:hover{border-color:var(--mauve);color:var(--mauve)}
+.b--sm{padding:.52rem 1rem;font-size:.82rem}
+.cabecera .b{flex:0 0 auto}
+
+/* --- Hero ---------------------------------------------------------------- */
+.hero{padding-block:clamp(2.5rem,6vw,4.25rem) clamp(2.75rem,7vw,4.5rem)}
+.hero__r{display:grid;gap:clamp(2rem,5vw,3.25rem);align-items:center}
+@media (min-width:900px){.hero__r{grid-template-columns:1.04fr .96fr}}
+.hero__t{min-width:0}
+.hero h1{font-size:clamp(2.45rem,8vw,4.5rem);letter-spacing:-.015em}
+.hero h1 em{font-style:italic;color:var(--mauve)}
+.hero__b{margin-top:1.15rem;max-width:42ch;font-size:clamp(1rem,2.3vw,1.12rem)}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.9rem}
+.hero__pie{margin-top:1.7rem;font-size:.85rem;display:flex;align-items:center;gap:.6rem}
+.hero__pie::before{content:"";width:26px;height:1px;background:var(--rosa);flex:0 0 auto}
+
+/* --- Marcos de fotografía ------------------------------------------------ */
+.marco{position:relative;width:100%;max-width:100%;aspect-ratio:4/5;border-radius:var(--r-g);
+  overflow:hidden;background:var(--arena);border:1px solid var(--lino)}
+.marco--11{aspect-ratio:1/1}
+.marco--43{aspect-ratio:4/3}
+.marco--34{aspect-ratio:3/4}
+.marco__t{position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(45deg,rgba(255,255,255,.55) 0 2px,transparent 2px 12px),
+    repeating-linear-gradient(-45deg,rgba(94,110,82,.09) 0 2px,transparent 2px 12px),
+    linear-gradient(155deg,var(--rosa) 0%,#E3D6C6 48%,var(--salvia-claro) 100%)}
+.marco__n{position:absolute;inset:auto 0 0 0;padding:.7rem .85rem;
+  background:linear-gradient(to top,rgba(46,42,38,.84),rgba(46,42,38,0));
+  color:#FAF6F0;font-size:.75rem;font-weight:600;line-height:1.35}
+.marco__n b{display:block;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;opacity:.82}
+.marco img{width:100%;height:100%;object-fit:cover}
+
+/* --- Tira de valores ----------------------------------------------------- */
+.valores{border-block:1px solid var(--lino);background:var(--marfil)}
+.valores ul{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 2.4rem;padding-block:1.15rem}
+.valores li{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+
+/* --- Catálogo ------------------------------------------------------------ */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.chip{font:inherit;font-size:.83rem;font-weight:700;cursor:pointer;padding:.46rem 1.05rem;
+  border-radius:999px;border:1.5px solid var(--lino);background:var(--marfil);color:var(--taupe);transition:all .22s}
+.chip:hover{border-color:var(--mauve)}
+.chip[aria-pressed="true"]{background:var(--carbon);border-color:var(--carbon);color:var(--marfil)}
+/* Dos columnas ya en el teléfono: a una sola el catálogo medía diez pantallas
+   él solo, y nadie llega al final. Con dos se ve de un vistazo, como un feed. */
+.rejilla{display:grid;gap:1.6rem .9rem;margin-top:2.3rem;grid-template-columns:repeat(2,1fr)}
+@media (min-width:620px){
+  .rejilla{gap:1.6rem 1.35rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}
+}
+.t{display:flex;flex-direction:column;min-width:0;position:relative}
+.t__f{overflow:hidden}
+.t__f .marco__t,.t__f img{transition:transform .65s var(--curva)}
+.t:hover .t__f .marco__t,.t:hover .t__f img{transform:scale(1.045)}
+.t__c{margin-top:1rem;font-size:.64rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--mauve)}
+.t__n{margin-top:.35rem;font-size:1.3rem}
+.t__d{margin-top:.5rem;font-size:.9rem;line-height:1.56}
+.t__p{margin-top:auto;padding-top:1.05rem;display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .85rem;
+  position:relative;z-index:1}
+@media (max-width:619px){
+  .t__n{font-size:1.08rem}
+  .t__d{font-size:.83rem;line-height:1.5}
+  .t__c{font-size:.6rem;letter-spacing:.14em}
+  .t__p{padding-top:.8rem;gap:.45rem .6rem}
+  .precio,.precio--c{font-size:.95rem}
+}
+.precio{font-family:var(--display);font-size:1.22rem;color:var(--carbon);font-variant-numeric:tabular-nums}
+.precio--c{font-family:var(--texto);font-size:.85rem;font-weight:700;color:var(--taupe)}
+.sello{font-size:.63rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:.24rem .6rem;border-radius:999px;background:var(--rosa);color:#4A2520}
+
+/* --- Bloques de dos columnas -------------------------------------------- */
+.duo{display:grid;gap:clamp(2rem,5vw,3.5rem);align-items:center}
+@media (min-width:900px){.duo{grid-template-columns:1fr 1fr}.duo--inv>*:first-child{order:2}}
+.mosaico{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.mosaico>*:first-child{grid-column:1/-1}
+
+/* --- Pasos --------------------------------------------------------------- */
+.pasos{display:grid;gap:1.6rem;margin-top:2.5rem;counter-reset:p}
+@media (min-width:700px){.pasos{grid-template-columns:repeat(2,1fr);gap:2rem}}
+@media (min-width:1040px){.pasos{grid-template-columns:repeat(4,1fr)}}
+.paso{min-width:0;padding-top:1.05rem;border-top:1.5px solid var(--rosa);counter-increment:p}
+.paso::before{content:counter(p,decimal-leading-zero);display:block;font-family:var(--texto);
+  font-size:.68rem;font-weight:700;letter-spacing:.18em;color:var(--terracota);margin-bottom:.7rem}
+.paso h3{font-size:1.22rem}
+.paso p{margin-top:.4rem;font-size:.9rem}
+
+/* --- Fichas y formulario ------------------------------------------------- */
+.fichas{display:grid;gap:1.25rem;margin-top:2.4rem}
+@media (min-width:780px){.fichas{grid-template-columns:repeat(3,1fr)}}
+.ficha{background:var(--marfil);border:1px solid var(--lino);border-radius:var(--r-g);
+  padding:1.6rem;min-width:0;display:flex;flex-direction:column}
+.seccion--arena .ficha{background:var(--blanco)}
+.ficha h3{font-size:1.25rem}
+.ficha p{margin-top:.55rem;font-size:.92rem;word-break:break-word}
+.ficha .b{margin-top:auto;align-self:flex-start;margin-top:1.2rem}
+.caja{margin-top:2.6rem;background:var(--blanco);border:1px solid var(--lino);
+  border-radius:var(--r-g);padding:clamp(1.3rem,4vw,2.4rem)}
+.campos{display:grid;gap:1.05rem;margin-top:1.6rem}
+@media (min-width:700px){.campos{grid-template-columns:repeat(2,1fr)}.campo--w{grid-column:1/-1}}
+.campo{display:flex;flex-direction:column;gap:.38rem;min-width:0}
+.campo label{font-size:.82rem;font-weight:700;color:var(--carbon)}
+.campo label .o{font-weight:400;color:var(--taupe)}
+.campo input,.campo select,.campo textarea{font:inherit;font-size:.94rem;color:var(--carbon);
+  background:var(--marfil);border:1.5px solid var(--lino);border-radius:var(--r);padding:.68rem .85rem;width:100%}
+.campo textarea{resize:vertical;min-height:5.5rem}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--salvia);outline:none}
+.form__p{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:1.6rem}
+.nota{font-size:.84rem;margin:0}
+
+/* --- Instagram ----------------------------------------------------------- */
+.ig{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:2.3rem}
+@media (min-width:760px){.ig{grid-template-columns:repeat(6,1fr)}}
+
+/* --- FAQ ----------------------------------------------------------------- */
+.faq{margin-top:2.3rem;max-width:74ch}
+.faq details{border-bottom:1px solid var(--lino)}
+.faq summary{cursor:pointer;list-style:none;padding:1.15rem 2.2rem 1.15rem 0;position:relative;
+  font-family:var(--display);font-size:1.3rem;color:var(--carbon)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.2rem;top:50%;transform:translateY(-50%);
+  font-family:var(--texto);font-size:1.2rem;color:var(--terracota)}
+.faq details[open] summary::after{content:"\2013"}
+.faq p{padding-bottom:1.25rem;font-size:.95rem;max-width:64ch}
+
+/* --- Ficha de producto --------------------------------------------------- */
+dialog.ficha-p{
+  width:min(820px,calc(100vw - 2rem));max-width:none;padding:0;border:1px solid var(--lino);
+  border-radius:var(--r-g);background:var(--marfil);color:var(--taupe);overflow:hidden
+}
+dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
+.fp__r{display:grid}
+@media (min-width:720px){.fp__r{grid-template-columns:1fr 1fr}}
+.fp__izq{padding:1rem;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.fp__der{padding:1.5rem 1.6rem 1.8rem;display:flex;flex-direction:column;min-width:0}
+.fp__minis{display:flex;flex-wrap:wrap;gap:.5rem}
+.fp__mini{width:54px;height:54px;border-radius:8px;overflow:hidden;border:1.5px solid var(--lino);
+  padding:0;cursor:pointer;background:var(--arena)}
+.fp__mini[aria-current="true"]{border-color:var(--carbon)}
+.fp__mini img{width:100%;height:100%;object-fit:cover}
+.fp__cerrar{position:absolute;top:.6rem;right:.6rem;z-index:2;width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--lino);background:var(--marfil);color:var(--carbon);font-size:1.1rem;
+  line-height:1;cursor:pointer}
+.fp__cerrar:hover{border-color:var(--mauve)}
+.fp__cat{font-size:.64rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--mauve)}
+.fp__n{margin-top:.4rem;font-size:1.85rem}
+.fp__d{margin-top:.7rem;font-size:.95rem}
+.fp__p{margin-top:1.1rem;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem .9rem}
+.fp__acc{margin-top:auto;padding-top:1.4rem;display:flex;flex-wrap:wrap;gap:.6rem}
+.t__abre{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.t__abre::after{content:"";position:absolute;inset:0;border-radius:var(--r-g)}
+.t__abre:hover{color:var(--mauve)}
+.t__n{transition:color .25s}
+.t:has(.t__abre:focus-visible){outline:2.5px solid var(--salvia);outline-offset:6px;border-radius:var(--r-g)}
+.t:has(.t__abre:focus-visible) .t__abre:focus-visible{outline:none}
+.pend{display:inline-block;font-size:.73rem;font-weight:700;letter-spacing:.05em;
+  background:var(--rosa);color:#4A2520;padding:.18rem .55rem;border-radius:6px}
+
+.pie{background:var(--carbon);color:#CFC5BA;padding-block:2.8rem;font-size:.87rem}
+.pie__f{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between}
+.pie a{color:#EFE6DC}
+
+.flot{position:fixed;z-index:100;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));
+  display:inline-flex;align-items:center;gap:.5rem;background:var(--salvia);color:var(--blanco);
+  text-decoration:none;font-weight:700;font-size:.88rem;padding:.78rem 1.15rem;border-radius:999px;
+  box-shadow:0 12px 28px -12px rgba(46,42,38,.6)}
+@media (min-width:980px){.flot{display:none}}
+/* Mientras el flotante exista, el documento termina más arriba que él. */
+@media (max-width:979px){body{padding-bottom:4.25rem}}
+</style>
+
+<a class="salta" href="#catalogo">Saltar al catálogo</a>
+
+<div class="borrador" id="borrador" hidden>
+  <div class="contenedor">
+    <div class="borrador__fila">
+      <p class="borrador__texto" id="borrador-texto"></p>
+      <button class="borrador__b" id="borrador-b" type="button" aria-expanded="false" aria-controls="borrador-lista">Ver qué falta</button>
+    </div>
+    <ul class="borrador__lista" id="borrador-lista" hidden></ul>
+  </div>
+</div>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <div class="cab__fila">
+      <a class="marca" href="#inicio">
+        <span class="marca__r" aria-hidden="true">R</span>
+        <span class="marca__t">R de Retazos<small>Hecho a mano</small></span>
+      </a>
+      <nav class="nav" aria-label="Secciones">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#taller">El taller</a>
+        <a href="#personalizados">Personalizados</a>
+        <a href="#regalos">Regalos</a>
+        <a href="#sobre">Sobre mí</a>
+        <a href="#preguntas">Preguntas</a>
+      </nav>
+      <button class="menu-b" id="menu-b" type="button" aria-expanded="false" aria-controls="panel">Menú</button>
+      <a class="b b--p b--sm" id="cta-cabecera" href="#contacto">Escríbeme</a>
+    </div>
+    <nav class="panel" id="panel" aria-label="Secciones" hidden>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#taller">El taller</a>
+      <a href="#personalizados">Pedidos personalizados</a>
+      <a href="#regalos">Regalos y recuerdos</a>
+      <a href="#sobre">Sobre R de Retazos</a>
+      <a href="#preguntas">Preguntas frecuentes</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero">
+    <div class="contenedor hero__r">
+      <div class="hero__t">
+        <p class="rotulo">Santo Domingo, Chile</p>
+        <h1>Una tela que ya existía,<br><em>convertida en algo tuyo</em>.</h1>
+        <p class="hero__b">Moños, scrunchies, bolsos, cojines y regalos. Cada pieza la corto y la coso yo, eligiendo la tela una por una. Casi nunca salen dos iguales.</p>
+        <div class="hero__cta">
+          <a class="b b--p" href="#catalogo">Ver el catálogo</a>
+          <a class="b b--l" href="#personalizados">Personalizar mi pedido</a>
+        </div>
+        <p class="hero__pie">Las tote bags se hacen en denim reciclado.</p>
+      </div>
+      <div class="marco" aria-hidden="true">
+        <div class="marco__t"></div>
+        <div class="marco__n"><b>Hueco preparado</b>Foto principal: un moño o una tote en la mano, luz natural, vertical.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="valores">
+    <div class="contenedor">
+      <ul>
+        <li>Confeccionado a mano</li>
+        <li>Diseños únicos</li>
+        <li>Telas que cobran vida</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="seccion" id="catalogo" aria-labelledby="t-cat">
+    <div class="contenedor">
+      <div class="rev">
+        <p class="rotulo">Catálogo</p>
+        <h2 class="titulo" id="t-cat">Lo que hay hoy.</h2>
+        <p class="bajada">Los primeros son los que más me piden. Casi todo se puede hacer en otra tela o en otra combinación: si algo te gusta pero lo quieres distinto, escríbeme y lo vemos.</p>
+      </div>
+      <div class="chips rev" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+      <ul class="rejilla" id="rejilla"></ul>
+      <p class="nota rev" id="nota-precios" style="margin-top:2rem"></p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--arena" id="taller" aria-labelledby="t-taller">
+    <div class="contenedor duo">
+      <div class="rev">
+        <p class="rotulo">El taller</p>
+        <h2 class="titulo" id="t-taller">Cada pieza tiene <em>una historia antes</em>.</h2>
+        <p class="bajada">Retazos es eso: pedazos de tela que sobraron, que quedaron guardados o que iban a terminar en la basura. Mi trabajo es darles una segunda oportunidad y convertirlos en algo que de verdad se use.</p>
+        <p class="bajada">Por eso las tote bags son de denim reciclado y por eso cada moño es distinto: dependo de la tela que tengo delante. Corto, armo, coso en mi máquina y reviso cada terminación antes de empacarla.</p>
+        <p class="bajada">No es producción en serie. Es una persona, una máquina y el tiempo que cada pieza necesita.</p>
+      </div>
+      <div class="mosaico rev">
+        <div class="marco marco--43" aria-hidden="true">
+          <div class="marco__t"></div>
+          <div class="marco__n"><b>Hueco preparado</b>Las manos en la máquina de coser.</div>
+        </div>
+        <div class="marco marco--11" aria-hidden="true">
+          <div class="marco__t"></div>
+          <div class="marco__n"><b>Hueco</b>Retazos y telas apiladas.</div>
+        </div>
+        <div class="marco marco--11" aria-hidden="true">
+          <div class="marco__t"></div>
+          <div class="marco__n"><b>Hueco</b>El empaque con la cinta y la tarjeta.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="personalizados" aria-labelledby="t-pers">
+    <div class="contenedor">
+      <div class="rev">
+        <p class="rotulo">Pedidos personalizados</p>
+        <h2 class="titulo" id="t-pers">Lo hacemos a tu medida.</h2>
+        <p class="bajada">Si lo que buscas no está, o lo quieres en otra tela, en otro color o con un detalle particular, se puede. Elegimos juntas la tela, el estampado, la combinación y la cantidad.</p>
+      </div>
+
+      <ol class="pasos">
+        <li class="paso rev"><h3>Me cuentas</h3><p>Qué necesitas, para quién es y para cuándo.</p></li>
+        <li class="paso rev"><h3>Elegimos la tela</h3><p>Te muestro lo que tengo y vemos qué calza con lo que buscas.</p></li>
+        <li class="paso rev"><h3>Te confirmo precio y plazo</h3><p>Antes de empezar, para que sepas exactamente qué recibes y cuándo.</p></li>
+        <li class="paso rev"><h3>Lo coso y te lo entrego</h3><p>Revisado y empacado a mano, listo para regalar si lo necesitas.</p></li>
+      </ol>
+
+      <div class="caja rev">
+        <h3 style="font-size:1.6rem">Quiero cotizar</h3>
+        <p class="nota" style="margin-top:.6rem;font-size:.95rem">Cuéntame lo que tienes en mente y te respondo con el precio y el plazo.</p>
+        <form id="form" novalidate>
+          <div class="campos">
+            <div class="campo">
+              <label for="f-nombre">Tu nombre</label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" required>
+            </div>
+            <div class="campo">
+              <label for="f-que">¿Qué te gustaría?</label>
+              <select id="f-que" name="que"></select>
+            </div>
+            <div class="campo">
+              <label for="f-cantidad">Cantidad</label>
+              <input id="f-cantidad" name="cantidad" type="number" min="1" step="1" value="1" inputmode="numeric">
+            </div>
+            <div class="campo">
+              <label for="f-fecha">¿Para cuándo? <span class="o">(opcional)</span></label>
+              <input id="f-fecha" name="fecha" type="text" placeholder="Ej: antes del 20 de diciembre">
+            </div>
+            <div class="campo campo--w">
+              <label for="f-telas">Colores, telas o estampados que te gustan <span class="o">(opcional)</span></label>
+              <input id="f-telas" name="telas" type="text" placeholder="Ej: tonos verdes, flores pequeñas, denim">
+            </div>
+            <div class="campo campo--w">
+              <label for="f-detalle">Cuéntame más <span class="o">(opcional)</span></label>
+              <textarea id="f-detalle" name="detalle" placeholder="Para quién es, qué uso le vas a dar, si lleva un nombre…"></textarea>
+            </div>
+          </div>
+          <div class="form__p">
+            <button class="b b--p" type="submit" id="f-enviar">Enviar</button>
+            <p class="nota" id="form-nota"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--arena" id="regalos" aria-labelledby="t-reg">
+    <div class="contenedor">
+      <div class="rev">
+        <p class="rotulo">Regalos y recuerdos</p>
+        <h2 class="titulo" id="t-reg">Cuando el detalle <em>es el regalo</em>.</h2>
+        <p class="bajada">Armo cajas y recuerdos para fechas concretas: la pieza, la caja, la cinta y la tarjeta van juntas y listas para entregar.</p>
+      </div>
+      <div class="fichas">
+        <div class="ficha rev">
+          <h3>Cajas de regalo</h3>
+          <p>Para Navidad, Día de la Madre o un cumpleaños. Se arma con lo que elijas dentro, en su caja, con cinta y tarjeta escrita.</p>
+          <a class="b b--l b--sm cta-gen" href="#contacto">Consultar por una caja</a>
+        </div>
+        <div class="ficha rev">
+          <h3>Recuerdos para celebraciones</h3>
+          <p>Baby showers, primavera, fin de curso. Se hacen en la cantidad que necesites y con los colores de la celebración.</p>
+          <a class="b b--l b--sm cta-gen" href="#contacto">Consultar por recuerdos</a>
+        </div>
+        <div class="ficha rev">
+          <h3>Para negocios</h3>
+          <p>Delantales y artículos textiles personalizados con el nombre de tu marca, en la tela que necesites.</p>
+          <a class="b b--l b--sm cta-gen" href="#contacto">Pedir una cotización</a>
+        </div>
+      </div>
+      <p class="nota rev" style="margin-top:1.8rem">Para pedidos con varias unidades conviene avisar con tiempo. Escríbeme y te confirmo el plazo.</p>
+    </div>
+  </section>
+
+  <section class="seccion" id="sobre" aria-labelledby="t-sobre">
+    <div class="contenedor duo duo--inv">
+      <div class="mosaico rev">
+        <div class="marco marco--34" aria-hidden="true">
+          <div class="marco__t"></div>
+          <div class="marco__n"><b>Hueco preparado</b>Retrato tuyo en el taller.</div>
+        </div>
+      </div>
+      <div class="rev">
+        <p class="rotulo">Sobre R de Retazos</p>
+        <h2 class="titulo" id="t-sobre">Quién está detrás.</h2>
+        <p class="bajada" id="sobre-intro"></p>
+        <p class="bajada">R de Retazos nació desde el gusto por coser y estuvo un tiempo detenido. Volvió hace poco, y volvió con la misma idea: piezas hechas una por una, con las telas que tengo a mano y el tiempo que cada una pide.</p>
+        <p class="bajada">Me gusta conversar el pedido antes de hacerlo. Si no sabes bien qué quieres, lo vemos juntas.</p>
+        <div class="hero__cta">
+          <a class="b b--l cta-gen" href="#contacto">Escribirme</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--arena" id="instagram" aria-labelledby="t-ig">
+    <div class="contenedor">
+      <div class="rev">
+        <p class="rotulo">Instagram</p>
+        <h2 class="titulo" id="t-ig">Lo nuevo sale primero ahí.</h2>
+        <p class="bajada">Publico cada pieza terminada, las telas que van llegando y lo que queda disponible.</p>
+      </div>
+      <div class="ig rev" id="ig-rejilla" aria-hidden="true"></div>
+      <div class="hero__cta rev" id="ig-cta"></div>
+    </div>
+  </section>
+
+  <section class="seccion" id="preguntas" aria-labelledby="t-faq">
+    <div class="contenedor">
+      <div class="rev">
+        <p class="rotulo">Preguntas frecuentes</p>
+        <h2 class="titulo" id="t-faq">Antes de escribirme.</h2>
+      </div>
+      <div class="faq rev" id="faq"></div>
+    </div>
+  </section>
+
+  <section class="seccion seccion--arena" id="contacto" aria-labelledby="t-con">
+    <div class="contenedor">
+      <div class="rev">
+        <p class="rotulo">Contacto</p>
+        <h2 class="titulo" id="t-con">Escríbeme y lo vemos.</h2>
+        <p class="bajada">Los pedidos se conversan antes: disponibilidad, precio y entrega quedan claros antes de que pagues nada.</p>
+      </div>
+      <div class="fichas" id="contacto-fichas"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie__f">
+    <p>R de Retazos · Hecho a mano en Santo Domingo, Chile</p>
+    <p id="pie-redes"></p>
+  </div>
+</footer>
+
+<a class="flot" id="cta-flotante" href="#contacto">Escríbeme</a>
+
+<script>
+/* ===========================================================================
+   DATOS — EL ÚNICO BLOQUE QUE HAY QUE EDITAR.
+
+   Todo lo que se ve sale de aquí. Para agregar un producto, copia una línea
+   de `productos`. Para publicar un precio, cambia `precio:null` por el número
+   sin puntos (5000). Para poner una foto, escribe su ruta en `foto`.
+
+   Lo que está en "" o en null todavía no existe: la página lo marca arriba
+   como pendiente en vez de inventárselo.
+   =========================================================================== */
+const DATOS = {
+
+  contacto: {
+    /* Con código de país, sin + ni espacios. Ej: "56912345678" */
+    whatsapp: "",
+    /* Confirmado: la cuenta real de la marca. */
+    instagram: "rderetazos",
+    ciudad: "Santo Domingo, Chile"
+  },
+
+  artesana: { nombre: "" },
+
+  categorias: [
+    { id:"accesorios", nombre:"Accesorios" },
+    { id:"bolsos",     nombre:"Bolsos" },
+    { id:"hogar",      nombre:"Hogar" },
+    { id:"regalos",    nombre:"Regalos" }
+  ],
+
+  /* El orden es el orden en la página: primero lo que más se pide. */
+  productos: [
+    { id:"monos", nombre:"Moños y lazos", cat:"accesorios", precio:null, fotos:[], estado:null,
+      desc:"El moño XL, en tela suave y ligera. Liso, estampado o de cuero sintético." },
+    { id:"scrunchies", nombre:"Scrunchies", cat:"accesorios", precio:null, fotos:[], estado:null,
+      desc:"En terciopelo, estampados florales o lisos. Se hacen en casi cualquier tela." },
+    { id:"tote", nombre:"Tote bags", cat:"bolsos", precio:null, fotos:[], estado:null,
+      desc:"En denim reciclado y otras telas. Amplias, cómodas y cada una distinta." },
+    { id:"porta", nombre:"Bolsos para computador", cat:"bolsos", precio:null, fotos:[], estado:null,
+      desc:"Hechos por pedido. Pueden llevar su porta cables a juego, en la misma tela." },
+    { id:"cosmetiqueros", nombre:"Cosmetiqueros", cat:"accesorios", precio:null, fotos:[], estado:null,
+      desc:"Para llevar lo justo ordenado, en la combinación de telas que elijas." },
+    { id:"cojines", nombre:"Cojines", cat:"hogar", precio:null, fotos:[], estado:null,
+      desc:"39 × 49 cm, relleno sintético, con terminación de pestaña o simple." },
+    { id:"delantales", nombre:"Delantales personalizados", cat:"hogar", precio:null, fotos:[], estado:null,
+      desc:"Con bolsillo. Para la casa o para tu negocio, con el nombre que quieras." },
+    { id:"llaveros", nombre:"Llaveros", cat:"accesorios", precio:null, fotos:[], estado:null,
+      desc:"Un detalle chico de tela, para regalar o para sumar a un pedido." },
+    { id:"cajas", nombre:"Cajas de regalo", cat:"regalos", precio:null, fotos:[], estado:null,
+      desc:"El set armado: lo que elijas dentro, su caja, la cinta y la tarjeta." },
+    { id:"recuerdos", nombre:"Recuerdos para celebraciones", cat:"regalos", precio:null, fotos:[], estado:null,
+      desc:"Baby showers, primavera, fin de curso. En la cantidad que necesites." }
+  ],
+
+  /* r:"" = todavía no la tengo. La página muestra la pregunta y dice qué falta,
+     en vez de inventarse un plazo, una forma de pago o una política. */
+  faq: [
+    { p:"¿Cómo hago un pedido?",
+      r:"Me escribes contándome qué te interesa. Ahí confirmamos disponibilidad, precio y entrega antes de que pagues nada." },
+    { p:"¿Las telas son recicladas?",
+      r:"Buena parte sí. Las tote bags se hacen en denim reciclado, y gran parte del trabajo es darle una nueva vida a telas que ya existían. Por eso casi nunca hay dos piezas iguales." },
+    { p:"¿Puedo elegir la tela, el color o el estampado?",
+      r:"Sí. Trabajo con telas y estampados distintos, y la combinación la vemos juntas antes de empezar." },
+    { p:"¿Cuánto demora un pedido personalizado?", r:"", falta:"los plazos de elaboración" },
+    { p:"¿Cómo recibo mi pedido?", r:"", falta:"las modalidades de entrega: retiro, despacho y zonas" },
+    { p:"¿Qué formas de pago aceptas?", r:"", falta:"las formas de pago" },
+    { p:"¿Haces pedidos para negocios?",
+      r:"Sí. Delantales y artículos textiles personalizados con el nombre de tu marca. Escríbeme con lo que necesitas y la cantidad, y te cotizo." },
+    { p:"¿Tienes tienda online con pago?",
+      r:"Por ahora no: los pedidos se conversan antes de hacerse. Es algo que puede venir más adelante." }
+  ]
+};
+
+/* ======================= De aquí para abajo, el motor ====================== */
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
+
+  const $ = (s) => document.querySelector(s);
+  const crear = (t, c) => { const e = document.createElement(t); if (c) e.className = c; return e; };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[m]));
+
+  const tel = (DATOS.contacto.whatsapp || "").replace(/\D/g, "");
+  const hayWa = tel.length > 7;
+  const ig = (DATOS.contacto.instagram || "").replace(/^@/, "").trim();
+  const igURL = ig ? "https://www.instagram.com/" + encodeURIComponent(ig) + "/" : "";
+  const igDM = ig ? "https://ig.me/m/" + encodeURIComponent(ig) : "";
+
+  /* El canal principal es el que de verdad funciona hoy. Mientras no haya
+     número de WhatsApp, todos los botones llevan al DM de Instagram, que es
+     por donde la marca ya recibe pedidos. En cuanto se agregue el número,
+     cambian solos sin tocar una línea de maquetado. */
+  const canal = hayWa ? "wa" : (ig ? "ig" : "nada");
+  const ETIQUETA = hayWa ? "Escríbeme por WhatsApp" : (ig ? "Escríbeme por Instagram" : "Escríbeme");
+  const CORTA = hayWa ? "WhatsApp" : (ig ? "Instagram" : "Escríbeme");
+
+  function enlace(mensaje) {
+    if (hayWa) return "https://wa.me/" + tel + "?text=" + encodeURIComponent(mensaje);
+    if (igDM) return igDM;
+    return "#contacto";
+  }
+  function fuera(a) {
+    if (canal === "nada") { a.removeAttribute("target"); a.removeAttribute("rel"); return; }
+    a.target = "_blank"; a.rel = "noopener noreferrer";
+  }
+
+  const SALUDO = "Hola! Vi la página de R de Retazos y quiero hacer una consulta.";
+
+  /* --- Catálogo ---------------------------------------------------------- */
+  const rejilla = $("#rejilla"), chips = $("#chips");
+  let filtro = "todo";
+
+  /* Una pieza puede tener varias fotos (el bolso y su porta cables, la tote
+     colgada y en uso). La primera es la portada; el resto viven en la ficha.
+     Acepta también el campo antiguo `foto` por si alguien lo escribe así. */
+  const imagenes = (p) => (p.fotos && p.fotos.length ? p.fotos : (p.foto ? [p.foto] : []));
+  const nombreCat = (p) => { const c = DATOS.categorias.find((x) => x.id === p.cat); return c ? c.nombre : ""; };
+
+  function marcoDe(p, src, clase) {
+    const m = crear("div", "marco " + clase);
+    if (src) {
+      const img = crear("img");
+      img.src = src; img.alt = p.nombre + " hecho a mano por R de Retazos"; img.loading = "lazy";
+      m.appendChild(img);
+    } else {
+      m.setAttribute("aria-hidden", "true");
+      m.innerHTML = '<div class="marco__t"></div><div class="marco__n"><b>Foto pendiente</b>' + esc(p.nombre) + "</div>";
+    }
+    return m;
+  }
+
+  function tarjeta(p) {
+    const li = crear("li", "t");
+    const fotos = imagenes(p);
+
+    /* La foto y el nombre abren la ficha; el botón de consultar sigue siendo el
+       salto directo. Quien ya sabe lo que quiere no da un paso de más. */
+    const caja = crear("div", "t__f");
+    caja.appendChild(marcoDe(p, fotos[0], "marco--11"));
+    li.appendChild(caja);
+
+    /* El botón vive DENTRO del h3, no al revés: un encabezado dentro de un
+       botón no es HTML válido y los lectores de pantalla pierden el nivel.
+       El ::after del botón se estira sobre la tarjeta entera, así que con el
+       ratón se puede pulsar cualquier parte y sigue habiendo un solo control. */
+    const info = crear("div");
+    info.innerHTML =
+      '<p class="t__c">' + esc(nombreCat(p)) + "</p>" +
+      '<h3 class="t__n"><button type="button" class="t__abre">' + esc(p.nombre) + "</button></h3>" +
+      '<p class="t__d">' + esc(p.desc) + "</p>";
+    info.querySelector(".t__abre").addEventListener("click", () => abreFicha(p));
+    li.appendChild(info);
+
+    const pie = crear("div", "t__p");
+    const precio = crear("p", p.precio == null ? "precio precio--c" : "precio");
+    precio.textContent = p.precio == null ? "Precio a consultar" : "$" + Number(p.precio).toLocaleString("es-CL");
+    pie.appendChild(precio);
+
+    if (p.estado) { const s = crear("span", "sello"); s.textContent = p.estado; pie.appendChild(s); }
+
+    const b = crear("a", "b b--l b--sm");
+    b.href = enlace("Hola! Quiero consultar por " + p.nombre + " de R de Retazos.");
+    b.innerHTML = "Consultar" + '<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> por ' + esc(p.nombre) + " por " + esc(CORTA) + "</span>";
+    fuera(b);
+    pie.appendChild(b);
+
+    li.appendChild(pie);
+    return li;
+  }
+
+  /* --- Ficha de producto -------------------------------------------------
+     <dialog> nativo: el foco queda dentro, Esc cierra y el fondo se inerta sin
+     escribir una línea de ello. Se construye una vez y se rellena al abrir. */
+  const dlg = crear("dialog", "ficha-p");
+  dlg.innerHTML =
+    '<button class="fp__cerrar" type="button" aria-label="Cerrar la ficha">&times;</button>' +
+    '<div class="fp__r"><div class="fp__izq"></div><div class="fp__der"></div></div>';
+  document.body.appendChild(dlg);
+  const fpIzq = dlg.querySelector(".fp__izq"), fpDer = dlg.querySelector(".fp__der");
+  dlg.querySelector(".fp__cerrar").addEventListener("click", () => dlg.close());
+  /* Pulsar fuera de la ficha la cierra, como se espera de un modal. */
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+
+  function abreFicha(p) {
+    const fotos = imagenes(p);
+    fpIzq.textContent = "";
+    const principal = marcoDe(p, fotos[0], "marco--11");
+    fpIzq.appendChild(principal);
+
+    if (fotos.length > 1) {
+      const minis = crear("div", "fp__minis");
+      fotos.forEach((src, i) => {
+        const b = crear("button", "fp__mini");
+        b.type = "button";
+        b.setAttribute("aria-current", String(i === 0));
+        b.setAttribute("aria-label", "Ver la foto " + (i + 1) + " de " + fotos.length);
+        b.innerHTML = '<img src="' + esc(src) + '" alt="" loading="lazy">';
+        b.addEventListener("click", () => {
+          const img = principal.querySelector("img");
+          if (img) img.src = src;
+          minis.querySelectorAll(".fp__mini").forEach((o, j) => o.setAttribute("aria-current", String(i === j)));
+        });
+        minis.appendChild(b);
+      });
+      fpIzq.appendChild(minis);
+    }
+
+    fpDer.textContent = "";
+    const cab = crear("div");
+    cab.innerHTML =
+      '<p class="fp__cat">' + esc(nombreCat(p)) + "</p>" +
+      '<h2 class="fp__n">' + esc(p.nombre) + "</h2>" +
+      '<p class="fp__d">' + esc(p.desc) + "</p>";
+    fpDer.appendChild(cab);
+
+    const pre = crear("div", "fp__p");
+    const pr = crear("p", p.precio == null ? "precio precio--c" : "precio");
+    pr.textContent = p.precio == null ? "Precio a consultar" : "$" + Number(p.precio).toLocaleString("es-CL");
+    pre.appendChild(pr);
+    if (p.estado) { const se = crear("span", "sello"); se.textContent = p.estado; pre.appendChild(se); }
+    fpDer.appendChild(pre);
+
+    const nota = crear("p", "nota");
+    nota.style.marginTop = ".9rem";
+    nota.textContent = "Se puede hacer en otra tela o en otra combinación. Escríbeme y lo vemos.";
+    fpDer.appendChild(nota);
+
+    const acc = crear("div", "fp__acc");
+    const ir = crear("a", "b b--p b--sm");
+    ir.href = enlace("Hola! Quiero consultar por " + p.nombre + " de R de Retazos.");
+    ir.textContent = hayWa ? "Consultar por WhatsApp" : "Consultar por Instagram";
+    fuera(ir);
+    acc.appendChild(ir);
+    const cerrar = crear("button", "b b--l b--sm");
+    cerrar.type = "button"; cerrar.textContent = "Seguir mirando";
+    cerrar.addEventListener("click", () => dlg.close());
+    acc.appendChild(cerrar);
+    fpDer.appendChild(acc);
+
+    if (typeof dlg.showModal === "function") dlg.showModal();
+    else { dlg.setAttribute("open", ""); }
+  }
+
+  function pinta() {
+    rejilla.textContent = "";
+    DATOS.productos.filter((p) => filtro === "todo" || p.cat === filtro).forEach((p) => rejilla.appendChild(tarjeta(p)));
+  }
+
+  const lista = [{ id:"todo", nombre:"Todo" }].concat(DATOS.categorias);
+  lista.forEach((c) => {
+    const b = crear("button", "chip");
+    b.type = "button"; b.textContent = c.nombre;
+    b.setAttribute("aria-pressed", String(c.id === filtro));
+    b.addEventListener("click", () => {
+      filtro = c.id;
+      chips.querySelectorAll(".chip").forEach((o, i) => o.setAttribute("aria-pressed", String(lista[i].id === filtro)));
+      pinta();
+    });
+    chips.appendChild(b);
+  });
+  pinta();
+
+  const sinPrecio = DATOS.productos.filter((p) => p.precio == null).length;
+  const notaPrecios = $("#nota-precios");
+  if (sinPrecio === DATOS.productos.length) {
+    notaPrecios.textContent = "Los precios todavía no están publicados. Escríbeme y te los paso al tiro.";
+  } else { notaPrecios.hidden = true; }
+
+  /* --- Sobre ------------------------------------------------------------- */
+  const nombre = (DATOS.artesana.nombre || "").trim();
+  $("#sobre-intro").innerHTML = nombre
+    ? "Soy " + esc(nombre) + ", y hago todo lo que ves acá desde " + esc(DATOS.contacto.ciudad) + "."
+    : '<span class="pend">Falta tu nombre</span> Hago todo lo que ves acá desde ' + esc(DATOS.contacto.ciudad) + ".";
+
+  /* --- Instagram --------------------------------------------------------- */
+  const igr = $("#ig-rejilla");
+  for (let i = 0; i < 6; i++) {
+    const m = crear("div", "marco marco--11");
+    m.innerHTML = '<div class="marco__t"></div><div class="marco__n"><b>Hueco</b>Publicación ' + (i + 1) + "</div>";
+    igr.appendChild(m);
+  }
+  const igcta = $("#ig-cta");
+  if (ig) {
+    const a1 = crear("a", "b b--l");
+    a1.href = igURL; a1.target = "_blank"; a1.rel = "noopener noreferrer";
+    a1.textContent = "Ver @" + ig;
+    igcta.appendChild(a1);
+    const a2 = crear("a", "b b--p");
+    a2.href = enlace(SALUDO); a2.textContent = ETIQUETA; fuera(a2);
+    igcta.appendChild(a2);
+  }
+
+  /* --- Preguntas --------------------------------------------------------- */
+  const faq = $("#faq");
+  DATOS.faq.forEach((item, i) => {
+    const d = crear("details");
+    if (i === 0) d.open = true;
+    const s = crear("summary"); s.textContent = item.p; d.appendChild(s);
+    const p = crear("p");
+    if (item.r) p.textContent = item.r;
+    else p.innerHTML = '<span class="pend">Falta tu respuesta</span> Esta pregunta se publica en cuanto me confirmes ' + esc(item.falta || "el dato") + ".";
+    d.appendChild(p);
+    faq.appendChild(d);
+  });
+
+  /* --- Contacto ---------------------------------------------------------- */
+  const cf = $("#contacto-fichas");
+
+  const f1 = crear("div", "ficha");
+  if (ig) {
+    f1.innerHTML = "<h3>Instagram</h3><p>@" + esc(ig) +
+      "</p><p style=\"font-size:.88rem\">Es por donde recibo los pedidos hoy. Ahí publico lo nuevo y lo que queda disponible.</p>";
+    const a = crear("a", "b b--p b--sm");
+    a.href = igDM; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = "Mandarme un mensaje";
+    f1.appendChild(a);
+  } else {
+    f1.innerHTML = '<h3>Instagram</h3><p><span class="pend">Falta el usuario</span></p>';
+  }
+  cf.appendChild(f1);
+
+  const f2 = crear("div", "ficha");
+  if (hayWa) {
+    f2.innerHTML = "<h3>WhatsApp</h3><p>+" + esc(tel) + "</p><p style=\"font-size:.88rem\">La vía más rápida para consultar y cotizar.</p>";
+    const a = crear("a", "b b--p b--sm");
+    a.href = enlace(SALUDO); a.textContent = "Abrir WhatsApp"; fuera(a);
+    f2.appendChild(a);
+  } else {
+    f2.innerHTML = '<h3>WhatsApp</h3><p><span class="pend">Falta el número</span></p>' +
+      '<p style="font-size:.88rem">En cuanto lo agregues, todos los botones de la página pasan de Instagram a tu chat de WhatsApp, con el mensaje ya escrito.</p>';
+  }
+  cf.appendChild(f2);
+
+  const f3 = crear("div", "ficha");
+  f3.innerHTML = "<h3>Dónde estoy</h3><p>" + esc(DATOS.contacto.ciudad) +
+    "</p><p style=\"font-size:.88rem\">La forma de entrega la coordinamos al hacer el pedido.</p>";
+  cf.appendChild(f3);
+
+  $("#pie-redes").innerHTML = ig
+    ? '<a href="' + igURL + '" target="_blank" rel="noopener noreferrer">@' + esc(ig) + "</a>"
+    : "Hecho a mano, por encargo.";
+
+  /* --- Botones sueltos --------------------------------------------------- */
+  ["#cta-cabecera", "#cta-flotante"].forEach((sel) => {
+    const a = $(sel); if (!a) return;
+    a.href = enlace(SALUDO);
+    /* El flotante va corto a propósito: con la etiqueta larga ocupaba media
+       pantalla y tapaba el "Consultar" de la tarjeta que tuviera debajo. */
+    a.textContent = sel === "#cta-flotante" ? "Escríbeme" : CORTA;
+    fuera(a);
+  });
+  document.querySelectorAll(".cta-gen").forEach((a) => { a.href = enlace(SALUDO); fuera(a); });
+
+  /* --- Menú de móvil ----------------------------------------------------- */
+  const mb = $("#menu-b"), panel = $("#panel");
+  mb.addEventListener("click", () => {
+    const ab = mb.getAttribute("aria-expanded") === "true";
+    mb.setAttribute("aria-expanded", String(!ab));
+    panel.hidden = ab;
+  });
+  panel.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") { panel.hidden = true; mb.setAttribute("aria-expanded", "false"); }
+  });
+
+  /* --- Formulario -------------------------------------------------------- */
+  const sel = $("#f-que");
+  DATOS.productos.forEach((p) => { const o = crear("option"); o.value = p.nombre; o.textContent = p.nombre; sel.appendChild(o); });
+  const otro = crear("option"); otro.value = "Otra cosa"; otro.textContent = "Otra cosa"; sel.appendChild(otro);
+
+  $("#f-enviar").textContent = hayWa ? "Enviar por WhatsApp" : "Preparar el mensaje";
+  $("#form-nota").textContent = hayWa
+    ? "Se abre WhatsApp con el mensaje ya escrito. La página no guarda nada."
+    : "Te dejo el mensaje listo para copiar y pegar en el DM. La página no guarda nada.";
+
+  const resultado = crear("div");
+  resultado.hidden = true;
+  resultado.style.cssText = "margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--lino)";
+  $("#form").appendChild(resultado);
+
+  $("#form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nota = $("#form-nota"), nom = $("#f-nombre");
+    if (!nom.value.trim()) { nota.textContent = "Escribe tu nombre para saber con quién hablo."; nom.focus(); return; }
+
+    const l = [
+      "Hola! Soy " + nom.value.trim() + " y quiero una cotización.",
+      "Producto: " + sel.value,
+      "Cantidad: " + ($("#f-cantidad").value || "1")
+    ];
+    if ($("#f-telas").value.trim()) l.push("Telas o colores: " + $("#f-telas").value.trim());
+    if ($("#f-fecha").value.trim()) l.push("Lo necesito: " + $("#f-fecha").value.trim());
+    if ($("#f-detalle").value.trim()) l.push("Detalle: " + $("#f-detalle").value.trim());
+    const mensaje = l.join("\n");
+
+    resultado.hidden = false;
+    resultado.innerHTML =
+      '<p class="nota" style="font-weight:700;color:var(--carbon)">Tu mensaje</p>' +
+      '<textarea id="f-salida" readonly rows="6" style="margin-top:.6rem;width:100%;font:inherit;font-size:.92rem;' +
+      'color:var(--carbon);background:var(--marfil);border:1.5px solid var(--lino);border-radius:var(--r);padding:.7rem .85rem"></textarea>';
+    $("#f-salida").value = mensaje;
+
+    const acc = crear("div", "form__p");
+    const copiar = crear("button", "b b--l b--sm");
+    copiar.type = "button"; copiar.textContent = "Copiar";
+    copiar.addEventListener("click", () => {
+      const ta = $("#f-salida");
+      const ok = () => { copiar.textContent = "Copiado"; setTimeout(() => { copiar.textContent = "Copiar"; }, 2200); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(mensaje).then(ok, () => { ta.focus(); ta.select(); copiar.textContent = "Selecciónalo y copia"; });
+      } else { ta.focus(); ta.select(); copiar.textContent = "Selecciónalo y copia"; }
+    });
+    acc.appendChild(copiar);
+
+    if (canal !== "nada") {
+      const ir = crear("a", "b b--p b--sm");
+      ir.href = enlace(mensaje); ir.textContent = hayWa ? "Abrir WhatsApp" : "Abrir el DM de Instagram";
+      fuera(ir);
+      acc.appendChild(ir);
+    }
+    resultado.appendChild(acc);
+    resultado.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+
+  /* --- Revelado al bajar -------------------------------------------------- */
+  const revs = Array.prototype.slice.call(document.querySelectorAll(".rev"));
+  const todos = () => revs.forEach((n) => n.classList.add("visto"));
+  if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entradas) => {
+        entradas.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("visto"); io.unobserve(en.target); } });
+      }, { rootMargin: "0px 0px -6% 0px", threshold: 0.01 });
+      revs.forEach((n) => io.observe(n));
+      /* Red de seguridad: si algo falla, nada se queda invisible. */
+      setTimeout(todos, 2500);
+    } else { todos(); }
+  } else { todos(); }
+
+  /* --- Barra de borrador -------------------------------------------------- */
+  const faltan = [];
+  if (!hayWa) faltan.push("Número de WhatsApp (hoy los botones van al DM de Instagram)");
+  if (!nombre) faltan.push("Tu nombre para la sección Sobre");
+  faltan.push("Logo original en alta (hoy va el monograma en tipografía)");
+  const sinFoto = DATOS.productos.filter((p) => !p.foto).length;
+  if (sinFoto) faltan.push("Fotos de producto (" + sinFoto + " de " + DATOS.productos.length + ")");
+  faltan.push("Foto principal, taller, telas, empaque y retrato (5)");
+  faltan.push("Las 6 fotos de la tira de Instagram");
+  if (sinPrecio) faltan.push("Precios (" + sinPrecio + " de " + DATOS.productos.length + ")");
+  faltan.push("Confirmar si la cajita de 3 scrunchies sigue a $5.000");
+  faltan.push("Confirmar si las prendas intervenidas (camisas) se venden");
+  DATOS.faq.filter((f) => !f.r).forEach((f) => faltan.push("Respuesta: " + f.p));
+
+  if (faltan.length) {
+    const barra = $("#borrador");
+    barra.hidden = false;
+    $("#borrador-texto").textContent = "Vista de borrador · faltan " + faltan.length +
+      " datos reales. Ninguno está inventado: los huecos quedan marcados y preparados.";
+    const ul = $("#borrador-lista");
+    faltan.forEach((f) => { const li = crear("li"); li.textContent = f; ul.appendChild(li); });
+    const b = $("#borrador-b");
+    b.addEventListener("click", () => {
+      const ab = b.getAttribute("aria-expanded") === "true";
+      b.setAttribute("aria-expanded", String(!ab));
+      ul.hidden = ab;
+      b.textContent = ab ? "Ver qué falta" : "Ocultar";
+    });
+  }
+
+  /* --- Datos estructurados: sólo lo confirmado ---------------------------- */
+  const ld = {
+    "@context":"https://schema.org","@type":"Store",
+    name:"R de Retazos",
+    description:"Productos textiles hechos a mano: moños, scrunchies, bolsos, artículos para el hogar y regalos personalizados.",
+    address:{ "@type":"PostalAddress", addressLocality:"Santo Domingo", addressCountry:"CL" }
+  };
+  if (hayWa) ld.telephone = "+" + tel;
+  if (ig) ld.sameAs = [igURL];
+  const sc = document.createElement("script");
+  sc.type = "application/ld+json";
+  sc.textContent = JSON.stringify(ld);
+  document.head.appendChild(sc);
+})();
+</script>
