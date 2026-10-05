@@ -724,6 +724,17 @@ const DATOS = {
      colgada y en uso). La primera es la portada; el resto viven en la ficha.
      Acepta también el campo antiguo `foto` por si alguien lo escribe así. */
   const imagenes = (p) => (p.fotos && p.fotos.length ? p.fotos : (p.foto ? [p.foto] : []));
+
+  /* Un precio se publica sólo si es un entero de pesos. Escrito con punto de
+     miles (8.900) JavaScript lo lee como 8,9; con signo peso ("$8.900") sale
+     NaN. Las dos cosas se veían en la página sin que nada avisara, y un precio
+     mal mostrado es una venta perdida o una discusión. */
+  const precioValido = (v) => typeof v === "number" && Number.isInteger(v) && v > 0;
+  function nodoPrecio(p) {
+    const n = crear("p", precioValido(p.precio) ? "precio" : "precio precio--c");
+    n.textContent = precioValido(p.precio) ? "$" + p.precio.toLocaleString("es-CL") : "Precio a consultar";
+    return n;
+  }
   const nombreCat = (p) => { const c = DATOS.categorias.find((x) => x.id === p.cat); return c ? c.nombre : ""; };
 
   function marcoDe(p, src, clase) {
@@ -762,9 +773,7 @@ const DATOS = {
     li.appendChild(info);
 
     const pie = crear("div", "t__p");
-    const precio = crear("p", p.precio == null ? "precio precio--c" : "precio");
-    precio.textContent = p.precio == null ? "Precio a consultar" : "$" + Number(p.precio).toLocaleString("es-CL");
-    pie.appendChild(precio);
+    pie.appendChild(nodoPrecio(p));
 
     if (p.estado) { const s = crear("span", "sello"); s.textContent = p.estado; pie.appendChild(s); }
 
@@ -825,9 +834,7 @@ const DATOS = {
     fpDer.appendChild(cab);
 
     const pre = crear("div", "fp__p");
-    const pr = crear("p", p.precio == null ? "precio precio--c" : "precio");
-    pr.textContent = p.precio == null ? "Precio a consultar" : "$" + Number(p.precio).toLocaleString("es-CL");
-    pre.appendChild(pr);
+    pre.appendChild(nodoPrecio(p));
     if (p.estado) { const se = crear("span", "sello"); se.textContent = p.estado; pre.appendChild(se); }
     fpDer.appendChild(pre);
 
@@ -892,8 +899,9 @@ const DATOS = {
   pinta();
 
   const sinPrecio = DATOS.productos.filter((p) => p.precio == null).length;
+  const preciosMalEscritos = DATOS.productos.filter((p) => p.precio != null && !precioValido(p.precio));
   const notaPrecios = $("#nota-precios");
-  if (sinPrecio === DATOS.productos.length) {
+  if (sinPrecio + preciosMalEscritos.length === DATOS.productos.length) {
     notaPrecios.textContent = "Los precios todavía no están publicados. Escríbeme y te los paso al tiro.";
   } else { notaPrecios.hidden = true; }
 
@@ -1129,6 +1137,8 @@ const DATOS = {
 
   if (igFotos.length < 6) faltan.push("Fotos de la tira de Instagram (" + (6 - igFotos.length) + " de 6)");
   if (sinPrecio) faltan.push("Precios (" + sinPrecio + " de " + DATOS.productos.length + ")");
+  preciosMalEscritos.forEach((p) =>
+    faltan.push("Precio mal escrito en «" + p.nombre + "»: va un número entero, sin puntos ni $"));
   (DATOS.porConfirmar || []).forEach((t) => faltan.push("Confirmar: " + t));
   DATOS.faq.filter((f) => !f.r).forEach((f) => faltan.push("Respuesta: " + f.p));
 
