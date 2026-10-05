@@ -64,6 +64,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
 body{
   margin:0;background:var(--marfil);color:var(--taupe);
   font-family:var(--texto);font-size:16px;line-height:1.68;
@@ -307,6 +308,46 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
 .t__n{transition:color .25s}
 .t:has(.t__abre:focus-visible){outline:2.5px solid var(--salvia);outline-offset:6px;border-radius:var(--r-g)}
 .t:has(.t__abre:focus-visible) .t__abre:focus-visible{outline:none}
+/* --- Carrito y pago ------------------------------------------------------ */
+.b--carro{position:relative}
+.b--carro b{display:inline-block;min-width:1.35em;margin-left:.45rem;padding:0 .3em;border-radius:999px;
+  background:var(--marfil);color:var(--salvia);font-size:.78rem;line-height:1.35em;text-align:center}
+dialog.carro{width:min(560px,calc(100vw - 1.5rem));max-width:none;max-height:min(88svh,780px);
+  padding:0;border:1px solid var(--lino);border-radius:var(--r-g);background:var(--marfil);
+  color:var(--taupe);overflow:auto}
+dialog.carro::backdrop{background:rgba(46,42,38,.55)}
+.carro__c{padding:clamp(1.3rem,4vw,2rem)}
+.carro__t{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.carro__t h2{font-size:1.75rem}
+.carro__x{background:none;border:1px solid var(--lino);border-radius:999px;width:34px;height:34px;
+  font-size:1.1rem;line-height:1;color:var(--carbon);cursor:pointer;flex:0 0 auto}
+.carro__x:hover{border-color:var(--mauve)}
+.linea{display:grid;grid-template-columns:1fr auto;gap:.2rem .9rem;padding:1rem 0;border-bottom:1px solid var(--lino)}
+.linea__n{font-family:var(--display);font-size:1.15rem;color:var(--carbon);grid-column:1}
+.linea__p{font-variant-numeric:tabular-nums;color:var(--carbon);font-weight:700;text-align:right}
+.linea__c{display:flex;align-items:center;gap:.45rem;margin-top:.35rem}
+.cant{width:30px;height:30px;border:1.5px solid var(--lino);background:var(--marfil);border-radius:50%;
+  font:inherit;font-weight:700;color:var(--carbon);cursor:pointer;line-height:1}
+.cant:hover{border-color:var(--mauve)}
+.cant[disabled]{opacity:.4;cursor:default}
+.linea__v{min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.quitar{background:none;border:0;padding:0;font:inherit;font-size:.82rem;color:var(--mauve);
+  text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-left:.5rem}
+.sumas{margin-top:1.2rem;font-variant-numeric:tabular-nums}
+.sumas div{display:flex;justify-content:space-between;padding:.3rem 0}
+.sumas .tot{margin-top:.5rem;padding-top:.7rem;border-top:1px solid var(--lino);
+  font-family:var(--display);font-size:1.4rem;color:var(--carbon)}
+.entrega{display:grid;gap:.6rem;margin-top:1.4rem}
+.op{display:flex;gap:.7rem;align-items:flex-start;padding:.85rem 1rem;border:1.5px solid var(--lino);
+  border-radius:var(--r);cursor:pointer}
+.op:has(input:checked){border-color:var(--salvia);background:#fff}
+.op:has(input:focus-visible){outline:2.5px solid var(--salvia);outline-offset:2px}
+.op input{margin-top:.25rem;accent-color:var(--salvia)}
+.op span{font-size:.92rem}
+.op b{display:block;color:var(--carbon)}
+.carro__err{margin-top:1rem;padding:.8rem 1rem;border-radius:var(--r);background:#F6E4DF;
+  color:#7A3524;font-size:.9rem;font-weight:600}
+.carro__vacio{padding:2.5rem 0;text-align:center}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .pie__arriba{text-decoration:underline;text-underline-offset:3px}
@@ -325,6 +366,7 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
 /* Mientras el flotante exista, el documento termina más arriba que él. */
 @media (max-width:979px){body{padding-bottom:4.25rem}}
 </style>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <a class="salta" href="#catalogo">Saltar al catálogo</a>
@@ -355,7 +397,9 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
         <a href="#preguntas">Preguntas</a>
       </nav>
       <button class="menu-b" id="menu-b" type="button" aria-expanded="false" aria-controls="panel">Menú</button>
-      <a class="b b--p b--sm" id="cta-cabecera" href="#contacto">Escríbeme</a>
+      <button class="b b--p b--sm b--carro" id="abrir-carro" type="button" hidden
+              aria-haspopup="dialog">Carrito<b id="carro-n">0</b></button>
+      <a class="b b--l b--sm" id="cta-cabecera" href="#contacto">Escríbeme</a>
     </div>
     <nav class="panel" id="panel" aria-label="Secciones" hidden>
       <a href="#catalogo">Catálogo</a>
@@ -589,7 +633,18 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
 
 <a class="flot" id="cta-flotante" href="#contacto">Escríbeme</a>
 
-<script>
+<dialog class="carro" id="carro" aria-labelledby="carro-titulo">
+  <div class="carro__c">
+    <div class="carro__t">
+      <h2 id="carro-titulo">Tu pedido</h2>
+      <button class="carro__x" id="carro-cerrar" type="button" aria-label="Cerrar el carrito">&times;</button>
+    </div>
+    <div id="carro-cuerpo"></div>
+  </div>
+</dialog>
+<form id="ir-a-webpay" method="POST" hidden><input type="hidden" name="token_ws" id="token-ws"></form>
+
+<script type="module">
 /* ===========================================================================
    DATOS — EL ÚNICO BLOQUE QUE HAY QUE EDITAR.
 
@@ -600,91 +655,12 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
    Lo que está en "" o en null todavía no existe: la página lo marca arriba
    como pendiente en vez de inventárselo.
    =========================================================================== */
-const DATOS = {
+import { DATOS } from "./datos.js";
 
-  contacto: {
-    /* Con código de país, sin + ni espacios. Ej: "56912345678" */
-    whatsapp: "",
-    /* Confirmado: la cuenta real de la marca. */
-    instagram: "rderetazos",
-    ciudad: "Santo Domingo, Chile"
-  },
-
-  artesana: { nombre: "" },
-
-  /* Fotos de marca. Mientras estén en null o vacías, la página deja el hueco
-     con su tamaño y proporción finales. En cuanto pongas la ruta, aparece la
-     foto: no hay que tocar el maquetado. FOTOGRAFIAS.md dice qué va en cada una. */
-  marca: {
-    logo: null,       /* SVG o PNG; sustituye al monograma de la cabecera */
-    portada: null,    /* 4:5 vertical, la primera imagen del sitio        */
-    taller: null,     /* 4:3, las manos en la máquina                     */
-    telas: null,      /* 1:1, retazos y telas                             */
-    empaque: null,    /* 1:1, la caja con la cinta                        */
-    retrato: null,    /* 3:4, ella en el taller                           */
-    instagram: []     /* hasta 6 rutas, cuadradas                         */
-  },
-
-  /* Lo que falta por confirmar. Vacía la lista cuando esté resuelto. */
-  porConfirmar: [
-    "Si la cajita de 3 scrunchies sigue a $5.000",
-    "Si las prendas intervenidas (camisas) se venden"
-  ],
-
-  categorias: [
-    { id:"accesorios", nombre:"Accesorios" },
-    { id:"bolsos",     nombre:"Bolsos" },
-    { id:"hogar",      nombre:"Hogar" },
-    { id:"regalos",    nombre:"Regalos" }
-  ],
-
-  /* El orden es el orden en la página: primero lo que más se pide. */
-  productos: [
-    { id:"monos", nombre:"Moños y lazos", cat:"accesorios", precio:null, fotos:[], estado:null,
-      desc:"El moño XL, en tela suave y ligera. Liso, estampado o de cuero sintético." },
-    { id:"scrunchies", nombre:"Scrunchies", cat:"accesorios", precio:null, fotos:[], estado:null,
-      desc:"En terciopelo, estampados florales o lisos. Se hacen en casi cualquier tela." },
-    { id:"tote", nombre:"Tote bags", cat:"bolsos", precio:null, fotos:[], estado:null,
-      desc:"En denim reciclado y otras telas. Amplias, cómodas y cada una distinta." },
-    { id:"porta", nombre:"Bolsos para computador", cat:"bolsos", precio:null, fotos:[], estado:null,
-      desc:"Hechos por pedido. Pueden llevar su porta cables a juego, en la misma tela." },
-    { id:"cosmetiqueros", nombre:"Cosmetiqueros", cat:"accesorios", precio:null, fotos:[], estado:null,
-      desc:"Para llevar lo justo ordenado, en la combinación de telas que elijas." },
-    { id:"cojines", nombre:"Cojines", cat:"hogar", precio:null, fotos:[], estado:null,
-      desc:"39 × 49 cm, relleno sintético, con terminación de pestaña o simple." },
-    { id:"delantales", nombre:"Delantales personalizados", cat:"hogar", precio:null, fotos:[], estado:null,
-      desc:"Con bolsillo. Para la casa o para tu negocio, con el nombre que quieras." },
-    { id:"llaveros", nombre:"Llaveros", cat:"accesorios", precio:null, fotos:[], estado:null,
-      desc:"Un detalle chico de tela, para regalar o para sumar a un pedido." },
-    { id:"cajas", nombre:"Cajas de regalo", cat:"regalos", precio:null, fotos:[], estado:null,
-      desc:"El set armado: lo que elijas dentro, su caja, la cinta y la tarjeta." },
-    { id:"recuerdos", nombre:"Recuerdos para celebraciones", cat:"regalos", precio:null, fotos:[], estado:null,
-      desc:"Baby showers, primavera, fin de curso. En la cantidad que necesites." }
-  ],
-
-  /* r:"" = todavía no la tengo. La página muestra la pregunta y dice qué falta,
-     en vez de inventarse un plazo, una forma de pago o una política. */
-  faq: [
-    { p:"¿Cómo hago un pedido?",
-      r:"Me escribes contándome qué te interesa. Ahí confirmamos disponibilidad, precio y entrega antes de que pagues nada." },
-    { p:"¿Las telas son recicladas?",
-      r:"Buena parte sí. Las tote bags se hacen en denim reciclado, y gran parte del trabajo es darle una nueva vida a telas que ya existían. Por eso casi nunca hay dos piezas iguales." },
-    { p:"¿Puedo elegir la tela, el color o el estampado?",
-      r:"Sí. Trabajo con telas y estampados distintos, y la combinación la vemos juntas antes de empezar." },
-    { p:"¿Cuánto demora un pedido personalizado?", r:"", falta:"los plazos de elaboración" },
-    { p:"¿Cómo recibo mi pedido?", r:"", falta:"las modalidades de entrega: retiro, despacho y zonas" },
-    { p:"¿Qué formas de pago aceptas?", r:"", falta:"las formas de pago" },
-    { p:"¿Haces pedidos para negocios?",
-      r:"Sí. Delantales y artículos textiles personalizados con el nombre de tu marca. Escríbeme con lo que necesitas y la cantidad, y te cotizo." },
-    { p:"¿Tienes tienda online con pago?",
-      r:"Por ahora no: los pedidos se conversan antes de hacerse. Es algo que puede venir más adelante." }
-  ]
-};
 
 /* ======================= De aquí para abajo, el motor ====================== */
 (function () {
   "use strict";
-  document.documentElement.classList.add("js");
 
   const $ = (s) => document.querySelector(s);
   const crear = (t, c) => { const e = document.createElement(t); if (c) e.className = c; return e; };
@@ -737,6 +713,49 @@ const DATOS = {
   }
   const nombreCat = (p) => { const c = DATOS.categorias.find((x) => x.id === p.cat); return c ? c.nombre : ""; };
 
+  /* --- Carrito -----------------------------------------------------------
+     Sólo existe si la tienda está encendida Y hay precios de verdad. Mientras
+     tanto la página es exactamente la de antes: se pide por mensaje, y no
+     aparece ni un botón de comprar. */
+  const TIENDA = DATOS.tienda || {};
+  const DESP = TIENDA.despacho || {};
+  const vendible = (p) => precioValido(p.precio);
+  const abierta = !!TIENDA.activo && DATOS.productos.some(vendible);
+  const pesos = (n) => "$" + Number(n).toLocaleString("es-CL");
+
+  const LLAVE = "rdr-carrito";
+  let carro = [];
+  try { carro = JSON.parse(localStorage.getItem(LLAVE) || "[]"); } catch (e) { carro = []; }
+  if (!Array.isArray(carro)) carro = [];
+  /* Alguien vuelve a los diez días: lo que ya no se vende no puede seguir en
+     su carrito, o el servidor le rechazaría el pago sin que entienda por qué. */
+  carro = carro.filter((l) => {
+    const p = DATOS.productos.find((x) => x.id === l.id);
+    return p && vendible(p) && Number.isInteger(l.cantidad) && l.cantidad > 0 && l.cantidad <= 20;
+  });
+  const guardarCarro = () => { try { localStorage.setItem(LLAVE, JSON.stringify(carro)); } catch (e) {} };
+  const unidades = () => carro.reduce((a, l) => a + l.cantidad, 0);
+
+  function agregar(p) {
+    const y = carro.find((l) => l.id === p.id);
+    if (y) { if (y.cantidad < 20) y.cantidad++; } else { carro.push({ id: p.id, cantidad: 1 }); }
+    guardarCarro(); refrescarCarro(); abreCarro();
+  }
+  function cambiar(id, d) {
+    const l = carro.find((x) => x.id === id); if (!l) return;
+    l.cantidad += d;
+    if (l.cantidad < 1) carro = carro.filter((x) => x.id !== id);
+    if (l.cantidad > 20) l.cantidad = 20;
+    guardarCarro(); refrescarCarro(); pintaLineas();
+  }
+  function botonAgregar(p, clase) {
+    const b = crear("button", clase);
+    b.type = "button";
+    b.textContent = "Agregar";
+    b.addEventListener("click", (e) => { e.stopPropagation(); agregar(p); });
+    return b;
+  }
+
   function marcoDe(p, src, clase) {
     const m = crear("div", "marco " + clase);
     if (src) {
@@ -776,6 +795,8 @@ const DATOS = {
     pie.appendChild(nodoPrecio(p));
 
     if (p.estado) { const s = crear("span", "sello"); s.textContent = p.estado; pie.appendChild(s); }
+
+    if (abierta && vendible(p)) pie.appendChild(botonAgregar(p, "b b--p b--sm"));
 
     const b = crear("a", "b b--l b--sm");
     b.href = enlace("Hola! Quiero consultar por " + p.nombre + " de R de Retazos.");
@@ -844,7 +865,12 @@ const DATOS = {
     fpDer.appendChild(nota);
 
     const acc = crear("div", "fp__acc");
-    const ir = crear("a", "b b--p b--sm");
+    if (abierta && vendible(p)) {
+      const ag = botonAgregar(p, "b b--p b--sm");
+      ag.addEventListener("click", () => dlg.close());
+      acc.appendChild(ag);
+    }
+    const ir = crear("a", abierta && vendible(p) ? "b b--l b--sm" : "b b--p b--sm");
     ir.href = enlace("Hola! Quiero consultar por " + p.nombre + " de R de Retazos.");
     ir.textContent = hayWa ? "Consultar por WhatsApp" : "Consultar por Instagram";
     fuera(ir);
@@ -1120,6 +1146,158 @@ const DATOS = {
       setTimeout(todos, 2500);
     } else { todos(); }
   } else { todos(); }
+
+  /* --- El carrito en pantalla --------------------------------------------
+     Se construye una vez y luego sólo se repintan las líneas y las sumas: si
+     se rehiciera entero a cada cambio de cantidad, el formulario a medio
+     rellenar se borraría debajo de las manos. */
+  const elCarro = $("#carro"), btnCarro = $("#abrir-carro");
+  let carroHecho = false;
+
+  function refrescarCarro() {
+    if (!abierta) return;
+    const n = unidades();
+    btnCarro.hidden = false;
+    $("#carro-n").textContent = String(n);
+    btnCarro.setAttribute("aria-label", "Tu pedido, " + n + (n === 1 ? " artículo" : " artículos"));
+  }
+
+  function sumas() {
+    const lineas = carro.map((l) => {
+      const p = DATOS.productos.find((x) => x.id === l.id);
+      return { p: p, cantidad: l.cantidad, sub: p.precio * l.cantidad };
+    });
+    const subtotal = lineas.reduce((a, x) => a + x.sub, 0);
+    const marcada = document.querySelector('input[name="entrega"]:checked');
+    const entrega = marcada ? marcada.value : (DESP.retiro ? "retiro" : "despacho");
+    const despacho = entrega === "despacho" && precioValido(DESP.costo) ? DESP.costo : 0;
+    return { lineas: lineas, subtotal: subtotal, despacho: despacho, total: subtotal + despacho, entrega: entrega };
+  }
+
+  function pintaLineas() {
+    const cont = $("#carro-lineas"), caja = $("#carro-sumas");
+    cont.textContent = "";
+    const s = sumas();
+
+    if (!s.lineas.length) {
+      cont.innerHTML = '<p class="carro__vacio">Todavía no has agregado nada.</p>';
+      caja.hidden = true; $("#carro-form").hidden = true;
+      return;
+    }
+    caja.hidden = false; $("#carro-form").hidden = false;
+
+    s.lineas.forEach((x) => {
+      const li = crear("div", "linea");
+      li.innerHTML =
+        '<p class="linea__n">' + esc(x.p.nombre) + "</p>" +
+        '<p class="linea__p">' + esc(pesos(x.sub)) + "</p>";
+      const c = crear("div", "linea__c");
+      const menos = crear("button", "cant"); menos.type = "button";
+      menos.textContent = "−"; menos.setAttribute("aria-label", "Quitar uno de " + x.p.nombre);
+      menos.addEventListener("click", () => cambiar(x.p.id, -1));
+      const v = crear("span", "linea__v"); v.textContent = String(x.cantidad);
+      const mas = crear("button", "cant"); mas.type = "button";
+      mas.textContent = "+"; mas.setAttribute("aria-label", "Agregar otro " + x.p.nombre);
+      if (x.cantidad >= 20) mas.disabled = true;
+      mas.addEventListener("click", () => cambiar(x.p.id, 1));
+      const q = crear("button", "quitar"); q.type = "button"; q.textContent = "Quitar";
+      q.setAttribute("aria-label", "Quitar " + x.p.nombre + " del pedido");
+      q.addEventListener("click", () => cambiar(x.p.id, -99));
+      c.append(menos, v, mas, q);
+      li.appendChild(c);
+      cont.appendChild(li);
+    });
+
+    caja.innerHTML =
+      "<div><span>Productos</span><span>" + esc(pesos(s.subtotal)) + "</span></div>" +
+      "<div><span>" + (s.entrega === "retiro" ? "Retiro" : "Despacho") + "</span><span>" +
+        (s.despacho ? esc(pesos(s.despacho)) : "Sin costo") + "</span></div>" +
+      '<div class="tot"><span>Total</span><span>' + esc(pesos(s.total)) + "</span></div>";
+  }
+
+  function construirCarro() {
+    if (carroHecho) return;
+    carroHecho = true;
+    const hayDespacho = precioValido(DESP.costo);
+    $("#carro-cuerpo").innerHTML =
+      '<div id="carro-lineas"></div>' +
+      '<div class="sumas" id="carro-sumas"></div>' +
+      '<form id="carro-form" novalidate>' +
+        '<div class="entrega" role="group" aria-label="Cómo lo recibes">' +
+          (DESP.retiro
+            ? '<label class="op"><input type="radio" name="entrega" value="retiro" checked>' +
+              "<span><b>Retiro en " + esc(DATOS.contacto.ciudad) + "</b>Coordinamos el día por mensaje. Sin costo.</span></label>"
+            : "") +
+          (hayDespacho
+            ? '<label class="op"><input type="radio" name="entrega" value="despacho"' + (DESP.retiro ? "" : " checked") + ">" +
+              "<span><b>Despacho " + esc(DESP.zona || "") + "</b>" + esc(pesos(DESP.costo)) + "</span></label>"
+            : "") +
+        "</div>" +
+        '<div class="campos">' +
+          '<div class="campo"><label for="c-nombre">Tu nombre</label><input id="c-nombre" autocomplete="name" required></div>' +
+          '<div class="campo"><label for="c-tel">Teléfono</label><input id="c-tel" type="tel" autocomplete="tel" required></div>' +
+          '<div class="campo campo--w"><label for="c-mail">Correo</label><input id="c-mail" type="email" autocomplete="email" required></div>' +
+          '<div class="campo campo--w" id="c-dir-caja" hidden><label for="c-dir">Dirección de despacho</label><input id="c-dir" autocomplete="street-address"></div>' +
+          '<div class="campo campo--w"><label for="c-nota">Algo que deba saber <span class="o">(opcional)</span></label><input id="c-nota"></div>' +
+        "</div>" +
+        '<p class="carro__err" id="carro-err" role="alert" hidden></p>' +
+        '<div class="form__p"><button class="b b--p" id="carro-pagar" type="submit">Pagar con Webpay</button>' +
+        '<p class="nota">Te lleva al sitio de Webpay. Nosotros no vemos ni guardamos tu tarjeta.</p></div>' +
+      "</form>";
+
+    const verDireccion = () => { $("#c-dir-caja").hidden = sumas().entrega !== "despacho"; };
+    document.querySelectorAll('input[name="entrega"]').forEach((r) =>
+      r.addEventListener("change", () => { verDireccion(); pintaLineas(); }));
+    verDireccion();
+    $("#carro-form").addEventListener("submit", pagar);
+  }
+
+  function abreCarro() {
+    construirCarro();
+    pintaLineas();
+    if (typeof elCarro.showModal === "function") elCarro.showModal();
+    else elCarro.setAttribute("open", "");
+  }
+
+  async function pagar(e) {
+    e.preventDefault();
+    const err = $("#carro-err"), btn = $("#carro-pagar");
+    const falla = (m) => { err.textContent = m; err.hidden = false; btn.disabled = false; btn.textContent = "Pagar con Webpay"; };
+    err.hidden = true;
+
+    const s = sumas();
+    const comprador = {
+      nombre: $("#c-nombre").value.trim(), telefono: $("#c-tel").value.trim(),
+      correo: $("#c-mail").value.trim(), direccion: $("#c-dir").value.trim(),
+      nota: $("#c-nota").value.trim()
+    };
+    if (!comprador.nombre) return falla("Escribe tu nombre.");
+    if (!comprador.telefono) return falla("Escribe un teléfono por si hay que coordinar.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(comprador.correo)) return falla("Revisa el correo.");
+    if (s.entrega === "despacho" && !comprador.direccion) return falla("Escribe la dirección de despacho.");
+
+    btn.disabled = true; btn.textContent = "Conectando con Webpay…";
+    try {
+      const r = await fetch("/api/crear", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: carro, entrega: s.entrega, comprador: comprador })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.url || !j.token) throw new Error(j.error || "No se pudo iniciar el pago.");
+      /* Webpay exige llegar por POST con el token. */
+      const f = $("#ir-a-webpay");
+      f.action = j.url; $("#token-ws").value = j.token; f.submit();
+    } catch (ex) {
+      falla(ex && ex.message ? ex.message : "No se pudo conectar. Inténtalo de nuevo.");
+    }
+  }
+
+  if (abierta) {
+    refrescarCarro();
+    btnCarro.addEventListener("click", abreCarro);
+    $("#carro-cerrar").addEventListener("click", () => elCarro.close());
+    elCarro.addEventListener("click", (e) => { if (e.target === elCarro) elCarro.close(); });
+  }
 
   /* --- Barra de borrador -------------------------------------------------- */
   const faltan = [];

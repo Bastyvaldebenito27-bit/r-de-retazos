@@ -1,7 +1,8 @@
 # R de Retazos — sitio web
 
-Un solo archivo: `index.html`. No hay build, no hay dependencias, no hay
-`npm install`. Se abre en cualquier navegador y se publica subiéndolo tal cual
+Sitio estático: `index.html` y `datos.js`. No hay build, no hay dependencias,
+no hay `npm install`. Las funciones de `api/` sólo corren en Vercel y existen
+porque la llave de Transbank no puede vivir en el navegador. Se abre en cualquier navegador y se publica subiéndolo tal cual
 a Vercel, Netlify, GitHub Pages o un hosting normal.
 
 ## Cómo cambiar el contenido
@@ -125,6 +126,8 @@ y las seis de Instagram aparecen, y no queda ni un hueco marcado.
 | `favicon.svg` | **Provisional**: monograma tipográfico, no el logo real |
 | `fuentes/` | Cormorant Garamond y Karla, servidas desde el propio sitio |
 | `vercel.json` | Cabeceras de caché |
+| `datos.js` | **El único archivo que hay que editar.** Lo leen la página y el servidor |
+| `api/` | Las funciones del cobro con Webpay — ver `WEBPAY.md` |
 
 ## Decisiones técnicas
 
