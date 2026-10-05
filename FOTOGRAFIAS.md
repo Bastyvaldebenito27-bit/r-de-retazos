@@ -45,5 +45,7 @@ real** y está marcado como pendiente.
 ## Cómo se incorporan
 
 Se dejan los archivos en una carpeta `fotos/` junto a `index.html` y se
-escriben las rutas en el bloque `DATOS`. Los huecos ya tienen el tamaño y la
+escriben las rutas en el bloque `DATOS`: las de producto en `fotos` de cada
+producto, y las de marca en el bloque `marca` (`portada`, `taller`, `telas`,
+`empaque`, `retrato`, `instagram`, `logo`). Los huecos ya tienen el tamaño y la
 proporción finales, así que no se mueve nada de la maquetación.

@@ -49,6 +49,34 @@ En `faq`, cambia `r:""` por la respuesta. Mientras esté vacía, la página
 muestra la pregunta y avisa de qué dato falta, en vez de inventarse un plazo o
 una forma de pago.
 
+### Las fotos de marca y el logo
+
+No sólo el catálogo: **las seis fotos de marca y el logo también salen de
+`DATOS`**, en el bloque `marca`. No hay que tocar el maquetado para ninguna.
+
+```js
+marca: {
+  logo: "logo.svg",            // sustituye al monograma de la cabecera
+  portada: "fotos/principal.jpg",
+  taller: "fotos/taller.jpg",
+  telas: "fotos/telas.jpg",
+  empaque: "fotos/empaque.jpg",
+  retrato: "fotos/retrato.jpg",
+  instagram: ["fotos/ig-1.jpg", "…"]   // hasta 6
+},
+```
+
+Cada hueco ya tiene el tamaño y la proporción finales, así que poner la ruta no
+mueve nada de la maquetación. `FOTOGRAFIAS.md` dice qué foto va en cada una.
+
+### Lo que falta por confirmar
+
+```js
+porConfirmar: ["Si la cajita de 3 scrunchies sigue a $5.000"],
+```
+
+Vacía la lista cuando esté resuelto y esas líneas salen de la barra.
+
 ### Tu nombre y el Instagram
 
 ```js
@@ -67,9 +95,14 @@ se desactiva sin una línea de código para ello.
 
 ## La barra de borrador
 
-La franja oscura de arriba se calcula sola a partir de lo que falte: fotos,
-precios, respuestas, el número. **No está escrita a mano.** Cuando no quede
-nada pendiente, desaparece entera sin tocar código.
+La franja oscura de arriba se calcula sola a partir de lo que falte: fotos de
+producto y de marca, logo, precios, respuestas, el número y la lista de
+`porConfirmar`. **No hay ni una entrada escrita a mano.** Cuando no quede nada
+pendiente, desaparece entera sin tocar código.
+
+Está comprobado en navegador, no supuesto: con el bloque `DATOS` relleno del
+todo, la barra desaparece, el logo pasa a ser imagen, las cinco fotos de marca
+y las seis de Instagram aparecen, y no queda ni un hueco marcado.
 
 ## Lo que falta para publicar
 

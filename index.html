@@ -383,7 +383,7 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
         </div>
         <p class="hero__pie">Las tote bags se hacen en denim reciclado.</p>
       </div>
-      <div class="marco" aria-hidden="true">
+      <div id="foto-portada" class="marco" aria-hidden="true">
         <div class="marco__t"></div>
         <div class="marco__n"><b>Hueco preparado</b>Foto principal: un moño o una tote en la mano, luz natural, vertical.</div>
       </div>
@@ -424,15 +424,15 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
         <p class="bajada">No es producción en serie. Es una persona, una máquina y el tiempo que cada pieza necesita.</p>
       </div>
       <div class="mosaico rev">
-        <div class="marco marco--43" aria-hidden="true">
+        <div id="foto-taller" class="marco marco--43" aria-hidden="true">
           <div class="marco__t"></div>
           <div class="marco__n"><b>Hueco preparado</b>Las manos en la máquina de coser.</div>
         </div>
-        <div class="marco marco--11" aria-hidden="true">
+        <div id="foto-telas" class="marco marco--11" aria-hidden="true">
           <div class="marco__t"></div>
           <div class="marco__n"><b>Hueco</b>Retazos y telas apiladas.</div>
         </div>
-        <div class="marco marco--11" aria-hidden="true">
+        <div id="foto-empaque" class="marco marco--11" aria-hidden="true">
           <div class="marco__t"></div>
           <div class="marco__n"><b>Hueco</b>El empaque con la cinta y la tarjeta.</div>
         </div>
@@ -526,7 +526,7 @@ dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
   <section class="seccion" id="sobre" aria-labelledby="t-sobre">
     <div class="contenedor duo duo--inv">
       <div class="mosaico rev">
-        <div class="marco marco--34" aria-hidden="true">
+        <div id="foto-retrato" class="marco marco--34" aria-hidden="true">
           <div class="marco__t"></div>
           <div class="marco__n"><b>Hueco preparado</b>Retrato tuyo en el taller.</div>
         </div>
@@ -611,6 +611,25 @@ const DATOS = {
   },
 
   artesana: { nombre: "" },
+
+  /* Fotos de marca. Mientras estén en null o vacías, la página deja el hueco
+     con su tamaño y proporción finales. En cuanto pongas la ruta, aparece la
+     foto: no hay que tocar el maquetado. FOTOGRAFIAS.md dice qué va en cada una. */
+  marca: {
+    logo: null,       /* SVG o PNG; sustituye al monograma de la cabecera */
+    portada: null,    /* 4:5 vertical, la primera imagen del sitio        */
+    taller: null,     /* 4:3, las manos en la máquina                     */
+    telas: null,      /* 1:1, retazos y telas                             */
+    empaque: null,    /* 1:1, la caja con la cinta                        */
+    retrato: null,    /* 3:4, ella en el taller                           */
+    instagram: []     /* hasta 6 rutas, cuadradas                         */
+  },
+
+  /* Lo que falta por confirmar. Vacía la lista cuando esté resuelto. */
+  porConfirmar: [
+    "Si la cajita de 3 scrunchies sigue a $5.000",
+    "Si las prendas intervenidas (camisas) se venden"
+  ],
 
   categorias: [
     { id:"accesorios", nombre:"Accesorios" },
@@ -884,13 +903,55 @@ const DATOS = {
     ? "Soy " + esc(nombre) + ", y hago todo lo que ves acá desde " + esc(DATOS.contacto.ciudad) + "."
     : '<span class="pend">Falta tu nombre</span> Hago todo lo que ves acá desde ' + esc(DATOS.contacto.ciudad) + ".";
 
+  /* --- Fotos de marca ----------------------------------------------------
+     El hueco y la foto viven en el mismo sitio: si DATOS trae la ruta, el
+     marcador se sustituye por la imagen y deja de estar oculto a los lectores
+     de pantalla. Si no, se queda el hueco con su tamaño final. */
+  const MARCA = DATOS.marca || {};
+  function ponerFoto(id, src, alt) {
+    const m = document.getElementById(id);
+    if (!m || !src) return false;
+    m.removeAttribute("aria-hidden");
+    m.textContent = "";
+    const img = crear("img");
+    img.src = src; img.alt = alt; img.loading = id === "foto-portada" ? "eager" : "lazy";
+    m.appendChild(img);
+    return true;
+  }
+  ponerFoto("foto-portada", MARCA.portada, "Una pieza hecha a mano por R de Retazos");
+  ponerFoto("foto-taller", MARCA.taller, "Cosiendo a máquina en el taller de R de Retazos");
+  ponerFoto("foto-telas", MARCA.telas, "Retazos y telas del taller");
+  ponerFoto("foto-empaque", MARCA.empaque, "Un pedido empacado a mano");
+  ponerFoto("foto-retrato", MARCA.retrato, "Quien está detrás de R de Retazos");
+
+  /* El logotipo sustituye al monograma tipográfico en cuanto exista. */
+  if (MARCA.logo) {
+    const hueco = document.querySelector(".marca__r");
+    if (hueco) {
+      hueco.textContent = "";
+      hueco.style.border = "0";
+      const l = crear("img");
+      l.src = MARCA.logo; l.alt = "R de Retazos";
+      l.style.cssText = "width:100%;height:100%;object-fit:contain";
+      hueco.appendChild(l);
+    }
+  }
+
   /* --- Instagram --------------------------------------------------------- */
   const igr = $("#ig-rejilla");
+  const igFotos = Array.isArray(MARCA.instagram) ? MARCA.instagram.slice(0, 6) : [];
   for (let i = 0; i < 6; i++) {
     const m = crear("div", "marco marco--11");
-    m.innerHTML = '<div class="marco__t"></div><div class="marco__n"><b>Hueco</b>Publicación ' + (i + 1) + "</div>";
+    if (igFotos[i]) {
+      const img = crear("img");
+      img.src = igFotos[i]; img.alt = ""; img.loading = "lazy";
+      m.appendChild(img);
+    } else {
+      m.innerHTML = '<div class="marco__t"></div><div class="marco__n"><b>Hueco</b>Publicación ' + (i + 1) + "</div>";
+    }
     igr.appendChild(m);
   }
+  if (igFotos.length) igr.removeAttribute("aria-hidden");
   const igcta = $("#ig-cta");
   if (ig) {
     const a1 = crear("a", "b b--l");
@@ -1056,14 +1117,19 @@ const DATOS = {
   const faltan = [];
   if (!hayWa) faltan.push("Número de WhatsApp (hoy los botones van al DM de Instagram)");
   if (!nombre) faltan.push("Tu nombre para la sección Sobre");
-  faltan.push("Logo original en alta (hoy va el monograma en tipografía)");
-  const sinFoto = DATOS.productos.filter((p) => !p.foto).length;
+  if (!MARCA.logo) faltan.push("Logo original en alta (hoy va el monograma en tipografía)");
+
+  const sinFoto = DATOS.productos.filter((p) => !imagenes(p).length).length;
   if (sinFoto) faltan.push("Fotos de producto (" + sinFoto + " de " + DATOS.productos.length + ")");
-  faltan.push("Foto principal, taller, telas, empaque y retrato (5)");
-  faltan.push("Las 6 fotos de la tira de Instagram");
+
+  const deMarca = [["portada","Foto principal"],["taller","Foto del taller"],
+                   ["telas","Foto de las telas"],["empaque","Foto del empaque"],
+                   ["retrato","Retrato"]].filter(([k]) => !MARCA[k]);
+  if (deMarca.length) faltan.push("Fotos de marca: " + deMarca.map((x) => x[1]).join(", "));
+
+  if (igFotos.length < 6) faltan.push("Fotos de la tira de Instagram (" + (6 - igFotos.length) + " de 6)");
   if (sinPrecio) faltan.push("Precios (" + sinPrecio + " de " + DATOS.productos.length + ")");
-  faltan.push("Confirmar si la cajita de 3 scrunchies sigue a $5.000");
-  faltan.push("Confirmar si las prendas intervenidas (camisas) se venden");
+  (DATOS.porConfirmar || []).forEach((t) => faltan.push("Confirmar: " + t));
   DATOS.faq.filter((f) => !f.r).forEach((f) => faltan.push("Respuesta: " + f.p));
 
   if (faltan.length) {
