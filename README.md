@@ -90,12 +90,25 @@ nada pendiente, desaparece entera sin tocar código.
 | `404.html` | Página de "no existe", con la misma identidad |
 | `og.png` | La tarjeta que se ve al pegar el enlace. **Provisional**: es tipográfica, hay que cambiarla por una foto |
 | `favicon.svg` | **Provisional**: monograma tipográfico, no el logo real |
+| `fuentes/` | Cormorant Garamond y Karla, servidas desde el propio sitio |
+| `vercel.json` | Cabeceras de caché |
 
 ## Decisiones técnicas
 
 - **Una sola página con anclas.** El tráfico llega desde el enlace de la bio de
   Instagram; con diez productos y una persona manteniéndolo, partirlo en seis
   páginas añade saltos sin añadir nada.
+- **Fuentes propias.** Cormorant Garamond y Karla viven en `fuentes/`, no se
+  piden a Google. Son las versiones variables: tres archivos cubren los seis
+  pesos que usa la página. Ni una petición del visitante sale del sitio, y se
+  ahorran dos handshakes antes de poder pintar texto. Medido en frío: el primer
+  pintado baja de 404 a 248 ms y la carga de 527 a 215.
+
+  Ambas son SIL Open Font License 1.1, que permite redistribuirlas; el texto de
+  la licencia está en `fuentes/OFL-*.txt`. El nombre de cada archivo lleva un
+  hash de su contenido, que es lo que permite cachearlas un año en `vercel.json`
+  sin arriesgarse a servir una versión vieja.
+
 - **Sin librerías.** El revelado al bajar usa `IntersectionObserver` y sólo se
   animan `opacity` y `transform`. Con `prefers-reduced-motion` se apaga entero,
   y hay una red de seguridad a los 2,5 s para que ningún texto quede invisible.
