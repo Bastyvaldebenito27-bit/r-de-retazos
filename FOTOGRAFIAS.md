@@ -36,16 +36,65 @@ salen como miniaturas dentro de la ficha.
 | Instagram | `fotos/ig-1.jpg` … `ig-6.jpg` | 1:1 | Seis publicaciones que quiera destacar |
 | Compartir | `og.png` | 1200 × 630 | La que sale al pegar el enlace en WhatsApp o Instagram. **Ya hay una provisional** con el nombre en tipografía; sustitúyela por una foto real |
 
-## Logo
+## Logo — resuelto
 
-El archivo original del monograma, en SVG o PNG con fondo transparente, a
-500 px o más. Hoy el sitio usa un monograma tipográfico que **no es el logo
-real** y está marcado como pendiente.
+Ya está. El sello original que mandó la marca vive en `fotos/marca/logo.webp`
+(512 px) y `fotos/marca/logo-1024.webp` (1024 px). Es la misma imagen que
+llegó: no está redibujada ni reescrita, sólo se le quitó el fondo blanco para
+que apoye sobre el marfil de la página. Se usa en la cabecera y en el centro
+de la portada.
+
+Si algún día aparece el original en vector (SVG o AI), vale la pena cambiarlo:
+pesaría menos y se vería perfecto a cualquier tamaño.
+
+## Catálogo de scrunchies — recortado, pero justo de resolución
+
+Las 29 piezas de `fotos/scrunchies/` salen del PDF
+*Catalogo_Scrunchies_R_de_Retazos*, recortadas una a una de cada página.
+**No hay ni una imagen de archivo ni de banco de imágenes.**
+
+El problema: el PDF guarda cada página como una sola imagen a 128 ppi, así que
+cada scrunchie ocupa entre **374 y 580 px** de lado. Alcanza para la rejilla y
+para el carrusel en una pantalla normal, pero se queda corto en pantallas
+retina, donde la foto se ve ligeramente blanda.
+
+**Lo que hace falta:** los archivos originales de esas mismas fotos, tal como
+salieron de la cámara o del teléfono, a 1200 px o más por lado. Son las mismas
+fotos, no hay que repetir la sesión. Se dejan en `fotos/scrunchies/` con el
+mismo nombre y no hay que tocar nada más.
+
+El catálogo tampoco trae texto: ni nombres, ni códigos, ni precios. Hoy cada
+pieza se llama por su color y su estampado («Estrellas de mar fucsia»,
+«Leopardo durazno · sesgo negro»). En cuanto haya nombres oficiales, se
+cambian en `DATOS.scrunchies`.
+
+## Video de la portada
+
+Hueco preparado, vacío a propósito. En el centro del sello de la portada hay un
+disco que espera el video real de la marca. Mientras `DATOS.marca.videoHero`
+sea `null` no se pone nada en su lugar: ni un video de archivo, ni una modelo
+generada.
+
+Cuando el archivo exista:
+
+```js
+videoHero: { src:"fotos/marca/portada.mp4", cartel:"fotos/marca/portada.webp", alt:"" }
+```
+
+MP4 (H.264), vertical o cuadrado, **sin audio**, de 8 segundos o menos, que
+funcione en bucle. `cartel` es el primer fotograma en imagen, para que no haya
+un hueco oscuro mientras carga.
 
 ## Cómo se incorporan
 
 Se dejan los archivos en una carpeta `fotos/` junto a `index.html` y se
 escriben las rutas en el bloque `DATOS`: las de producto en `fotos` de cada
 producto, y las de marca en el bloque `marca` (`portada`, `taller`, `telas`,
-`empaque`, `retrato`, `instagram`, `logo`). Los huecos ya tienen el tamaño y la
-proporción finales, así que no se mueve nada de la maquetación.
+`empaque`, `retrato`, `instagram`, `logo`, `logoGrande`, `videoHero`). Los
+huecos ya tienen el tamaño y la proporción finales, así que no se mueve nada de
+la maquetación.
+
+Una regla que conviene saber: **la ruta tiene que ser relativa**, del propio
+sitio. Si lleva `http://`, `https://` o empieza por `//`, la página no la pinta
+y deja el hueco marcado. Es a propósito: así no se cuela una foto de un banco
+de imágenes ni un rastreador de un tercero, ni siquiera por error.

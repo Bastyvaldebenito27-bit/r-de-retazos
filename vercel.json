@@ -11,6 +11,16 @@
       ]
     },
     {
+      "_comentario": "Las fotos no llevan hash en el nombre: si la artesana cambia una foto por otra mejor y conserva el nombre, un año de caché la dejaría escondida. Un día de frescura, y el resto del tiempo se sirve al instante desde la caché mientras se comprueba por detrás.",
+      "source": "/fotos/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=2592000"
+        }
+      ]
+    },
+    {
       "source": "/(favicon.svg|og.png)",
       "headers": [
         {

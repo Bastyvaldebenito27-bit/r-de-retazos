@@ -1,5 +1,5 @@
 import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
-import { DATOS } from "../datos.js";
+import { DATOS, CATALOGO } from "../datos.js";
 
 /* ===========================================================================
    El lado servidor de la tienda.
@@ -42,7 +42,7 @@ const precioValido = (v) => typeof v === "number" && Number.isInteger(v) && v > 
 
 export function tiendaAbierta() {
   const t = DATOS.tienda;
-  return !!(t && t.activo && DATOS.productos.some((p) => precioValido(p.precio)));
+  return !!(t && t.activo && CATALOGO.some((p) => precioValido(p.precio)));
 }
 
 /** Arma el pedido desde lo que pidió el cliente, con los precios de casa. */
@@ -51,7 +51,7 @@ export function armarPedido(items, entrega) {
   if (items.length > 30) throw new Error("Demasiadas líneas en el carrito.");
 
   const lineas = items.map((it) => {
-    const p = DATOS.productos.find((x) => x.id === it.id);
+    const p = CATALOGO.find((x) => x.id === it.id);
     if (!p) throw new Error("Producto no encontrado: " + String(it.id).slice(0, 40));
     if (!precioValido(p.precio)) throw new Error("«" + p.nombre + "» todavía no tiene precio publicado.");
     const cantidad = Number(it.cantidad);

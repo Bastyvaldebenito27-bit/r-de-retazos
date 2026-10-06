@@ -107,10 +107,15 @@ y las seis de Instagram aparecen, y no queda ni un hueco marcado.
 
 ## Lo que falta para publicar
 
-- Logo original en alta (hoy va un monograma tipográfico, no el logo real).
-- Fotografías reales: las 10 de producto, la principal, taller, telas, empaque,
-  retrato, y 6 para la tira de Instagram.
-- Precios.
+- Fotografías reales: 9 de las 10 líneas de producto (los scrunchies ya tienen
+  las suyas), la principal, taller, telas, empaque, retrato, y 6 para la tira
+  de Instagram.
+- Las fotos originales de los scrunchies en alta: las que hay salen recortadas
+  del PDF del catálogo, a 374–580 px de lado. Ver `FOTOGRAFIAS.md`.
+- El video de la portada. El hueco está hecho y vacío a propósito.
+- Precios: 39 en total, 10 líneas de producto y 29 scrunchies.
+- Los nombres oficiales de los 29 scrunchies: el catálogo sólo trae fotos, así
+  que hoy cada uno se llama por su color y su estampado.
 - Número de WhatsApp.
 - Plazos de elaboración, modalidades de entrega y formas de pago.
 - Confirmar si la cajita de 3 scrunchies sigue a $5.000.
@@ -123,10 +128,12 @@ y las seis de Instagram aparecen, y no queda ni un hueco marcado.
 | `index.html` | El sitio entero |
 | `404.html` | Página de "no existe", con la misma identidad |
 | `og.png` | La tarjeta que se ve al pegar el enlace. **Provisional**: es tipográfica, hay que cambiarla por una foto |
-| `favicon.svg` | **Provisional**: monograma tipográfico, no el logo real |
+| `favicon.svg` | **Provisional**: monograma tipográfico. El sello real ya está en `fotos/marca/` |
 | `fuentes/` | Cormorant Garamond y Karla, servidas desde el propio sitio |
 | `vercel.json` | Cabeceras de caché |
 | `datos.js` | **El único archivo que hay que editar.** Lo leen la página y el servidor |
+| `fotos/marca/` | El sello original de la marca, en dos tamaños |
+| `fotos/scrunchies/` | Las 29 piezas del catálogo real, recortadas una a una |
 | `api/` | Las funciones del cobro con Webpay — ver `WEBPAY.md` |
 
 ## Decisiones técnicas
@@ -148,6 +155,23 @@ y las seis de Instagram aparecen, y no queda ni un hueco marcado.
 - **Sin librerías.** El revelado al bajar usa `IntersectionObserver` y sólo se
   animan `opacity` y `transform`. Con `prefers-reduced-motion` se apaga entero,
   y hay una red de seguridad a los 2,5 s para que ningún texto quede invisible.
+- **La portada se transforma con el scroll de verdad.** Un oyente pasivo mira
+  dónde va la sección y escribe un número de 0 a 1 en una variable CSS; el
+  dibujo lo hace el CSS a partir de ahí, sólo con `transform` y `opacity`. No se
+  captura la rueda, no se llama a `preventDefault`, no hay un contador propio de
+  píxeles: el scroll del navegador se comporta exactamente como siempre. Sin
+  JavaScript, o con «reducir movimiento», la variable se queda en 1 y la portada
+  se ve directamente en su estado final, completa y quieta.
+- **El carrusel de scrunchies es scroll horizontal nativo** con `scroll-snap`:
+  funciona con el dedo, con la rueda, con las flechas y tabulando. El relieve en
+  3D de cada carta se calcula a partir de `scrollLeft` —una sola lectura por
+  fotograma, ninguna medida del maquetado—. La carta que se engancha al scroll
+  no es la que se gira: si se girase, el navegador tomaría la caja ya
+  transformada como punto de anclaje y el carrusel no podría llegar al final.
+- **Ninguna imagen puede venir de fuera.** La página sólo pinta rutas
+  relativas: si una ruta lleva `http://`, `https://` o empieza por `//`, se
+  descarta y queda el hueco marcado. Así no se cuela una foto de un banco de
+  imágenes ni un rastreador de un tercero, ni por error.
 - **Tema claro único**, a propósito: la marca vive en fondos claros.
 - **Catálogo a dos columnas ya en el teléfono.** A una sola medía diez pantallas
   él solo.
@@ -156,6 +180,27 @@ y las seis de Instagram aparecen, y no queda ni un hueco marcado.
 
 ## Comprobado
 
-Navegador real a 390, 768 y 1440 px: sin scroll horizontal, un solo `h1`, cero
-enlaces sin texto, los 24 revelados se completan, y los enlaces de los anclas
-no quedan tapados por la cabecera.
+Navegador real a 320, 390, 768 y 1440 px: sin scroll horizontal, un solo `h1`,
+cero enlaces sin texto, los revelados se completan, y los enlaces de los anclas
+no quedan tapados por la cabecera. Los 99 elementos que se alcanzan con el
+tabulador tienen anillo de foco visible.
+
+Además, en navegador real:
+
+- la rueda mueve la página de verdad; la variable de la portada va de 0 a 1 y
+  vuelve a quedarse quieta;
+- con «reducir movimiento», la portada y el carrusel se quedan sin animación;
+- las 40 imágenes que carga la página son del propio dominio, y ningún fondo
+  apunta a un servidor externo;
+- el carrusel: 29 piezas, botones, flechas, Inicio y Fin, filtro por familia y
+  la ficha correcta al pulsar una carta;
+- con un `DATOS` completo de prueba: la barra de borrador desaparece, no queda
+  ni un hueco marcado, el video aparece, el carrito se enciende y un scrunchie
+  del catálogo se puede comprar — con el precio puesto por el servidor, no por
+  el navegador;
+- con un `DATOS` hostil (etiquetas, `javascript:`, CSS roto en cada campo
+  nuevo): ni un `alert`, ni un script inyectado, ni una petición fuera del
+  sitio.
+
+Primera pintura 124 ms, 316 kB al cargar y un solo origen. Las 29 fotos del
+carrusel sólo se piden a medida que se miran.
