@@ -204,3 +204,11 @@ Además, en navegador real:
 
 Primera pintura 124 ms, 316 kB al cargar y un solo origen. Las 29 fotos del
 carrusel sólo se piden a medida que se miran.
+
+### Caché de las fotos
+
+`vercel.json` da a `/fotos/` un día de frescura y treinta de
+`stale-while-revalidate`. Los nombres de las fotos no llevan hash: si la
+artesana cambia una foto por otra mejor conservando el nombre, un año de caché
+la dejaría escondida. Así se sirve al instante desde la caché y se comprueba
+por detrás. (Las fuentes sí llevan hash, y por eso se cachean un año.)
