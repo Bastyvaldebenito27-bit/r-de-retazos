@@ -28,13 +28,13 @@ salen como miniaturas dentro de la ficha.
 
 | Dónde | Archivo | Proporción | Qué debe verse |
 |---|---|---|---|
-| Portada | `fotos/principal.jpg` | 4:5 vertical | Un moño o una tote en la mano, luz natural. Es la primera imagen del sitio |
-| El taller | `fotos/taller.jpg` | 4:3 | Las manos cosiendo en la máquina |
-| El taller | `fotos/telas.jpg` | 1:1 | Retazos y telas apilados |
-| El taller | `fotos/empaque.jpg` | 1:1 | El empaque terminado: caja, cinta y tarjeta |
-| Sobre mí | `fotos/retrato.jpg` | 3:4 vertical | Ella en el taller. Es la que más confianza genera de todas |
-| Instagram | `fotos/ig-1.jpg` … `ig-6.jpg` | 1:1 | Seis publicaciones que quiera destacar |
-| Compartir | `og.png` | 1200 × 630 | La que sale al pegar el enlace en WhatsApp o Instagram. **Ya hay una provisional** con el nombre en tipografía; sustitúyela por una foto real |
+| Detrás de R de Retazos | `retrato` | 3:4 vertical | Gabriela en su taller, o sus manos trabajando. Mientras no esté, va el sello |
+| Galería «Del taller» | `taller` | cualquiera (se recorta cuadrada) | Las manos cosiendo en la máquina |
+| Galería «Del taller» | `telas` | cualquiera | Retazos y telas |
+| Galería «Del taller» | `empaque` | cualquiera | El empaque terminado: caja, cinta y tarjeta |
+| Galería «Del taller» | `galeria: [...]` | cualquiera | Más fotos: productos puestos, proceso, materiales. Cada una con su `tipo` |
+| Portada | `portada` | cualquiera (disco redondo) | Sólo si no hay video. Con el video no hace falta |
+| Compartir | `og.png` | 1200 × 630 | La que sale al pegar el enlace en WhatsApp o Instagram. Hoy lleva el sello original con el nombre; cuando haya una foto real buena, puede reemplazarla |
 
 ## Logo — resuelto
 
@@ -89,10 +89,14 @@ un hueco oscuro mientras carga.
 
 Se dejan los archivos en una carpeta `fotos/` junto a `index.html` y se
 escriben las rutas en el bloque `DATOS`: las de producto en `fotos` de cada
-producto, y las de marca en el bloque `marca` (`portada`, `taller`, `telas`,
-`empaque`, `retrato`, `instagram`, `logo`, `logoGrande`, `videoHero`). Los
+producto, y las de marca en el bloque `marca` (`retrato`, `taller`, `telas`,
+`empaque`, `galeria`, `portada`, `logo`, `logoGrande`, `videoHero`). Los
 huecos ya tienen el tamaño y la proporción finales, así que no se mueve nada de
-la maquetación.
+la maquetación. La galería se completa con piezas del catálogo hasta tener
+cinco fotos: nunca queda un marco vacío.
+
+No hace falta mandar fotos «para el teléfono»: cada foto se recorta sola al
+hueco que le toca. Basta con que lo importante quede al centro.
 
 Una regla que conviene saber: **la ruta tiene que ser relativa**, del propio
 sitio. Si lleva `http://`, `https://` o empieza por `//`, la página no la pinta

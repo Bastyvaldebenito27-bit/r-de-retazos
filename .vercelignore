@@ -1,0 +1,4 @@
+# Las pruebas no se publican: no son parte del sitio.
+pruebas/
+# La documentación interna tampoco: es para quien mantiene el sitio.
+*.md

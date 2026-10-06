@@ -11,15 +11,31 @@
    =========================================================================== */
 export const DATOS = {
 
+  /* La dirección definitiva del sitio, sin https:// ni barra final. Ej:
+     "rderetazos.cl". Mientras sea null, la web funciona igual en la dirección
+     de Vercel; al ponerla, el pago vuelve siempre a este dominio. */
+  sitio: { dominio: null },
+
   contacto: {
-    /* Con código de país, sin + ni espacios. Ej: "56912345678" */
-    whatsapp: "",
+    /* Confirmado. Con código de país, sin + ni espacios. */
+    whatsapp: "56971371958",
     /* Confirmado: la cuenta real de la marca. */
     instagram: "rderetazos",
-    ciudad: "Santo Domingo, Chile"
+    ciudad: "Santo Domingo, Chile",
+    /* No hay correo confirmado: no se publica ninguno. */
+    correo: null
   },
 
-  artesana: { nombre: "" },
+  /* Confirmado por la marca. Cada línea es un párrafo de «Detrás de R de
+     Retazos»; la página no agrega nada que no esté aquí. */
+  artesana: {
+    nombre: "Gabriela Gonzales",
+    historia: [
+      "Soy Gabriela Gonzales. Soy mamá de dos niños y trabajo desde mi casa, en Santo Domingo.",
+      "R de Retazos nació de la creatividad y del gusto por crear con telas. Cada pieza la corto, la armo y la coso yo, y cuando se puede, aprovecho telas que ya existían para darles una segunda vida.",
+      "Me gusta conversar cada pedido con calma, para entender bien lo que buscas."
+    ]
+  },
 
   /* Fotos de marca. Mientras estén en null o vacías, la página deja el hueco
      con su tamaño y proporción finales. En cuanto pongas la ruta, aparece la
@@ -30,12 +46,22 @@ export const DATOS = {
        fondo blanco quitado para que apoye sobre el marfil de la página. */
     logo: "fotos/marca/logo.webp",
     logoGrande: "fotos/marca/logo-1024.webp",
-    portada: null,    /* 4:5 vertical, la primera imagen del sitio        */
-    taller: null,     /* 4:3, las manos en la máquina                     */
-    telas: null,      /* 1:1, retazos y telas                             */
-    empaque: null,    /* 1:1, la caja con la cinta                        */
-    retrato: null,    /* 3:4, ella en el taller                           */
-    instagram: [],    /* hasta 6 rutas, cuadradas                         */
+    portada: null,    /* disco central de la portada, si no hay video     */
+    retrato: null,    /* 3:4, Gabriela. Va en «Detrás de R de Retazos»    */
+    taller: null,     /* las manos en la máquina   ─┐                     */
+    telas: null,      /* retazos y telas            ├ abren la galería    */
+    empaque: null,    /* la caja con la cinta      ─┘ «Del taller»        */
+
+    /* Más fotos reales para la galería «Del taller», en el orden en que se
+       quieren ver. tipo: "gabriela" | "proceso" | "materiales" | "lifestyle"
+       | "empaque". La galería se completa con fotos del catálogo hasta tener
+       seis, así que nunca queda un hueco vacío.
+       Ej: { src:"fotos/marca/taller-2.webp", alt:"Gabriela cortando tela", tipo:"proceso" } */
+    galeria: [],
+    /* Piezas del catálogo que completan la galería mientras no haya fotos del
+       taller. Son fotos reales; se pueden cambiar por cualquier id. */
+    galeriaCatalogo: ["doble-limones-rayas", "l-cuadrille-verde", "sesgo-leopardo-naranja",
+                      "simple-conchas-celeste", "simple-citricos-coral"],
 
     /* Video de la portada. Hueco preparado: en cuanto exista el archivo real
        de la marca, se escribe aquí y aparece detrás del sello, en silencio y
@@ -54,26 +80,46 @@ export const DATOS = {
      precios de verdad, contrato con Transbank, y los textos legales que el
      propio Transbank exige ver publicados antes de aprobar la cuenta.
 
-     El costo del despacho se cobra tal cual está escrito aquí: es el servidor
-     quien lo suma, no el navegador. */
+     Los costos de entrega se cobran tal cual están escritos aquí: es el
+     servidor quien los suma, no el navegador. */
   tienda: {
     activo: false,
-    despacho: {
-      retiro: true,      /* retiro coordinado en Santo Domingo, sin costo */
-      costo: null,       /* entero en pesos; null = todavía no se ofrece despacho */
-      zona: "a todo Chile"
+    entrega: {
+      /* Confirmado: retiro gratuito en Santo Domingo. */
+      retiro: { activo: true, lugar: "Santo Domingo" },
+      /* Confirmado: despachos entre Santo Domingo y San Antonio, y despacho
+         gratuito en Santo Domingo desde 3 pedidos.
+
+         costo  — entero en pesos. null = no está definido: esa zona no se
+                  puede pagar en línea (salvo que aplique el despacho gratis).
+         gratisDesde — cuántos productos de una misma compra hacen que el
+                  despacho a esa zona sea gratis. POR CONFIRMAR que «3 pedidos»
+                  signifique 3 productos en una misma compra.
+         plazo  — texto corto, ej. "2 a 3 días hábiles". null = sin confirmar. */
+      despacho: [
+        { id:"santo-domingo", zona:"Santo Domingo", costo:null, gratisDesde:3, plazo:null },
+        { id:"san-antonio",   zona:"San Antonio",   costo:null, gratisDesde:null, plazo:null }
+      ]
     }
+  },
+
+  /* Confirmado: cómo paga hoy la gente. El pago en línea con Webpay se suma
+     solo cuando `tienda.activo` sea true; no se anuncia antes. */
+  pagos: {
+    medios: [
+      "Transferencia bancaria",
+      "Efectivo",
+      "Tarjeta, con máquina de pago al momento de la entrega o el retiro"
+    ]
   },
 
   /* Lo que falta por confirmar. Vacía la lista cuando esté resuelto. */
   porConfirmar: [
-    "Si la cajita de 3 scrunchies sigue a $5.000",
-    "Si las prendas intervenidas (camisas) se venden",
-    "Los nombres y códigos oficiales de los 29 scrunchies: el catálogo sólo trae fotos, " +
-      "así que hoy cada uno se llama por su color y su estampado",
-    "Qué distingue a un scrunchie simple, uno doble y uno L (medidas o largo de tela)",
-    "Las fotos originales de los scrunchies en alta: las del catálogo salen a 374–580 px " +
-      "de lado, suficiente para la rejilla pero justo para pantallas retina"
+    "Que Gabriela lea y apruebe los textos de la web",
+    "Datos legales y condiciones de términos, privacidad y cambios (ver LEGAL.md)",
+    "Si «despacho gratuito desde 3 pedidos» significa 3 productos en una misma compra",
+    "Las fotos originales de los scrunchies en alta, si las tiene: las del catálogo salen " +
+      "a 374–580 px de lado, suficiente para la rejilla pero justo para pantallas retina"
   ],
 
   categorias: [
@@ -85,11 +131,16 @@ export const DATOS = {
 
   /* Las cuatro familias del catálogo de scrunchies, con el nombre tal cual
      aparece impreso en el PDF que mandó la marca. */
+  /* precio  — entero en pesos, el mismo para todas las piezas de la familia.
+                Una pieza puede tener su propio `precio`, que manda sobre este.
+     medida  — texto corto con el tamaño. null = sin confirmar.
+     descripcion — qué distingue a esta familia. null = sin confirmar.
+     Los cuatro están pendientes: no se inventan. */
   familiasScrunchie: [
-    { id:"simples", nombre:"Simples" },
-    { id:"sesgo",   nombre:"Simples con sesgo" },
-    { id:"dobles",  nombre:"Dobles con sesgo" },
-    { id:"ele",     nombre:"L con sesgo" }
+    { id:"simples", nombre:"Simples",           precio:null, medida:null, descripcion:null },
+    { id:"sesgo",   nombre:"Simples con sesgo", precio:null, medida:null, descripcion:null },
+    { id:"dobles",  nombre:"Dobles con sesgo",  precio:null, medida:null, descripcion:null },
+    { id:"ele",     nombre:"L con sesgo",       precio:null, medida:null, descripcion:null }
   ],
 
   /* Las 29 piezas del catálogo real, en el orden del PDF.
@@ -101,7 +152,10 @@ export const DATOS = {
      foto y sólo tiñe el reflejo del carrusel: no describe el producto.
 
      Tienen la misma forma que `productos`, así que la ficha, el precio y el
-     carrito funcionan igual para unos y para otras. */
+     carrito funcionan igual para unos y para otras.
+
+     stock — opcional en cualquier pieza o producto. Número de unidades
+     disponibles; 0 = agotado. Si no está, no hay dato y no se muestra nada. */
   scrunchies: [
     { id:"simple-estrellas-fucsia", nombre:"Estrellas de mar fucsia",
       fam:"simples", cat:"accesorios", precio:null, tono:"#EF9FD0",
@@ -231,13 +285,13 @@ export const DATOS = {
              "fotos/scrunchies/doble-limones-rayas.webp",
              "fotos/scrunchies/l-cuadrille-verde.webp",
              "fotos/scrunchies/simple-citricos-coral.webp"],
-      desc:"Simples, con sesgo, dobles y talla L. 29 en el catálogo de hoy, y se hacen en casi cualquier tela." },
+      desc:"Simples, con sesgo, dobles y L. El catálogo completo, pieza por pieza, está más abajo." },
     { id:"tote", nombre:"Tote bags", cat:"bolsos", precio:null, fotos:[], estado:null,
       desc:"En denim reciclado y otras telas. Amplias, cómodas y cada una distinta." },
     { id:"porta", nombre:"Bolsos para computador", cat:"bolsos", precio:null, fotos:[], estado:null,
       desc:"Hechos por pedido. Pueden llevar su porta cables a juego, en la misma tela." },
     { id:"cosmetiqueros", nombre:"Cosmetiqueros", cat:"accesorios", precio:null, fotos:[], estado:null,
-      desc:"Para llevar lo justo ordenado, en la combinación de telas que elijas." },
+      desc:"Para llevar lo justo ordenado, en distintas combinaciones de telas." },
     { id:"cojines", nombre:"Cojines", cat:"hogar", precio:null, fotos:[], estado:null,
       desc:"39 × 49 cm, relleno sintético, con terminación de pestaña o simple." },
     { id:"delantales", nombre:"Delantales personalizados", cat:"hogar", precio:null, fotos:[], estado:null,
@@ -247,25 +301,27 @@ export const DATOS = {
     { id:"cajas", nombre:"Cajas de regalo", cat:"regalos", precio:null, fotos:[], estado:null,
       desc:"El set armado: lo que elijas dentro, su caja, la cinta y la tarjeta." },
     { id:"recuerdos", nombre:"Recuerdos para celebraciones", cat:"regalos", precio:null, fotos:[], estado:null,
-      desc:"Baby showers, primavera, fin de curso. En la cantidad que necesites." }
+      desc:"Para baby showers, la llegada de la primavera y otras celebraciones." }
   ],
 
   /* r:"" = todavía no la tengo. La página muestra la pregunta y dice qué falta,
-     en vez de inventarse un plazo, una forma de pago o una política. */
+     en vez de inventarse un plazo, una forma de pago o una política.
+
+     desde:"entrega" | "pagos" | "enLinea" = la respuesta la arma la página con
+     los datos de `tienda` y `pagos`, para no escribir lo mismo dos veces. */
   faq: [
     { p:"¿Cómo hago un pedido?",
-      r:"Me escribes contándome qué te interesa. Ahí confirmamos disponibilidad, precio y entrega antes de que pagues nada." },
+      r:"Me escribes por WhatsApp contándome qué te interesa. Ahí confirmamos disponibilidad, precio y entrega antes de que pagues." },
     { p:"¿Las telas son recicladas?",
       r:"Buena parte sí. Las tote bags se hacen en denim reciclado, y gran parte del trabajo es darle una nueva vida a telas que ya existían. Por eso casi nunca hay dos piezas iguales." },
     { p:"¿Puedo elegir la tela, el color o el estampado?",
-      r:"Sí. Trabajo con telas y estampados distintos, y la combinación la vemos juntas antes de empezar." },
-    { p:"¿Cuánto demora un pedido personalizado?", r:"", falta:"los plazos de elaboración" },
-    { p:"¿Cómo recibo mi pedido?", r:"", falta:"las modalidades de entrega: retiro, despacho y zonas" },
-    { p:"¿Qué formas de pago aceptas?", r:"", falta:"las formas de pago" },
+      r:"Depende de las telas que tenga disponibles en ese momento. Cuéntame lo que buscas y te muestro las opciones que hay." },
+    { p:"¿Cuánto demora un pedido?", r:"", falta:"los plazos de elaboración" },
+    { p:"¿Cómo recibo mi pedido?", desde:"entrega" },
+    { p:"¿Qué formas de pago aceptas?", desde:"pagos" },
     { p:"¿Haces pedidos para negocios?",
       r:"Sí. Delantales y artículos textiles personalizados con el nombre de tu marca. Escríbeme con lo que necesitas y la cantidad, y te cotizo." },
-    { p:"¿Tienes tienda online con pago?",
-      r:"Por ahora no: los pedidos se conversan antes de hacerse. Es algo que puede venir más adelante." }
+    { p:"¿Se puede pagar en línea?", desde:"enLinea" }
   ]
 };
 
@@ -274,3 +330,17 @@ export const DATOS = {
    la ficha) y el servidor (para calcular el monto). Un solo sitio, un solo
    precio: el navegador nunca decide cuánto se cobra. */
 export const CATALOGO = DATOS.productos.concat(DATOS.scrunchies);
+
+/* El precio de verdad de cualquier cosa del catálogo: el suyo propio, o si no
+   tiene, el de su familia de scrunchies. Es una función y no una copia para
+   que cambiar un precio en DATOS se note al instante en página y servidor. */
+export function precioDe(p) {
+  if (!p) return null;
+  if (p.precio != null) return p.precio;
+  const f = p.fam && (DATOS.familiasScrunchie || []).find((x) => x.id === p.fam);
+  return f && f.precio != null ? f.precio : null;
+}
+
+/* Unidades disponibles. null = no hay dato (no se muestra ni se limita). */
+export const stockDe = (p) =>
+  p && typeof p.stock === "number" && Number.isInteger(p.stock) && p.stock >= 0 ? p.stock : null;

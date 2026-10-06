@@ -7,119 +7,91 @@ a Vercel, Netlify, GitHub Pages o un hosting normal.
 
 ## Cómo cambiar el contenido
 
-Todo lo que se ve sale de un único bloque llamado `DATOS`, al principio del
-`<script>`. No hay que tocar nada más.
+Todo lo que cambia vive en `datos.js`, en el bloque `DATOS`. No hay que tocar
+nada más: ni el maquetado, ni el servidor.
 
-### Poner el WhatsApp
+### Contacto, Gabriela y su historia
 
 ```js
-whatsapp: "56912345678",   // con código de país, sin + ni espacios
+contacto: { whatsapp: "56971371958", instagram: "rderetazos", ciudad: "Santo Domingo, Chile", correo: null },
+artesana: { nombre: "Gabriela Gonzales", historia: ["Primer párrafo…", "Segundo…"] },
 ```
 
-Mientras esté vacío, **todos los botones llevan al DM de Instagram**, que es
-por donde hoy entran los pedidos. Al poner el número, cambian solos: pasan a
-abrir WhatsApp con el mensaje ya escrito, y el formulario de cotización
-también. No hay que tocar el maquetado.
+Todos los botones de contacto abren WhatsApp con el mensaje ya escrito. La
+historia sale tal cual, párrafo por párrafo, en «Detrás de R de Retazos».
+
+### Precios, medidas y stock
+
+- **Scrunchies:** el precio se pone una vez por familia, en
+  `familiasScrunchie` (`precio`, `medida`, `descripcion`). Una pieza puede
+  tener su propio `precio`, que manda sobre el de su familia.
+- **Resto de productos:** `precio` en cada uno, entero y sin puntos ni `$`.
+  Un precio mal escrito no se publica y aparece señalado en la barra.
+- **Stock:** opcional, en cualquier pieza o producto. `stock: 3` limita el
+  carrito a 3; `stock: 0` lo marca «Agotado». Si no está, no se muestra nada.
+
+### Entregas y pagos
+
+```js
+tienda: { activo: false, entrega: {
+  retiro: { activo: true, lugar: "Santo Domingo" },
+  despacho: [
+    { id:"santo-domingo", zona:"Santo Domingo", costo:null, gratisDesde:3, plazo:null },
+    { id:"san-antonio",   zona:"San Antonio",   costo:null, gratisDesde:null, plazo:null }
+  ] } },
+pagos: { medios: ["Transferencia bancaria", "Efectivo", "Tarjeta, con máquina de pago…"] },
+```
+
+«Cómo comprar», las preguntas frecuentes de entrega y pago, y el carrito se
+arman con esto: no hay que escribir las mismas frases en varios sitios. Lo que
+está en `null` no se dice; se apunta en la barra de borrador.
 
 ### Agregar un producto
 
-Copia una línea de `productos` y cámbiala:
+Copia una línea de `productos` y cámbiala. `cat` tiene que ser uno de los `id`
+de `categorias`. La primera foto es la portada de la tarjeta; el resto salen
+como miniaturas en la ficha. `fotos: []` deja el hueco marcado.
 
-```js
-{ id:"bolso-playa", nombre:"Bolso de playa", cat:"bolsos", precio:12000,
-  fotos:["fotos/bolso-playa-1.jpg","fotos/bolso-playa-2.jpg"],
-  estado:"Disponible",
-  desc:"En lona reciclada, con forro interior." },
-```
+### Fotos, logo y video
 
-- `cat` tiene que ser uno de los `id` de `categorias`: `accesorios`, `bolsos`,
-  `hogar` o `regalos`.
-- `precio: null` muestra «Precio a consultar». Con número (sin puntos) muestra
-  el precio formateado.
-- `fotos: []` deja el hueco marcado con el tamaño exacto de la imagen final.
-  **La primera foto es la portada de la tarjeta**; el resto aparecen como
-  miniaturas dentro de la ficha. Con una sola no salen miniaturas.
-- `estado: null` no muestra sello. Con texto («Disponible», «Por encargo»)
-  muestra la etiqueta.
-- El orden de la lista es el orden en la página: lo primero es lo que más se
-  pide.
+En el bloque `marca`: `retrato` (Gabriela), `taller`, `telas`, `empaque`,
+`galeria` (más fotos del taller, con su tipo) y `videoHero`. Mientras no haya
+foto de Gabriela, en su marco va el sello. La galería «Del taller» se completa
+con piezas del catálogo (`galeriaCatalogo`) hasta tener cinco, así que nunca
+queda un marco vacío. `FOTOGRAFIAS.md` dice qué va en cada una.
 
-### Responder una pregunta frecuente
+### Dominio
 
-En `faq`, cambia `r:""` por la respuesta. Mientras esté vacía, la página
-muestra la pregunta y avisa de qué dato falta, en vez de inventarse un plazo o
-una forma de pago.
+`sitio: { dominio: null }`. Al ponerlo (`"rderetazos.cl"`, sin `https://`), el
+pago vuelve siempre a ese dominio.
 
-### Las fotos de marca y el logo
+### Preguntas frecuentes
 
-No sólo el catálogo: **las seis fotos de marca y el logo también salen de
-`DATOS`**, en el bloque `marca`. No hay que tocar el maquetado para ninguna.
-
-```js
-marca: {
-  logo: "logo.svg",            // sustituye al monograma de la cabecera
-  portada: "fotos/principal.jpg",
-  taller: "fotos/taller.jpg",
-  telas: "fotos/telas.jpg",
-  empaque: "fotos/empaque.jpg",
-  retrato: "fotos/retrato.jpg",
-  instagram: ["fotos/ig-1.jpg", "…"]   // hasta 6
-},
-```
-
-Cada hueco ya tiene el tamaño y la proporción finales, así que poner la ruta no
-mueve nada de la maquetación. `FOTOGRAFIAS.md` dice qué foto va en cada una.
-
-### Lo que falta por confirmar
-
-```js
-porConfirmar: ["Si la cajita de 3 scrunchies sigue a $5.000"],
-```
-
-Vacía la lista cuando esté resuelto y esas líneas salen de la barra.
-
-### Tu nombre y el Instagram
-
-```js
-artesana: { nombre: "María" },
-instagram: "rderetazos",
-```
-
-### La ficha de producto
-
-La foto y el nombre de cada tarjeta abren una ficha con todas sus fotos, el
-precio y el botón de consultar. El botón «Consultar» de la tarjeta sigue siendo
-el salto directo: quien ya sabe lo que quiere no da un paso de más.
-
-Es un `<dialog>` nativo, así que el foco queda dentro, `Esc` cierra y el fondo
-se desactiva sin una línea de código para ello.
+En `faq`, `r:""` con `falta:"…"` muestra la pregunta y avisa qué dato falta.
+`desde:"entrega" | "pagos" | "enLinea"` arma la respuesta con los datos.
 
 ## La barra de borrador
 
-La franja oscura de arriba se calcula sola a partir de lo que falte: fotos de
-producto y de marca, logo, precios, respuestas, el número y la lista de
-`porConfirmar`. **No hay ni una entrada escrita a mano.** Cuando no quede nada
-pendiente, desaparece entera sin tocar código.
-
-Está comprobado en navegador, no supuesto: con el bloque `DATOS` relleno del
-todo, la barra desaparece, el logo pasa a ser imagen, las cinco fotos de marca
-y las seis de Instagram aparecen, y no queda ni un hueco marcado.
+La franja oscura de arriba se calcula sola a partir de lo que falte. **No hay
+ni una entrada escrita a mano.** Cuando no quede nada pendiente, desaparece
+entera sin tocar código (comprobado en navegador con un `DATOS` completo).
 
 ## Lo que falta para publicar
 
-- Fotografías reales: 9 de las 10 líneas de producto (los scrunchies ya tienen
-  las suyas), la principal, taller, telas, empaque, retrato, y 6 para la tira
-  de Instagram.
-- Las fotos originales de los scrunchies en alta: las que hay salen recortadas
-  del PDF del catálogo, a 374–580 px de lado. Ver `FOTOGRAFIAS.md`.
+- Precio de los 4 tipos de scrunchie, y de las demás líneas si se quieren
+  mostrar.
+- Medida o diferencia de tamaño de los 4 tipos.
+- Costo y plazo del despacho a San Antonio (y a Santo Domingo con menos de 3).
+- Confirmar si «despacho gratuito desde 3 pedidos» es 3 productos en una compra.
+- Plazo de elaboración de un pedido.
 - El video de la portada. El hueco está hecho y vacío a propósito.
-- Precios: 39 en total, 10 líneas de producto y 29 scrunchies.
-- Los nombres oficiales de los 29 scrunchies: el catálogo sólo trae fotos, así
-  que hoy cada uno se llama por su color y su estampado.
-- Número de WhatsApp.
-- Plazos de elaboración, modalidades de entrega y formas de pago.
-- Confirmar si la cajita de 3 scrunchies sigue a $5.000.
-- Confirmar si las prendas intervenidas (camisas) se venden.
+- Foto de Gabriela, y fotos del taller, telas y empaque (las tiene).
+- Fotos de 9 de las 10 líneas de producto.
+- Los originales de las fotos del catálogo, si los tiene.
+- El dominio.
+- Que Gabriela lea y apruebe los textos.
+- Los datos legales y las condiciones de cambios y devoluciones (ver `LEGAL.md`).
+- Para la tienda en línea: lo que dice `WEBPAY.md`.
 
 ## Archivos
 
@@ -127,14 +99,21 @@ y las seis de Instagram aparecen, y no queda ni un hueco marcado.
 |---|---|
 | `index.html` | El sitio entero |
 | `404.html` | Página de "no existe", con la misma identidad |
-| `og.png` | La tarjeta que se ve al pegar el enlace. **Provisional**: es tipográfica, hay que cambiarla por una foto |
+| `og.png` | La tarjeta que se ve al pegar el enlace. Lleva el sello original de la marca; cuando haya una foto buena, se puede cambiar por ella |
 | `favicon.svg` | **Provisional**: monograma tipográfico. El sello real ya está en `fotos/marca/` |
 | `fuentes/` | Cormorant Garamond y Karla, servidas desde el propio sitio |
-| `vercel.json` | Cabeceras de caché |
+| `vercel.json` | Cabeceras de caché y de seguridad (sin rutas ni carpeta de salida: se publica la raíz tal cual) |
 | `datos.js` | **El único archivo que hay que editar.** Lo leen la página y el servidor |
+| `textos.js` | Las frases que se arman con `DATOS` (teléfono, entregas, pagos, mensajes de WhatsApp). Las usan la portada y las páginas legales, para que digan lo mismo |
+| `terminos.html`, `privacidad.html`, `cambios.html` | Páginas legales. **Borrador**: lo no definido está marcado como pendiente, llevan `noindex` y un aviso. Ver `LEGAL.md` |
+| `legal.css`, `legal.js` | Estilo de las páginas legales y el script que les pone los datos de `DATOS` |
+| `LEGAL.md` | Lista interna de datos legales y condiciones que faltan |
 | `fotos/marca/` | El sello original de la marca, en dos tamaños |
 | `fotos/scrunchies/` | Las 29 piezas del catálogo real, recortadas una a una |
 | `api/` | Las funciones del cobro con Webpay — ver `WEBPAY.md` |
+| `pruebas/` | Las pruebas del servidor y del navegador — ver `pruebas/README.md`. No se publican |
+| `.vercelignore` | Deja `pruebas/` y la documentación interna (`*.md`) fuera del despliegue |
+| `.gitignore` | Que ningún `.env` con credenciales llegue al repositorio |
 
 ## Decisiones técnicas
 
@@ -172,6 +151,17 @@ y las seis de Instagram aparecen, y no queda ni un hueco marcado.
   relativas: si una ruta lleva `http://`, `https://` o empieza por `//`, se
   descarta y queda el hueco marcado. Así no se cuela una foto de un banco de
   imágenes ni un rastreador de un tercero, ni por error.
+- **Los movimientos son de taller, no de demo.** Las tarjetas entran como
+  retazos que se posan en la mesa (apenas giradas, se enderezan). Un hilo
+  baja por el margen de «Detrás de R de Retazos» a «Cómo comprar», con una
+  puntada por sección y una aguja en la punta; al final, unas tijeras lo
+  cortan. Las tijeras son las del sello y aparecen dos veces en toda la
+  página. Los botones principales llevan una puntada por dentro. La galería
+  son copias en papel que se acomodan al bajar. Todo es `transform`,
+  `opacity` y `stroke-dashoffset`, con `IntersectionObserver` para no
+  trabajar fuera de pantalla y `requestAnimationFrame` para no medir dos
+  veces por fotograma. Con «reducir movimiento» no se mueve nada: el hilo
+  aparece entero y la galería ya ordenada.
 - **Tema claro único**, a propósito: la marca vive en fondos claros.
 - **Catálogo a dos columnas ya en el teléfono.** A una sola medía diez pantallas
   él solo.
@@ -180,18 +170,21 @@ y las seis de Instagram aparecen, y no queda ni un hueco marcado.
 
 ## Comprobado
 
-Navegador real a 320, 390, 768 y 1440 px: sin scroll horizontal, un solo `h1`,
-cero enlaces sin texto, los revelados se completan, y los enlaces de los anclas
-no quedan tapados por la cabecera. Los 99 elementos que se alcanzan con el
-tabulador tienen anillo de foco visible.
+`npm test` (44 pruebas del servidor y de Webpay) y `npm run test:navegador`
+(99 en Chromium). Ver `pruebas/README.md`.
+
+Navegador real a 320, 375, 390, 430, 768 y 1440 px: sin scroll horizontal, un
+solo `h1`, cero botones sin nombre, todos de 32 px o más de alto y ninguna
+letra bajo 11 px. Los 106 elementos que se alcanzan con el tabulador tienen
+anillo de foco visible.
 
 Además, en navegador real:
 
 - la rueda mueve la página de verdad; la variable de la portada va de 0 a 1 y
   vuelve a quedarse quieta;
 - con «reducir movimiento», la portada y el carrusel se quedan sin animación;
-- las 40 imágenes que carga la página son del propio dominio, y ningún fondo
-  apunta a un servidor externo;
+- todas las imágenes que carga la página son del propio dominio y ninguna
+  petición sale del sitio;
 - el carrusel: 29 piezas, botones, flechas, Inicio y Fin, filtro por familia y
   la ficha correcta al pulsar una carta;
 - con un `DATOS` completo de prueba: la barra de borrador desaparece, no queda
