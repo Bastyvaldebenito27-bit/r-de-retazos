@@ -1,0 +1,2311 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>R de Retazos · Textiles hechos a mano en Santo Domingo</title>
+<meta name="description" content="Textiles hechos a mano por Gabriela Gonzales en Santo Domingo, Chile. Scrunchies, moños, tote bags en denim reciclado, cojines, delantales y regalos. Pedidos por WhatsApp.">
+<meta property="og:title" content="R de Retazos — Hecho a mano">
+<meta property="og:description" content="Piezas textiles hechas a mano, una por una, dándole una nueva vida a telas que ya existían.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="es_CL">
+<meta property="og:site_name" content="R de Retazos">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+/* Cormorant Garamond y Karla, SIL Open Font License 1.1 (texto completo en
+   fuentes/OFL-*.txt). Servidas desde el propio sitio: ni una peticion del
+   visitante sale hacia Google, y se ahorran dos handshakes antes de poder
+   pintar texto. Son las versiones VARIABLES: un archivo cubre todo el rango
+   de peso, asi que pesan la mitad que las instancias estaticas. */
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:500;font-display:swap;src:url(fuentes/cormorant-garamond-500-italic-latin-ext.9bf62fcb.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:500;font-display:swap;src:url(fuentes/cormorant-garamond-500-italic-latin.efd94eb5.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400 500;font-display:swap;src:url(fuentes/cormorant-garamond-400_500-normal-latin-ext.9dc38267.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400 500;font-display:swap;src:url(fuentes/cormorant-garamond-400_500-normal-latin.5d618c46.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Karla';font-style:normal;font-weight:400 700;font-display:swap;src:url(fuentes/karla-400_700-normal-latin-ext.72166a79.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Karla';font-style:normal;font-weight:400 700;font-display:swap;src:url(fuentes/karla-400_700-normal-latin.690fabf2.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+</style>
+
+<style>
+/* ===========================================================================
+   R de Retazos — una página, marfil de fondo, la tela manda.
+   La paleta sale de sus propias plantillas de Instagram: marfil, arena, taupe,
+   rosa empolvado, mauve, salvia, y terracota en un solo sitio.
+   Tema único claro, a propósito: la marca vive en fondos claros.
+   =========================================================================== */
+:root{
+  color-scheme: light;
+
+  --marfil:#FAF6F0;      /* fondo general                       */
+  --arena:#F2EAE0;       /* superficies secundarias             */
+  --lino:#E7DACB;        /* bordes y reglas                     */
+  --carbon:#2E2A26;      /* texto principal, nunca negro puro   */
+  --taupe:#6B6057;       /* texto secundario                    */
+  --rosa:#DCAEA6;        /* rosa empolvado                      */
+  --mauve:#9F7983;       /* rosa viejo, para texto grande       */
+  --mauve-texto:#7F6168; /* el mismo, oscurecido hasta 4.5:1    */
+  --salvia:#5E6E52;      /* verde salvia: el color de la acción */
+  --salvia-2:#4B5942;
+  --salvia-claro:#AFBDA0;
+  --burdeos:#8A4256;
+  --terracota:#A85A42;      /* acento puntual: filetes y reglas */
+  --terracota-texto:#9F553E;/* el mismo, para texto pequeño     */
+  --blanco:#FFFFFF;
+
+  --display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --texto:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;
+
+  --ancho:1180px;
+  --gutter:20px;
+  --r:12px;
+  --r-g:20px;
+  --curva:cubic-bezier(.22,.72,.28,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{
+  margin:0;background:var(--marfil);color:var(--taupe);
+  font-family:var(--texto);font-size:16px;line-height:1.68;
+  -webkit-font-smoothing:antialiased
+}
+h1,h2,h3{font-family:var(--display);color:var(--carbon);margin:0;line-height:1.08;font-weight:500;text-wrap:balance}
+p{margin:0}
+img{max-width:100%;display:block}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--salvia);outline-offset:3px;border-radius:4px}
+
+.contenedor{width:100%;max-width:var(--ancho);margin-inline:auto;padding-inline:var(--gutter)}
+/* Los enlaces del menú llevan a anclas, y la cabecera es pegajosa: sin esto el
+   título de la sección aterriza justo debajo de ella y no se lee. */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+section[id],div[id]{scroll-margin-top:86px}
+.seccion{padding-block:clamp(3.75rem,9vw,7rem)}
+.seccion--arena{background:var(--arena)}
+.rotulo{
+  font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--terracota-texto);margin:0 0 1rem;display:flex;align-items:center;gap:.7rem
+}
+.rotulo::before{content:"";width:26px;height:1px;background:var(--terracota);opacity:.55;flex:0 0 auto}
+.titulo{font-size:clamp(2rem,5.4vw,3.35rem);letter-spacing:-.005em}
+.titulo em{font-style:italic;color:var(--mauve)}
+.bajada{margin-top:1.1rem;max-width:56ch;font-size:1.02rem}
+
+/* --- Revelado al bajar --------------------------------------------------- */
+.js .rev{opacity:0;transform:translateY(20px) rotate(var(--rr,0deg)) scale(var(--re,1))}
+.js .rev.visto{opacity:1;transform:none;transition:opacity .75s var(--curva),transform .75s var(--curva)}
+/* Retazos: las tarjetas no se funden, se posan. Llegan apenas giradas, un
+   poco más chicas, y se enderezan; las pares giran al otro lado y cada una
+   llega un instante después de la anterior. */
+.js .rev--retazo{--rr:-2deg;--re:.965}
+.js .rev--retazo:nth-child(even){--rr:1.6deg}
+.js .rev--retazo.visto:nth-child(2){transition-delay:.06s}
+.js .rev--retazo.visto:nth-child(3){transition-delay:.12s}
+.js .rev--retazo.visto:nth-child(4){transition-delay:.18s}
+@media (prefers-reduced-motion:reduce){
+  .js .rev{opacity:1!important;transform:none!important}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+
+.salta{position:absolute;left:var(--gutter);top:-200px;z-index:130;background:var(--salvia);
+  color:var(--blanco);padding:.7rem 1.1rem;border-radius:0 0 var(--r) var(--r);font-weight:700;text-decoration:none}
+.salta:focus{top:0}
+
+/* --- Barra de borrador --------------------------------------------------- */
+.borrador{background:var(--carbon);color:#EFE6DC;font-size:.85rem}
+html:not(.js) .borrador{display:none}
+.borrador__fila{display:flex;align-items:center;gap:.9rem;padding-block:.6rem;flex-wrap:wrap}
+.borrador__texto{flex:1 1 17rem;min-width:0}
+.borrador__b{background:none;border:1px solid rgba(255,255,255,.32);color:inherit;font:inherit;
+  font-weight:700;padding:.28rem .8rem;border-radius:999px;cursor:pointer}
+.borrador__b:hover{background:rgba(255,255,255,.12)}
+.borrador__lista{margin:0 0 .85rem;padding-left:1.1rem;list-style:disc;columns:2;column-gap:2rem}
+.borrador__lista li{margin-bottom:.22rem;break-inside:avoid}
+@media (max-width:640px){.borrador__lista{columns:1}}
+
+/* --- Cabecera ------------------------------------------------------------ */
+.cabecera{position:sticky;top:env(safe-area-inset-top,0px);z-index:110;
+  background:rgba(250,246,240,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--lino)}
+.cab__fila{display:flex;align-items:center;gap:.9rem;padding-block:.75rem}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex:0 0 auto}
+.marca__r{
+  width:38px;height:38px;border-radius:50%;border:1px solid var(--carbon);
+  display:grid;place-items:center;font-family:var(--display);font-size:1.3rem;color:var(--carbon);
+  flex:0 0 auto
+}
+.marca__t{font-family:var(--display);font-size:1.18rem;color:var(--carbon);line-height:1.1}
+.marca__t small{display:block;font-family:var(--texto);font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--taupe)}
+.nav{display:none;margin-left:auto;gap:1.6rem;align-items:center}
+.nav a{text-decoration:none;font-size:.88rem;font-weight:600;color:var(--taupe);
+  padding-block:.15rem;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+.nav a:hover{color:var(--carbon);border-bottom-color:var(--rosa)}
+.menu-b{margin-left:auto;background:none;border:1px solid var(--lino);border-radius:999px;
+  padding:.45rem .85rem;font:inherit;font-size:.82rem;font-weight:700;color:var(--carbon);cursor:pointer}
+.panel{border-top:1px solid var(--lino);padding-block:.4rem 1rem}
+.panel a{display:block;text-decoration:none;font-weight:600;color:var(--carbon);
+  padding:.65rem .2rem;border-bottom:1px solid var(--lino)}
+.panel a:last-child{border-bottom:0}
+@media (min-width:980px){.nav{display:flex}.menu-b{display:none}.panel{display:none!important}}
+/* En pantallas muy estrechas (320 px) el logotipo, el menú y el botón no caben
+   en una línea y la página se desbordaba 35 px a la derecha. Ahí sobra el botón
+   de la cabecera: el flotante de abajo dice lo mismo y siempre está a la vista. */
+@media (max-width:359px){.cabecera #cta-cabecera{display:none}}
+/* Con la tienda encendida aparece el botón del carrito, y en un teléfono no
+   caben los tres: el de WhatsApp se va, porque el flotante dice lo mismo. Sin
+   esto la cabecera empujaba la página hacia la derecha y el carrito se abría
+   cortado. */
+@media (max-width:519px){.cabecera:has(#abrir-carro:not([hidden])) #cta-cabecera{display:none}}
+/* Y a 320 px tampoco cabe el nombre al lado del sello: queda el sello, que ya
+   dice «R de Retazos». */
+@media (max-width:359px){.cabecera:has(#abrir-carro:not([hidden])) .marca__t{display:none}}
+
+/* --- Botones ------------------------------------------------------------- */
+.b{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--texto);
+  font-size:.92rem;font-weight:700;text-decoration:none;padding:.78rem 1.45rem;border-radius:999px;
+  border:1.5px solid transparent;cursor:pointer;transition:background-color .25s,border-color .25s,color .25s,transform .12s}
+.b:active{transform:scale(.98)}
+.b--p{background:var(--salvia);color:var(--blanco);border-color:var(--salvia)}
+.b--p:hover{background:var(--salvia-2);border-color:var(--salvia-2)}
+.b--l{background:transparent;color:var(--carbon);border-color:var(--lino)}
+.b--l:hover{border-color:var(--mauve);color:var(--mauve-texto)}
+.b--sm{padding:.52rem 1rem;font-size:.82rem}
+.cabecera .b{flex:0 0 auto}
+
+/* --- Hero ---------------------------------------------------------------- */
+.hero{padding-block:clamp(2.5rem,6vw,4.25rem) clamp(2.75rem,7vw,4.5rem)}
+.hero__r{display:grid;gap:clamp(2rem,5vw,3.25rem);align-items:center}
+@media (min-width:900px){.hero__r{grid-template-columns:1.04fr .96fr}}
+.hero__t{min-width:0}
+.hero h1{font-size:clamp(2.45rem,8vw,4.5rem);letter-spacing:-.015em}
+.hero h1 em{font-style:italic;color:var(--mauve)}
+.hero__b{margin-top:1.15rem;max-width:42ch;font-size:clamp(1rem,2.3vw,1.12rem)}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.9rem}
+.hero__pie{margin-top:1.7rem;font-size:.85rem;display:flex;align-items:center;gap:.6rem}
+.hero__pie::before{content:"";width:26px;height:1px;background:var(--rosa);flex:0 0 auto}
+
+/* --- Marcos de fotografía ------------------------------------------------ */
+.marco{position:relative;width:100%;max-width:100%;aspect-ratio:4/5;border-radius:var(--r-g);
+  overflow:hidden;background:var(--arena);border:1px solid var(--lino)}
+.marco--11{aspect-ratio:1/1}
+.marco--45{aspect-ratio:4/5}
+/* Una foto de catálogo sobre blanco, en un marco 4:5: entera, sin cortar la pieza. */
+.marco--entera img{object-fit:contain;background:#fff}
+.marco--43{aspect-ratio:4/3}
+.marco--34{aspect-ratio:3/4}
+.marco__t{position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(45deg,rgba(255,255,255,.55) 0 2px,transparent 2px 12px),
+    repeating-linear-gradient(-45deg,rgba(94,110,82,.09) 0 2px,transparent 2px 12px),
+    linear-gradient(155deg,var(--rosa) 0%,#E3D6C6 48%,var(--salvia-claro) 100%)}
+.marco__n{position:absolute;inset:auto 0 0 0;padding:.7rem .85rem;
+  background:linear-gradient(to top,rgba(46,42,38,.93) 0%,rgba(46,42,38,.82) 62%,rgba(46,42,38,0) 100%);
+  color:#FAF6F0;font-size:.78rem;font-weight:600;line-height:1.35}
+/* Peso explícito: <b> hereda `bolder`, que sobre el 600 del padre computa
+   900 — un peso que no existe en Karla y que el navegador falseaba. */
+.marco__n b{display:block;font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+.marco img{width:100%;height:100%;object-fit:cover}
+/* Una línea sin foto no es un hueco: es la ficha de tela, con su nombre en una
+   etiqueta cosida, como la que lleva cada pieza. */
+.marco__et{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-2deg);
+  width:max-content;max-width:86%;background:#FFFDF9;color:var(--carbon);font-family:var(--display);
+  font-style:italic;font-size:clamp(.95rem,2.6vw,1.35rem);line-height:1.2;text-align:center;
+  padding:clamp(.7rem,1.6vw,.85rem) clamp(.8rem,2vw,1.15rem);border-radius:4px;outline:1px dashed var(--mauve);outline-offset:-5px;
+  box-shadow:0 12px 26px -18px rgba(46,42,38,.55)}
+
+/* --- Tira de valores ----------------------------------------------------- */
+.valores{border-block:1px solid var(--lino);background:var(--marfil)}
+.valores ul{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 2.4rem;padding-block:1.15rem}
+.valores li{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+
+/* --- Catálogo ------------------------------------------------------------ */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.chip{font:inherit;font-size:.83rem;font-weight:700;cursor:pointer;padding:.46rem 1.05rem;
+  border-radius:999px;border:1.5px solid var(--lino);background:var(--marfil);color:var(--taupe);
+  transition:background-color .22s,border-color .22s,color .22s}
+.chip:hover{border-color:var(--mauve)}
+.chip[aria-pressed="true"]{background:var(--carbon);border-color:var(--carbon);color:var(--marfil)}
+/* Dos columnas ya en el teléfono: a una sola el catálogo medía diez pantallas
+   él solo, y nadie llega al final. Con dos se ve de un vistazo, como un feed. */
+.rejilla{display:grid;gap:1.6rem .9rem;margin-top:2.3rem;grid-template-columns:repeat(2,1fr)}
+@media (min-width:620px){
+  .rejilla{gap:1.6rem 1.35rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}
+}
+.t{display:flex;flex-direction:column;min-width:0;position:relative}
+.t__f{overflow:hidden}
+.t__f .marco__t,.t__f img{transition:transform .65s var(--curva)}
+.t:hover .t__f .marco__t{transform:scale(1.03)}
+.t__c{margin-top:1rem;font-size:.7rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--mauve-texto)}
+.t__n{margin-top:.35rem;font-size:1.3rem}
+.t__d{margin-top:.5rem;font-size:.9rem;line-height:1.56}
+.t__p{margin-top:auto;padding-top:1.05rem;display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .85rem;
+  position:relative;z-index:1}
+@media (max-width:619px){
+  .t__n{font-size:1.08rem}
+  .t__d{font-size:.83rem;line-height:1.5}
+  .t__c{font-size:.7rem;letter-spacing:.12em}
+  .t__p{padding-top:.8rem;gap:.45rem .6rem}
+  .precio,.precio--c{font-size:.95rem}
+}
+.precio{font-family:var(--display);font-size:1.22rem;color:var(--carbon);font-variant-numeric:tabular-nums}
+.precio--c{font-family:var(--texto);font-size:.85rem;font-weight:700;color:var(--taupe)}
+.sello{font-size:.72rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  padding:.24rem .6rem;border-radius:999px;background:var(--rosa);color:#4A2520}
+
+/* --- Bloques de dos columnas -------------------------------------------- */
+.duo{display:grid;gap:clamp(2rem,5vw,3.5rem);align-items:center}
+@media (min-width:900px){.duo{grid-template-columns:1fr 1fr}.duo--inv>*:first-child{order:2}}
+.mosaico{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.mosaico>*:first-child{grid-column:1/-1}
+
+/* --- Pasos --------------------------------------------------------------- */
+.pasos{display:grid;gap:1.6rem;margin-top:2.5rem;counter-reset:p}
+@media (min-width:700px){.pasos{grid-template-columns:repeat(2,1fr);gap:2rem}}
+@media (min-width:1040px){.pasos{grid-template-columns:repeat(4,1fr)}}
+.paso{min-width:0;padding-top:1.05rem;border-top:1.5px solid var(--rosa);counter-increment:p}
+.paso::before{content:counter(p,decimal-leading-zero);display:block;font-family:var(--texto);
+  font-size:.7rem;font-weight:700;letter-spacing:.18em;color:var(--terracota-texto);margin-bottom:.7rem}
+.paso h3{font-size:1.22rem}
+.paso p{margin-top:.4rem;font-size:.9rem}
+
+/* --- Fichas y formulario ------------------------------------------------- */
+.fichas{display:grid;gap:1.25rem;margin-top:2.4rem}
+@media (min-width:780px){.fichas{grid-template-columns:repeat(3,1fr)}}
+.ficha{background:var(--marfil);border:1px solid var(--lino);border-radius:var(--r-g);
+  padding:1.6rem;min-width:0;display:flex;flex-direction:column}
+.seccion--arena .ficha{background:var(--blanco)}
+.ficha h3{font-size:1.25rem}
+.ficha p{margin-top:.55rem;font-size:.92rem;word-break:break-word}
+.ficha .b{margin-top:auto;align-self:flex-start;margin-top:1.2rem}
+.caja{margin-top:2.6rem;background:var(--blanco);border:1px solid var(--lino);
+  border-radius:var(--r-g);padding:clamp(1.3rem,4vw,2.4rem)}
+.campos{display:grid;gap:1.05rem;margin-top:1.6rem}
+@media (min-width:700px){.campos{grid-template-columns:repeat(2,1fr)}.campo--w{grid-column:1/-1}}
+.campo{display:flex;flex-direction:column;gap:.38rem;min-width:0}
+.campo label{font-size:.82rem;font-weight:700;color:var(--carbon)}
+.campo label .o{font-weight:400;color:var(--taupe)}
+.campo input,.campo select,.campo textarea{font:inherit;font-size:.94rem;color:var(--carbon);
+  background:var(--marfil);border:1.5px solid var(--lino);border-radius:var(--r);padding:.68rem .85rem;width:100%}
+.campo textarea{resize:vertical;min-height:5.5rem}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--salvia)}
+.form__p{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:1.6rem}
+.nota{font-size:.84rem;margin:0}
+
+/* --- Instagram ----------------------------------------------------------- */
+.ig{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:2.3rem}
+@media (min-width:760px){.ig{grid-template-columns:repeat(6,1fr)}}
+
+/* --- FAQ ----------------------------------------------------------------- */
+.faq{margin-top:2.3rem;max-width:74ch}
+.faq details{border-bottom:1px solid var(--lino)}
+.faq summary{cursor:pointer;list-style:none;padding:1.15rem 2.2rem 1.15rem 0;position:relative;
+  font-family:var(--display);font-size:1.3rem;color:var(--carbon)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.2rem;top:50%;transform:translateY(-50%);
+  font-family:var(--texto);font-size:1.2rem;color:var(--terracota-texto)}
+.faq details[open] summary::after{content:"\2013"}
+.faq p{padding-bottom:1.25rem;font-size:.95rem;max-width:64ch}
+
+/* --- Ficha de producto --------------------------------------------------- */
+dialog.ficha-p{
+  width:min(820px,calc(100vw - 2rem));max-width:none;padding:0;border:1px solid var(--lino);
+  border-radius:var(--r-g);background:var(--marfil);color:var(--taupe);overflow:hidden
+}
+dialog.ficha-p::backdrop{background:rgba(46,42,38,.55)}
+.fp__r{display:grid}
+@media (min-width:720px){.fp__r{grid-template-columns:1fr 1fr}}
+.fp__izq{padding:1rem;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.fp__der{padding:1.5rem 1.6rem 1.8rem;display:flex;flex-direction:column;min-width:0}
+.fp__minis{display:flex;flex-wrap:wrap;gap:.5rem}
+.fp__mini{width:54px;height:54px;border-radius:8px;overflow:hidden;border:1.5px solid var(--lino);
+  padding:0;cursor:pointer;background:var(--arena)}
+.fp__mini[aria-current="true"]{border-color:var(--carbon)}
+.fp__mini img{width:100%;height:100%;object-fit:cover}
+.fp__cerrar{position:absolute;top:.6rem;right:.6rem;z-index:2;width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--lino);background:var(--marfil);color:var(--carbon);font-size:1.1rem;
+  line-height:1;cursor:pointer}
+.fp__cerrar:hover{border-color:var(--mauve)}
+.fp__cat{font-size:.7rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--mauve-texto)}
+.fp__n{margin-top:.4rem;font-size:1.85rem}
+.fp__d{margin-top:.7rem;font-size:.95rem}
+.fp__p{margin-top:1.1rem;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem .9rem}
+.fp__acc{margin-top:auto;padding-top:1.4rem;display:flex;flex-wrap:wrap;gap:.6rem}
+.t__abre{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.t__abre::after{content:"";position:absolute;inset:0;border-radius:var(--r-g)}
+.t__abre:hover{color:var(--mauve-texto)}
+.t__n{transition:color .25s}
+.t:has(.t__abre:focus-visible){outline:2.5px solid var(--salvia);outline-offset:6px;border-radius:var(--r-g)}
+.t:has(.t__abre:focus-visible) .t__abre:focus-visible{outline:none}
+/* --- Carrito y pago ------------------------------------------------------ */
+.b--carro{position:relative}
+.b--carro b{display:inline-block;min-width:1.35em;margin-left:.45rem;padding:0 .3em;border-radius:999px;
+  background:var(--marfil);color:var(--salvia);font-size:.78rem;line-height:1.35em;text-align:center}
+dialog.carro{width:min(560px,calc(100vw - 1.5rem));max-width:none;max-height:min(88svh,780px);
+  padding:0;border:1px solid var(--lino);border-radius:var(--r-g);background:var(--marfil);
+  color:var(--taupe);overflow:auto}
+dialog.carro::backdrop{background:rgba(46,42,38,.55)}
+.carro__c{padding:clamp(1.3rem,4vw,2rem)}
+.carro__t{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.carro__t h2{font-size:1.75rem}
+.carro__x{background:none;border:1px solid var(--lino);border-radius:999px;width:34px;height:34px;
+  font-size:1.1rem;line-height:1;color:var(--carbon);cursor:pointer;flex:0 0 auto}
+.carro__x:hover{border-color:var(--mauve)}
+.linea{display:grid;grid-template-columns:1fr auto;gap:.2rem .9rem;padding:1rem 0;border-bottom:1px solid var(--lino)}
+.linea__n{font-family:var(--display);font-size:1.15rem;color:var(--carbon);grid-column:1}
+.linea__p{font-variant-numeric:tabular-nums;color:var(--carbon);font-weight:700;text-align:right}
+.linea__c{display:flex;align-items:center;gap:.45rem;margin-top:.35rem}
+.cant{width:30px;height:30px;border:1.5px solid var(--lino);background:var(--marfil);border-radius:50%;
+  font:inherit;font-weight:700;color:var(--carbon);cursor:pointer;line-height:1}
+.cant:hover{border-color:var(--mauve)}
+.cant[disabled]{opacity:.4;cursor:default}
+.linea__v{min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.quitar{background:none;border:0;padding:0;font:inherit;font-size:.82rem;color:var(--mauve-texto);
+  text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-left:.5rem}
+.sumas{margin-top:1.2rem;font-variant-numeric:tabular-nums}
+.sumas div{display:flex;justify-content:space-between;padding:.3rem 0}
+.sumas .tot{margin-top:.5rem;padding-top:.7rem;border-top:1px solid var(--lino);
+  font-family:var(--display);font-size:1.4rem;color:var(--carbon)}
+.entrega{display:grid;gap:.6rem;margin-top:1.4rem}
+.op{display:flex;gap:.7rem;align-items:flex-start;padding:.85rem 1rem;border:1.5px solid var(--lino);
+  border-radius:var(--r);cursor:pointer}
+.op:has(input:checked){border-color:var(--salvia);background:#fff}
+.op:has(input:focus-visible){outline:2.5px solid var(--salvia);outline-offset:2px}
+.op input{margin-top:.25rem;accent-color:var(--salvia)}
+.op span{font-size:.92rem}
+.op b{display:block;color:var(--carbon)}
+.carro__err{margin-top:1rem;padding:.8rem 1rem;border-radius:var(--r);background:#F6E4DF;
+  color:#7A3524;font-size:.9rem;font-weight:600}
+.carro__vacio{padding:2.5rem 0;text-align:center}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.pend{display:inline-block;font-size:.73rem;font-weight:700;letter-spacing:.05em;
+  background:var(--rosa);color:#4A2520;padding:.18rem .55rem;border-radius:6px}
+
+
+.flot{position:fixed;z-index:100;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));
+  display:inline-flex;align-items:center;gap:.5rem;background:var(--salvia);color:var(--blanco);
+  text-decoration:none;font-weight:700;font-size:.88rem;padding:.78rem 1.15rem;border-radius:999px;
+  box-shadow:0 12px 28px -12px rgba(46,42,38,.6)}
+@media (min-width:980px){.flot{display:none}}
+/* Mientras el flotante exista, el documento termina más arriba que él. */
+@media (max-width:979px){body{padding-bottom:4.25rem}}
+
+/* --- Portada que se transforma al bajar -----------------------------------
+   El recorrido es el scroll de verdad del navegador. No hay scroll virtual ni
+   preventDefault: un oyente pasivo lee cuánto se ha avanzado dentro de la
+   sección y escribe --p, de 0 a 1. Todo lo demás son transform y opacity
+   calculados en CSS a partir de ese número, que el compositor resuelve sin
+   volver a maquetar.
+
+   Sin JavaScript, o con "reducir movimiento" activado, --p se queda en 1 y la
+   portada se ve directamente en su estado final: completa y legible. */
+.morf{--p:1;--radio:clamp(104px,24vw,196px);--pieza:clamp(60px,12.5vw,104px);padding-block:0}
+.morf__pista{position:relative;height:190vh}
+@media (max-width:899px){.morf__pista{height:168vh}}
+.morf__fijo{position:sticky;top:0;min-height:calc(100svh - 3.5rem);display:flex;align-items:center;overflow:hidden}
+.morf__e{display:grid;gap:clamp(1.1rem,3.5vw,3rem);align-items:center;
+  padding-block:clamp(4.25rem,9vh,5.25rem) clamp(1.25rem,4vh,2.25rem);width:100%}
+@media (min-width:900px){.morf__e{grid-template-columns:1.02fr .98fr}}
+@media (max-width:899px){
+  .morf__e>.morf__m{order:-1;width:min(76%,34svh)}
+  .morf__e{padding-block:4.5rem 1.25rem}
+  .morf h1{font-size:clamp(2.1rem,7.4vw,3rem)}
+}
+
+/* El escenario: el sello en el centro y las piezas reales girando alrededor. */
+.morf__m{position:relative;width:min(100%,min(450px,52svh));aspect-ratio:1/1;margin-inline:auto}
+.morf__disco{position:absolute;left:50%;top:50%;width:62%;aspect-ratio:1/1;
+  translate:-50% -50%;border-radius:50%;overflow:hidden;background:var(--arena);
+  border:1px solid var(--lino);
+  transform:scale(calc(.86 + var(--p)*.14));opacity:calc(.25 + var(--p)*.75)}
+.morf__disco img,.morf__disco video{width:100%;height:100%;object-fit:cover}
+.morf__sello{position:absolute;left:50%;top:50%;width:clamp(144px,33vw,250px);
+  translate:-50% -50%;transform:scale(calc(1.2 - var(--p)*.5));transform-origin:50% 50%;
+  opacity:calc(.42 + var(--p)*.58);pointer-events:none}
+.morf--disco .morf__sello{width:clamp(96px,20vw,150px);
+  transform:scale(calc(1.14 - var(--p)*.44)) translateY(calc(var(--p)*34%))}
+.morf__sello img{width:100%;height:auto}
+
+.morf__anillo{position:absolute;inset:0;pointer-events:none}
+.morf__f{position:absolute;left:50%;top:50%;width:var(--pieza);aspect-ratio:1/1;
+  margin:calc(var(--pieza)/-2) 0 0 calc(var(--pieza)/-2);
+  border-radius:50%;overflow:hidden;background:var(--blanco);
+  box-shadow:0 12px 30px -12px rgba(46,42,38,.34);
+  transform:
+    rotate(calc(var(--a) + var(--p)*36deg))
+    translateY(calc(-1 * var(--radio) * (.38 + var(--p)*.62)))
+    rotate(calc(-1 * (var(--a) + var(--p)*36deg)))
+    scale(calc(.46 + var(--p)*.54));
+  opacity:calc(.12 + var(--p)*.88)}
+.morf__f img{width:100%;height:100%;object-fit:cover}
+
+.morf__baja{margin-top:1.15rem;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:700;color:var(--taupe);opacity:calc(1 - var(--p)*2.6);display:flex;align-items:center;gap:.6rem}
+.morf__baja::after{content:"";width:34px;height:1px;background:var(--rosa)}
+@media (max-width:899px){.morf__baja{display:none}}
+
+/* --- Carrusel de scrunchies ----------------------------------------------
+   Se desliza con el scroll horizontal nativo: con el dedo, con la rueda, con
+   las flechas o tabulando. El relieve son transformaciones calculadas a partir
+   de scrollLeft; el scroll de la página nunca se toca. */
+/* En pantalla ancha el título ocupa la mitad izquierda, que es justo el aire
+   que el carrusel necesita para poder centrar su primera pieza. Así ninguna
+   carta queda fuera de alcance y no queda medio lienzo vacío. */
+.scr{display:grid;gap:clamp(1.6rem,4vw,2.4rem);align-items:center}
+@media (min-width:1100px){.scr{grid-template-columns:minmax(320px,38%) 1fr;gap:clamp(2rem,4vw,3rem)}}
+.scr__t .chips{margin-top:clamp(1.4rem,3vw,2rem)}
+
+.flujo{--carta:clamp(196px,54vw,330px);--hueco:clamp(14px,3vw,30px);position:relative;min-width:0}
+@media (max-width:1099px){.flujo{margin-inline:calc(var(--gutter) * -1)}}
+.flujo__p{display:flex;gap:var(--hueco);overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding-block:clamp(1.4rem,3.5vw,2.4rem);
+  padding-inline:calc(50% - var(--carta)/2);
+  scrollbar-width:none;-ms-overflow-style:none}
+.flujo__p::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion:reduce){.flujo__p{scroll-behavior:auto}}
+/* La carta que se desplaza NO es la que se transforma. El punto al que se
+   engancha el scroll es la caja ya transformada, así que si se girase el <li>
+   el carrusel no podría llegar al final: se quedaría enganchado a mitad. Por
+   eso el <li> se queda quieto y el relieve se aplica al botón de dentro.
+
+   Cada carta lleva su propia perspectiva, y no una compartida en la tira: con
+   una sola perspectiva el <li> tendría que ser preserve-3d, y ahí el navegador
+   deja de acertar a qué elemento se ha pulsado. El punto de fuga se desplaza
+   desde JavaScript (--po) para que todas miren al mismo sitio, que es lo que
+   da el relieve de verdad. */
+.flujo__c{flex:0 0 var(--carta);width:var(--carta);scroll-snap-align:center;
+  perspective:1500px;perspective-origin:var(--po,50%) 42%}
+.flujo__t{display:block;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;
+  transform:translateZ(var(--z,0px)) rotateY(var(--ry,0deg)) scale(var(--sc,1));
+  opacity:var(--op,1);
+  background:var(--blanco);border:1px solid var(--lino);border-radius:var(--r-g);
+  padding:.75rem .75rem 1.05rem;
+  box-shadow:0 20px 44px -26px color-mix(in srgb,var(--tono,#2E2A26) 70%,transparent);
+  transition:border-color .25s,box-shadow .25s,opacity .3s linear}
+@media (prefers-reduced-motion:reduce){.flujo__t{transform:none;opacity:1}}
+.flujo__c.es .flujo__t{border-color:color-mix(in srgb,var(--tono,#2E2A26) 45%,var(--lino));
+  box-shadow:0 26px 54px -24px color-mix(in srgb,var(--tono,#2E2A26) 78%,transparent)}
+.flujo__t .marco{background:color-mix(in srgb,var(--tono,#2E2A26) 13%,var(--blanco));border:0}
+.flujo__fam{margin-top:.85rem;font-size:.7rem;font-weight:700;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--terracota-texto)}
+.flujo__n2{font-family:var(--display);font-size:1.14rem;color:var(--carbon);line-height:1.18;margin-top:.3rem}
+.flujo__pr{margin-top:.45rem;font-size:.86rem;font-weight:700;color:var(--mauve-texto)}
+.flujo__n{position:absolute;top:50%;z-index:70;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--lino);background:rgba(250,246,240,.94);
+  translate:0 -50%;font-size:1.45rem;line-height:1;color:var(--carbon);cursor:pointer;
+  display:grid;place-items:center;transition:border-color .2s,opacity .2s}
+.flujo__n:hover{border-color:var(--mauve)}
+.flujo__n[disabled]{opacity:.3;cursor:default}
+.flujo__n--a{left:clamp(4px,2vw,16px)}
+.flujo__n--s{right:clamp(4px,2vw,16px)}
+.flujo__pie{margin-top:.2rem;font-size:.88rem;text-align:center;padding-inline:var(--gutter)}
+
+/* --- Hilo: el recorrido cosido ---------------------------------------------
+   Un hilo fino baja por el margen desde «Detrás de R de Retazos» hasta «Cómo
+   comprar», con una puntada en cada sección. Se dibuja al ritmo del scroll
+   (stroke-dashoffset) y una aguja lo va llevando. Al final, unas tijeras lo
+   cortan. Es decorativo y no tapa nada: vive en el margen y no recibe clics. */
+.recorrido{position:relative}
+.recorrido>.seccion{position:relative}
+.hilo{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:3}
+.hilo__p{fill:none;stroke:var(--burdeos);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.82}
+.nudo{fill:var(--marfil);stroke:var(--burdeos);stroke-width:1.3;transition:fill .5s var(--curva)}
+.nudo.on{fill:var(--burdeos)}
+.aguja path{fill:none;stroke:#8C8782;stroke-width:1.4;stroke-linecap:round}
+.aguja ellipse{fill:var(--marfil);stroke:#8C8782;stroke-width:.9}
+@media (prefers-reduced-motion:reduce){.aguja{display:none}}
+
+/* --- Tijeras --------------------------------------------------------------
+   El mismo trazo fino de las tijeras del sello. Cortan dos veces, una sola
+   vez en toda la visita: al entrar a «Hecho a mano» y al final del hilo. */
+.tijeras{width:54px;height:54px;flex:0 0 auto;color:var(--carbon);overflow:visible}
+.tijeras circle,.tijeras path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.tijeras .tijeras__eje{fill:currentColor;stroke:none}
+.tijeras__a,.tijeras__b{transform-box:view-box;transform-origin:30px 32px}
+.tijeras.corta .tijeras__a{animation:tijeraA 1s var(--curva) 1}
+.tijeras.corta .tijeras__b{animation:tijeraB 1s var(--curva) 1}
+@keyframes tijeraA{0%,55%,100%{transform:rotate(0)}28%,80%{transform:rotate(30deg)}}
+@keyframes tijeraB{0%,55%,100%{transform:rotate(0)}28%,80%{transform:rotate(-30deg)}}
+.taller__cab{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem}
+.taller__cab .tijeras{margin-bottom:.3rem;transform:rotate(-8deg)}
+.taller__txt{max-width:60ch}
+.corte{position:absolute;left:var(--hx,10px);bottom:6px;width:0;height:0;pointer-events:none;z-index:4}
+.tijeras--corte{position:absolute;left:-17px;bottom:0;width:34px;height:34px;transform:rotate(-90deg)}
+@media (prefers-reduced-motion:reduce){.tijeras.corta .tijeras__a,.tijeras.corta .tijeras__b{animation:none}}
+
+/* --- Detrás de R de Retazos -------------------------------------------- */
+.retrato{margin:0;position:relative;width:100%;max-width:440px;aspect-ratio:3/4;border-radius:var(--r-g);
+  overflow:hidden;background:var(--arena);border:1px solid var(--lino)}
+.retrato img{width:100%;height:100%;object-fit:cover}
+.retrato--sello{display:grid;place-items:center;background:var(--arena)}
+.retrato--sello img{width:64%;height:auto;object-fit:contain}
+/* Mientras no haya foto, el marco es una pieza de tela pespunteada. */
+.retrato--sello::after{content:"";position:absolute;inset:14px;border:1.5px dashed #CDBBA8;
+  border-radius:calc(var(--r-g) - 8px);pointer-events:none}
+#historia .bajada:first-child{margin-top:1.3rem}
+/* En el teléfono la historia va primero. El sello, mientras no haya foto, se
+   achica y queda después: no tiene sentido ocupar la pantalla entera con él. */
+@media (max-width:899px){
+  .retrato{margin-inline:auto;max-width:360px}
+  .retrato--sello{order:2;aspect-ratio:1/1;max-width:240px}
+}
+
+/* --- Galería «Del taller» -------------------------------------------------
+   Copias en papel. --orden va de 0 (recién asoman, desordenadas) a 1
+   (acomodadas); no se rompe nada si se queda en 1, que es lo que pasa sin
+   JavaScript o con «reducir movimiento». */
+.galeria{--orden:1;display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,3vw,1.8rem);
+  margin-top:clamp(2.2rem,5vw,3.4rem);padding-inline:clamp(0px,1vw,8px)}
+.galeria .foto:first-child{grid-column:1/-1}
+@media (min-width:760px){
+  .galeria{grid-template-columns:repeat(4,1fr)}
+  .galeria .foto:first-child{grid-column:span 2;grid-row:span 2;align-self:center}
+}
+.foto{margin:0;background:#FFFDF9;padding:clamp(6px,1vw,10px) clamp(6px,1vw,10px) 0;border-radius:3px;
+  box-shadow:0 1px 2px rgba(46,42,38,.08),0 16px 32px -20px rgba(46,42,38,.4);
+  transform:
+    translate(calc(var(--dx,0px) * var(--dxm,1) * (1 - var(--orden))), calc(var(--dy,0px) * (1 - var(--orden))))
+    rotate(calc(var(--rot,0deg) * (1 - var(--orden) * .62)));
+  transition:transform .3s linear,box-shadow .3s}
+/* En el teléfono no se desplazan de lado: no hay margen para eso. */
+@media (max-width:759px){.foto{--dxm:0}}
+.foto img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--arena)}
+.foto__b{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.foto figcaption{font-family:var(--display);font-style:italic;font-size:.98rem;color:var(--taupe);
+  text-align:center;padding:.45rem .3rem .6rem;line-height:1.25}
+@media (hover:hover){
+  .foto:hover{transform:rotate(0deg) scale(1.015);
+    box-shadow:0 1px 2px rgba(46,42,38,.08),0 22px 40px -20px rgba(46,42,38,.45)}
+}
+@media (prefers-reduced-motion:reduce){.foto{transition:none}}
+
+/* --- Botones con costura --------------------------------------------------
+   Los botones principales llevan una puntada por dentro. No depende del
+   hover: en el teléfono se ve igual; con ratón, la puntada se ajusta. */
+.b{position:relative}
+.b--p:not(.b--sm)::after,.flot::after{content:"";position:absolute;inset:4px;border:1.2px dashed rgba(255,255,255,.5);
+  border-radius:inherit;pointer-events:none;transition:inset .35s var(--curva),border-color .35s}
+@media (hover:hover){
+  .b--p:not(.b--sm):hover::after,.flot:hover::after{inset:2.5px;border-color:rgba(255,255,255,.88)}
+  .b--l:hover{border-style:dashed}
+}
+
+/* --- Microinteracciones ----------------------------------------------------- */
+
+/* --- Pie ------------------------------------------------------------------
+   Claro, como el resto de la marca: sobre fondo oscuro el sello (negro sobre
+   transparente) no se vería, y no se recolorea. */
+.pie{background:var(--arena);color:var(--taupe);padding-block:clamp(2.8rem,6vw,4rem) 1.4rem;
+  font-size:.9rem;border-top:1px solid var(--lino)}
+.pie__r{display:grid;gap:2rem 2.5rem;grid-template-columns:1fr 1fr}
+@media (min-width:860px){.pie__r{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+.pie__marca{grid-column:1/-1}
+@media (min-width:860px){.pie__marca{grid-column:auto}}
+.pie__sello{width:64px;height:64px}
+.pie__nombre{font-family:var(--display);font-size:1.5rem;color:var(--carbon);margin-top:.6rem}
+.pie__t{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--terracota-texto);margin-bottom:.6rem}
+.pie ul{list-style:none;margin:0;padding:0}
+.pie li{margin:0}
+.pie a{color:var(--carbon);text-decoration:none;display:inline-block;padding-block:.3rem;
+  border-bottom:1px solid transparent;transition:border-color .25s}
+.pie a:hover{border-bottom-color:var(--rosa)}
+.pie__num{font-family:var(--display);font-size:1.25rem;letter-spacing:.01em}
+.pie__base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 2rem;margin-top:2.4rem;
+  padding-top:1.1rem;border-top:1px dashed #CDBBA8;font-size:.82rem}
+.pie__base .pie__arriba{text-decoration:underline;text-underline-offset:3px;border:0}
+
+/* El número en el menú del teléfono. */
+.panel a.panel__wa{color:var(--salvia-2);border-bottom:0;margin-top:.3rem}
+
+/* --- Cómo comprar -------------------------------------------------------- */
+@media (min-width:1040px){.pasos--5{grid-template-columns:repeat(5,1fr)}}
+.comprar__tel{margin-top:1rem}
+.comprar__tel a{color:var(--carbon);font-weight:700;text-underline-offset:3px}
+
+/* --- Carrito: lo que se compra, claro ------------------------------------ */
+.linea__u{grid-column:1/-1;font-size:.82rem;color:var(--taupe)}
+.carro__legal{margin-top:1rem;font-size:.82rem}
+.carro__legal a{color:var(--carbon);text-underline-offset:3px}
+.carro__vacio{margin-top:1rem}
+
+/* --- La foto como tela -------------------------------------------------------
+   Con ratón, al pasar por un producto la foto se mueve como una tela que se
+   acomoda: sube apenas, crece un poco, gira medio grado y gana sombra. En
+   pantallas táctiles y con «reducir movimiento» no hace nada. */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .t__f{transition:transform .55s var(--curva),box-shadow .55s var(--curva);border-radius:var(--r-g)}
+  .t:hover .t__f{transform:translateY(-3px) rotate(-.5deg);box-shadow:0 18px 34px -22px rgba(46,42,38,.45)}
+  .t:hover .t__f img{transform:scale(1.035) translate(.4%, -.4%)}
+}
+.op--no{opacity:.62;cursor:default}
+
+/* --- Un encargo real en «Regalos y recuerdos» ------------------------------
+   La imagen es parte de una pieza de la marca, con su propia frase: se ve
+   como una copia en papel igual que las del taller. Con ella, las fichas
+   pasan a una columna a su lado. */
+.encargo{margin:2.4rem auto 0;max-width:340px;background:#FFFDF9;padding:10px 10px 0;border-radius:3px;
+  box-shadow:0 1px 2px rgba(46,42,38,.08),0 16px 32px -20px rgba(46,42,38,.4);transform:rotate(-1.2deg)}
+.encargo img{display:block;width:100%;height:auto;aspect-ratio:900/975;background:var(--arena)}
+.encargo figcaption{font-family:var(--display);font-style:italic;font-size:.98rem;color:var(--taupe);
+  text-align:center;padding:.55rem .3rem .7rem;line-height:1.3}
+@media (min-width:900px){
+  .regalos--foto{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start}
+  .regalos--foto .encargo{margin:2.4rem 0 0}
+  .regalos--foto .fichas{grid-template-columns:1fr}
+}
+</style>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="salta" href="#catalogo">Saltar a las creaciones</a>
+
+<!-- Visible desde el HTML, con el mismo texto que pone el motor: así ocupa su
+     lugar desde el primer pintado y no empuja la página al cargar los datos.
+     Sin JavaScript no se muestra; si un día no falta nada, el motor la oculta. -->
+<div class="borrador" id="borrador">
+  <div class="contenedor">
+    <div class="borrador__fila">
+      <p class="borrador__texto" id="borrador-texto">Vista de borrador · faltan datos reales. Ninguno está inventado: los huecos quedan marcados y preparados.</p>
+      <button class="borrador__b" id="borrador-b" type="button" aria-expanded="false" aria-controls="borrador-lista">Ver qué falta</button>
+    </div>
+    <ul class="borrador__lista" id="borrador-lista" hidden></ul>
+  </div>
+</div>
+
+<header class="cabecera">
+  <div class="contenedor">
+    <div class="cab__fila">
+      <a class="marca" href="#inicio">
+        <span class="marca__r" aria-hidden="true">R</span>
+        <span class="marca__t">R de Retazos<small>Hecho a mano</small></span>
+      </a>
+      <nav class="nav" aria-label="Secciones">
+        <a href="#catalogo">Creaciones</a>
+        <a href="#scrunchies">Scrunchies</a>
+        <a href="#sobre">Detrás de R</a>
+        <a href="#personalizados">Tu idea</a>
+        <a href="#comprar">Cómo comprar</a>
+        <a href="#preguntas">Preguntas</a>
+      </nav>
+      <button class="menu-b" id="menu-b" type="button" aria-expanded="false" aria-controls="panel">Menú</button>
+      <button class="b b--p b--sm b--carro" id="abrir-carro" type="button" hidden
+              aria-haspopup="dialog">Carrito<b id="carro-n">0</b></button>
+      <a class="b b--l b--sm" id="cta-cabecera" href="#contacto">Escríbeme</a>
+    </div>
+    <nav class="panel" id="panel" aria-label="Secciones" hidden>
+      <a href="#catalogo">Creaciones</a>
+      <a href="#scrunchies">Los scrunchies</a>
+      <a href="#sobre">Detrás de R de Retazos</a>
+      <a href="#taller">Hecho a mano</a>
+      <a href="#personalizados">¿Tienes una idea?</a>
+      <a href="#comprar">Cómo comprar</a>
+      <a href="#regalos">Regalos y recuerdos</a>
+      <a href="#preguntas">Preguntas frecuentes</a>
+      <a href="#contacto">Contacto</a>
+      <a class="panel__wa" id="panel-wa" data-wa="general" href="#contacto" hidden></a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero morf" id="portada">
+    <div class="morf__pista">
+      <div class="morf__fijo">
+        <div class="contenedor morf__e">
+          <div class="hero__t">
+            <p class="rotulo">Santo Domingo, Chile</p>
+            <h1>Una tela que ya existía,<br><em>convertida en algo tuyo</em>.</h1>
+            <p class="hero__b">Moños, scrunchies, bolsos, cojines y regalos. Cada pieza la corto y la coso yo, eligiendo la tela una por una. Casi nunca salen dos iguales.</p>
+            <div class="hero__cta">
+              <a class="b b--p" href="#catalogo">Ver las creaciones</a>
+              <a class="b b--l cta-gen" href="#contacto">Consultar por WhatsApp</a>
+            </div>
+            <p class="hero__pie">Las tote bags se hacen en denim reciclado y en otras telas.</p>
+            <p class="morf__baja" aria-hidden="true">Baja y mira</p>
+          </div>
+
+          <!-- El escenario lo arma el motor con el sello original de la marca y
+               fotos de verdad del catálogo. Es decorativo: todo lo que dice
+               está arriba, en texto. -->
+          <div class="morf__m" id="morf-m" aria-hidden="true">
+            <div class="morf__disco" id="morf-disco" hidden></div>
+            <div class="morf__anillo" id="morf-anillo"></div>
+            <div class="morf__sello" id="morf-sello"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="valores">
+    <div class="contenedor">
+      <ul>
+        <li>Confeccionado a mano</li>
+        <li>Diseños únicos</li>
+        <li>Telas que cobran vida</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="seccion" id="catalogo" aria-labelledby="t-cat">
+    <div class="contenedor">
+      <div class="rev">
+        <p class="rotulo">Creaciones</p>
+        <h2 class="titulo" id="t-cat">Lo que hago.</h2>
+        <p class="bajada">Trabajos reales de R de Retazos, ordenados por tipo. Los scrunchies tienen precio de lista; el resto se conversa por WhatsApp según la tela y la cantidad. ¿Lo imaginas en otra tela? Consulta según las telas que haya disponibles.</p>
+      </div>
+      <div class="chips rev" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+      <p class="sr" id="estado-catalogo" role="status"></p>
+      <ul class="rejilla" id="rejilla"></ul>
+      <p class="nota rev" id="nota-precios" style="margin-top:2rem"></p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--arena" id="scrunchies" aria-labelledby="t-scr">
+    <div class="contenedor scr">
+      <div class="scr__t rev">
+        <p class="rotulo">Catálogo de scrunchies</p>
+        <h2 class="titulo" id="t-scr">Veintinueve piezas, <em>cortadas una a una</em>.</h2>
+        <p class="bajada">Las cuatro familias, con su precio de lista: simple, simple con sesgo, XL con sesgo y doble con sesgo. Las fotos son las del catálogo de la marca. ¿Te gusta una tela en otro formato? Consulta según disponibilidad.</p>
+        <div class="chips" id="scr-chips" role="group" aria-label="Filtrar por familia"></div>
+      </div>
+
+      <div class="flujo rev">
+        <ul class="flujo__p" id="flujo" tabindex="0" role="list" aria-label="Scrunchies del catálogo"></ul>
+        <button class="flujo__n flujo__n--a" id="scr-ant" type="button" aria-label="Ver el scrunchie anterior">&lsaquo;</button>
+        <button class="flujo__n flujo__n--s" id="scr-sig" type="button" aria-label="Ver el scrunchie siguiente">&rsaquo;</button>
+        <p class="flujo__pie" id="scr-pie" role="status"></p>
+      </div>
+  </section>
+
+  <!-- El recorrido: un hilo lo cose de arriba abajo, de la historia a la
+       compra. Es decorativo; el contenido se entiende igual sin él. -->
+  <div class="recorrido" id="recorrido">
+    <svg class="hilo" id="hilo" aria-hidden="true" focusable="false">
+      <path class="hilo__p" id="hilo-p" d="M0 0"/>
+      <g id="hilo-nudos"></g>
+      <g class="aguja" id="aguja"><path d="M-9 0 L9 0"/><ellipse cx="-6.5" cy="0" rx="1.6" ry=".7"/></g>
+    </svg>
+
+    <section class="seccion" id="sobre" aria-labelledby="t-sobre" data-nudo>
+      <div class="contenedor duo">
+        <figure class="retrato rev rev--retazo" id="retrato"></figure>
+        <div class="rev">
+          <p class="rotulo">Detrás de R de Retazos</p>
+          <h2 class="titulo" id="t-sobre">Quién está detrás.</h2>
+          <div id="historia"></div>
+          <div class="hero__cta">
+            <a class="b b--l cta-gen" href="#contacto">Escribirle por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion--arena" id="taller" aria-labelledby="t-taller" data-nudo>
+      <div class="contenedor">
+        <div class="taller__cab rev">
+          <div>
+            <p class="rotulo">Hecho a mano</p>
+            <h2 class="titulo" id="t-taller">Cada pieza tiene <em>una historia antes</em>.</h2>
+          </div>
+          <svg class="tijeras" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <g class="tijeras__a"><circle cx="15" cy="47" r="7.5"/><path d="M20.5 41.5 L50 12"/></g>
+            <g class="tijeras__b"><circle cx="15" cy="17" r="7.5"/><path d="M20.5 22.5 L50 52"/></g>
+            <circle class="tijeras__eje" cx="30" cy="32" r="1.6"/>
+          </svg>
+        </div>
+        <div class="taller__txt rev">
+          <p class="bajada">Retazos es eso: pedazos de tela que sobraron, que quedaron guardados o que iban a terminar en la basura. Siempre que se puede, el trabajo es darles una segunda oportunidad y convertirlos en algo que de verdad se use.</p>
+          <p class="bajada">Por eso muchas tote bags son de denim reciclado y por eso casi nunca salen dos piezas iguales: todo depende de la tela que hay sobre la mesa. Se corta, se arma, se cose en la máquina y se revisa cada terminación antes de empacarla.</p>
+          <p class="bajada">No es producción en serie. Es una persona, una máquina y el tiempo que cada pieza necesita.</p>
+        </div>
+        <div class="galeria" id="galeria" role="list" aria-label="Fotos del taller y de las piezas"></div>
+      </div>
+    </section>
+
+    <section class="seccion" id="personalizados" aria-labelledby="t-pers" data-nudo>
+      <div class="contenedor">
+        <div class="rev">
+          <p class="rotulo">Creaciones especiales</p>
+          <h2 class="titulo" id="t-pers">¿Tienes <em>una idea</em>?</h2>
+          <p class="bajada">Si tienes una idea y hay una tela disponible para hacerla realidad, puedes consultarme. Lo conversamos y te digo con honestidad si se puede hacer, con qué tela, cuánto cuesta y cuándo estaría.</p>
+          <div class="hero__cta">
+            <a class="b b--p" id="cta-idea" data-wa="idea" href="#contacto">Consultar por WhatsApp</a>
+          </div>
+        </div>
+
+        <ol class="pasos">
+          <li class="paso rev rev--retazo"><h3>Me cuentas</h3><p>Qué tienes en mente, para quién es y para cuándo.</p></li>
+          <li class="paso rev rev--retazo"><h3>Vemos las telas</h3><p>Te muestro las que tengo disponibles y vemos cuál calza con tu idea.</p></li>
+          <li class="paso rev rev--retazo"><h3>Te confirmo</h3><p>Si se puede hacer, el precio y el plazo, antes de empezar.</p></li>
+          <li class="paso rev rev--retazo"><h3>Lo coso y te lo entrego</h3><p>Revisado y empacado a mano.</p></li>
+        </ol>
+
+        <div class="caja rev">
+          <h3 style="font-size:1.6rem">Cuéntame tu idea</h3>
+          <p class="nota" style="margin-top:.6rem;font-size:.95rem">Completa lo que sepas y te dejo el mensaje listo para mandarlo por WhatsApp.</p>
+          <form id="form" novalidate>
+            <div class="campos">
+              <div class="campo">
+                <label for="f-nombre">Tu nombre</label>
+                <input id="f-nombre" name="nombre" type="text" autocomplete="name" required
+                       aria-describedby="form-nota">
+              </div>
+              <div class="campo">
+                <label for="f-que">¿Qué te gustaría?</label>
+                <select id="f-que" name="que"></select>
+              </div>
+              <div class="campo">
+                <label for="f-cantidad">Cantidad</label>
+                <input id="f-cantidad" name="cantidad" type="number" min="1" step="1" value="1" inputmode="numeric">
+              </div>
+              <div class="campo">
+                <label for="f-fecha">¿Para cuándo? <span class="o">(opcional)</span></label>
+                <input id="f-fecha" name="fecha" type="text" placeholder="Ej: antes del 20 de diciembre">
+              </div>
+              <div class="campo campo--w">
+                <label for="f-telas">Colores, telas o estampados que te gustan <span class="o">(opcional)</span></label>
+                <input id="f-telas" name="telas" type="text" placeholder="Ej: tonos verdes, flores pequeñas, denim">
+              </div>
+              <div class="campo campo--w">
+                <label for="f-detalle">Cuéntame tu idea <span class="o">(opcional)</span></label>
+                <textarea id="f-detalle" name="detalle" placeholder="Para quién es, qué uso le vas a dar, si lleva un nombre…"></textarea>
+              </div>
+            </div>
+            <div class="form__p">
+              <button class="b b--p" type="submit" id="f-enviar">Enviar</button>
+              <p class="nota" id="form-nota" role="status"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion--arena" id="comprar" aria-labelledby="t-comprar" data-nudo>
+      <div class="contenedor">
+        <div class="rev">
+          <p class="rotulo">Cómo comprar</p>
+          <h2 class="titulo" id="t-comprar">Así se hace <em>un pedido</em>.</h2>
+        </div>
+        <ol class="pasos pasos--5" id="comprar-pasos"></ol>
+        <div class="fichas" id="comprar-fichas"></div>
+        <div class="hero__cta rev">
+          <a class="b b--p cta-gen" data-wa="pedido" href="#contacto">Pedir por WhatsApp</a>
+        </div>
+        <p class="nota rev comprar__tel" id="comprar-tel"></p>
+      </div>
+      <div class="corte" aria-hidden="true">
+        <svg class="tijeras tijeras--corte" id="tijeras-corte" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <g class="tijeras__a"><circle cx="15" cy="47" r="7.5"/><path d="M20.5 41.5 L50 12"/></g>
+            <g class="tijeras__b"><circle cx="15" cy="17" r="7.5"/><path d="M20.5 22.5 L50 52"/></g>
+            <circle class="tijeras__eje" cx="30" cy="32" r="1.6"/>
+          </svg>
+      </div>
+    </section>
+  </div>
+
+  <section class="seccion" id="regalos" aria-labelledby="t-reg">
+    <div class="contenedor">
+      <div class="rev">
+        <p class="rotulo">Regalos y recuerdos</p>
+        <h2 class="titulo" id="t-reg">Cuando el detalle <em>es el regalo</em>.</h2>
+        <p class="bajada">Armo cajas y recuerdos para fechas concretas: la pieza, la caja, la cinta y la tarjeta van juntas y listas para entregar.</p>
+      </div>
+      <div class="regalos" id="regalos-c">
+      <figure class="encargo rev" id="encargo" hidden>
+        <img id="encargo-img" alt="" width="900" height="975" loading="lazy" decoding="async">
+        <figcaption id="encargo-pie"></figcaption>
+      </figure>
+      <div class="fichas">
+        <div class="ficha rev rev--retazo">
+          <h3>Cajas de regalo</h3>
+          <p>Para Navidad, el Día de la Madre y otras fechas especiales. Se arma con lo que elijas dentro, en su caja, con cinta y tarjeta escrita.</p>
+          <a class="b b--l b--sm cta-gen" data-wa="caja" href="#contacto">Consultar por una caja</a>
+        </div>
+        <div class="ficha rev rev--retazo">
+          <h3>Recuerdos para celebraciones</h3>
+          <p>Para baby showers, la llegada de la primavera y otras celebraciones. Se conversan según la cantidad y los colores que necesites.</p>
+          <a class="b b--l b--sm cta-gen" data-wa="recuerdos" href="#contacto">Consultar por recuerdos</a>
+        </div>
+        <div class="ficha rev rev--retazo">
+          <h3>Para negocios</h3>
+          <p>Delantales y artículos textiles personalizados con el nombre de tu marca, en la tela que necesites.</p>
+          <a class="b b--l b--sm cta-gen" data-wa="negocio" href="#contacto">Pedir una cotización</a>
+        </div>
+      </div>
+      </div>
+      <p class="nota rev" style="margin-top:1.8rem">Para pedidos con varias unidades conviene avisar con tiempo. Escríbeme y te confirmo el plazo.</p>
+    </div>
+  </section>
+
+  <section class="seccion seccion--arena" id="preguntas" aria-labelledby="t-faq">
+    <div class="contenedor">
+      <div class="rev">
+        <p class="rotulo">Preguntas frecuentes</p>
+        <h2 class="titulo" id="t-faq">Antes de escribirme.</h2>
+      </div>
+      <div class="faq rev" id="faq"></div>
+    </div>
+  </section>
+
+  <section class="seccion" id="contacto" aria-labelledby="t-con">
+    <div class="contenedor">
+      <div class="rev">
+        <p class="rotulo">Contacto</p>
+        <h2 class="titulo" id="t-con">Escríbeme y lo vemos.</h2>
+        <p class="bajada">Los pedidos se conversan antes: disponibilidad, precio y entrega quedan claros antes de que pagues nada.</p>
+      </div>
+      <div class="fichas" id="contacto-fichas"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie__r">
+    <div class="pie__marca">
+      <img class="pie__sello" src="fotos/marca/logo.webp" alt="" width="64" height="64" loading="lazy" decoding="async">
+      <p class="pie__nombre">R de Retazos</p>
+      <p id="pie-marca">Hecho a mano en Santo Domingo, Chile</p>
+    </div>
+    <div class="pie__col">
+      <p class="pie__t">Contacto</p>
+      <ul id="pie-contacto"></ul>
+    </div>
+    <nav class="pie__col" aria-label="La tienda">
+      <p class="pie__t">La tienda</p>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#catalogo">Creaciones</a></li>
+        <li><a href="#sobre">Sobre R de Retazos</a></li>
+        <li><a href="#comprar">Cómo comprar</a></li>
+        <li><a href="#preguntas">Preguntas frecuentes</a></li>
+      </ul>
+    </nav>
+    <nav class="pie__col" aria-label="Información legal">
+      <p class="pie__t">Información</p>
+      <ul>
+        <li><a href="terminos.html">Términos y condiciones</a></li>
+        <li><a href="privacidad.html">Política de privacidad</a></li>
+        <li><a href="cambios.html">Cambios y devoluciones</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="contenedor pie__base">
+    <p>Cada pieza, hecha a mano.</p>
+    <p><a class="pie__arriba" href="#inicio">Volver arriba</a></p>
+  </div>
+</footer>
+
+<a class="flot" id="cta-flotante" href="#contacto">Escríbeme</a>
+
+<dialog class="carro" id="carro" aria-labelledby="carro-titulo">
+  <div class="carro__c">
+    <div class="carro__t">
+      <h2 id="carro-titulo">Tu pedido</h2>
+      <button class="carro__x" id="carro-cerrar" type="button" aria-label="Cerrar el carrito">&times;</button>
+    </div>
+    <div id="carro-cuerpo"></div>
+  </div>
+</dialog>
+<form id="ir-a-webpay" method="POST" hidden><input type="hidden" name="token_ws" id="token-ws"></form>
+
+<script type="module">
+/* ===========================================================================
+   Todo lo que se ve sale de datos.js: es el único archivo que hay que editar
+   para cambiar un texto, un precio, una foto o un dato de contacto. Aquí
+   abajo sólo está el motor que lo pinta.
+   =========================================================================== */
+import { DATOS, CATALOGO, precioDe, stockDe } from "./datos.js";
+import * as TX from "./textos.js";
+
+
+/* ======================= De aquí para abajo, el motor ====================== */
+(function () {
+  "use strict";
+
+  const $ = (s) => document.querySelector(s);
+  const crear = (t, c) => { const e = document.createElement(t); if (c) e.className = c; return e; };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[m]));
+
+  /* Toda imagen del sitio tiene que vivir en el sitio: una ruta relativa, sin
+     esquema y sin "//". Así ni una foto de archivo, ni un banco de imágenes, ni
+     un rastreador de un tercero pueden colarse por DATOS, ni aunque alguien lo
+     escriba por error. Lo que no cumple, no se pinta: queda el hueco marcado. */
+  const ruta = (v) => {
+    const r = String(v == null ? "" : v).trim();
+    if (!r || r.startsWith("//") || /^[a-z][a-z0-9+.-]*:/i.test(r)) return "";
+    return r;
+  };
+
+  const tel = (DATOS.contacto.whatsapp || "").replace(/\D/g, "");
+  const hayWa = tel.length > 7;
+  const ig = (DATOS.contacto.instagram || "").replace(/^@/, "").trim();
+  const igURL = ig ? "https://www.instagram.com/" + encodeURIComponent(ig) + "/" : "";
+  const igDM = ig ? "https://ig.me/m/" + encodeURIComponent(ig) : "";
+
+  /* El canal principal es el que de verdad funciona hoy. Mientras no haya
+     número de WhatsApp, todos los botones llevan al DM de Instagram, que es
+     por donde la marca ya recibe pedidos. En cuanto se agregue el número,
+     cambian solos sin tocar una línea de maquetado. */
+  const canal = hayWa ? "wa" : (ig ? "ig" : "nada");
+  const ETIQUETA = hayWa ? "Escríbeme por WhatsApp" : (ig ? "Escríbeme por Instagram" : "Escríbeme");
+  const CORTA = hayWa ? "WhatsApp" : (ig ? "Instagram" : "Escríbeme");
+
+  function enlace(mensaje) {
+    if (hayWa) return "https://wa.me/" + tel + "?text=" + encodeURIComponent(mensaje);
+    if (igDM) return igDM;
+    return "#contacto";
+  }
+  function fuera(a) {
+    if (canal === "nada") { a.removeAttribute("target"); a.removeAttribute("rel"); return; }
+    a.target = "_blank"; a.rel = "noopener noreferrer";
+  }
+
+  const SALUDO = TX.MENSAJES.general;
+  /* Consultar por una pieza concreta: el mensaje ya dice cuál, y si es un
+     scrunchie, de qué familia, para que Gabriela no tenga que preguntar. */
+  const mensajeProducto = (p) => {
+    const f = p.fam && (DATOS.familiasScrunchie || []).find((x) => x.id === p.fam);
+    const cual = f ? "el scrunchie «" + p.nombre + "» (" + f.nombre + ")" : "«" + p.nombre + "»";
+    /* Agotado: se pregunta, sin prometer que vuelva. */
+    if (stockDe(p) === 0) return "Hola, vi que " + cual + " de R de Retazos está agotado. ¿Se podrá volver a hacer?";
+    return "Hola, me gustaría consultar por " + cual + " de R de Retazos.";
+  };
+
+  /* +56 9 7137 1958: así se lee y se dicta un celular chileno. */
+  const telLegible = TX.telLegible;
+
+  /* --- Una foto que no carga ------------------------------------------------
+     Si un archivo falta o se corta la conexión, en vez del icono roto del
+     navegador queda el mismo marco de «foto pendiente» que usa el catálogo. */
+  document.addEventListener("error", (e) => {
+    const img = e.target;
+    if (!img || img.tagName !== "IMG" || img.dataset.rota) return;
+    img.dataset.rota = "1";
+    const marco = img.closest(".marco");
+    if (marco) {
+      marco.setAttribute("aria-hidden", "true");
+      marco.innerHTML = '<div class="marco__t"></div><div class="marco__n"><b>Foto no disponible</b>' + esc(img.alt || "") + "</div>";
+    } else {
+      img.style.visibility = "hidden";
+    }
+  }, true);
+
+  /* --- Revelado al bajar -------------------------------------------------
+     Arriba del todo porque lo usan el catálogo y la galería, que se pintan
+     —y se repintan al filtrar— antes de llegar al final del motor. */
+  const QUIETO = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  let ioRev = null;
+  function revelar(nodos) {
+    Array.prototype.forEach.call(nodos, (n) => {
+      if (QUIETO || !("IntersectionObserver" in window)) { n.classList.add("visto"); return; }
+      if (!ioRev) {
+        ioRev = new IntersectionObserver((entradas) => {
+          entradas.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("visto"); ioRev.unobserve(en.target); } });
+        }, { rootMargin: "0px 0px -6% 0px", threshold: 0.01 });
+      }
+      ioRev.observe(n);
+    });
+  }
+
+  /* --- Catálogo ---------------------------------------------------------- */
+  const rejilla = $("#rejilla"), chips = $("#chips");
+  let filtro = "todo";
+
+  /* Una pieza puede tener varias fotos (el bolso y su porta cables, la tote
+     colgada y en uso). La primera es la portada; el resto viven en la ficha.
+     Acepta también el campo antiguo `foto` por si alguien lo escribe así. */
+  const imagenes = (p) =>
+    (p.fotos && p.fotos.length ? p.fotos : (p.foto ? [p.foto] : [])).map(ruta).filter(Boolean);
+
+  /* Un precio se publica sólo si es un entero de pesos. Escrito con punto de
+     miles (8.900) JavaScript lo lee como 8,9; con signo peso ("$8.900") sale
+     NaN. Las dos cosas se veían en la página sin que nada avisara, y un precio
+     mal mostrado es una venta perdida o una discusión. */
+  const precioValido = (v) => typeof v === "number" && Number.isInteger(v) && v > 0;
+  /* El precio de un scrunchie puede venir de su familia: precioDe lo resuelve
+     igual que el servidor, así que lo que se ve es lo que se cobra. */
+  function nodoPrecio(p) {
+    const v = precioDe(p);
+    /* Una línea con familias (los scrunchies) no tiene precio propio: dice
+       desde cuánto, con el menor de los precios de lista. No se vende sola. */
+    if (!precioValido(v) && p.desdeFamilias) {
+      const ps = (DATOS.familiasScrunchie || []).map((f) => f.precio).filter(precioValido);
+      if (ps.length) {
+        const n = crear("p", "precio");
+        n.textContent = "Desde $" + Math.min(...ps).toLocaleString("es-CL");
+        return n;
+      }
+    }
+    const n = crear("p", precioValido(v) ? "precio" : "precio precio--c");
+    n.textContent = precioValido(v) ? "$" + v.toLocaleString("es-CL") : "Precio a consultar";
+    return n;
+  }
+  const agotado = (p) => stockDe(p) === 0;
+  function sellos(p, caja) {
+    if (agotado(p)) { const s0 = crear("span", "sello"); s0.textContent = "Agotado"; caja.appendChild(s0); }
+    else if (p.estado) { const s1 = crear("span", "sello"); s1.textContent = p.estado; caja.appendChild(s1); }
+  }
+  const nombreCat = (p) => { const c = DATOS.categorias.find((x) => x.id === p.cat); return c ? c.nombre : ""; };
+
+  /* --- Carrito -----------------------------------------------------------
+     Sólo existe si la tienda está encendida Y hay precios de verdad. Mientras
+     tanto la página es exactamente la de antes: se pide por mensaje, y no
+     aparece ni un botón de comprar. */
+  const TIENDA = DATOS.tienda || {};
+  const ENTREGA = TIENDA.entrega || {};
+  const RETIRO = ENTREGA.retiro && ENTREGA.retiro.activo ? ENTREGA.retiro : null;
+  const ZONAS = Array.isArray(ENTREGA.despacho) ? ENTREGA.despacho : [];
+  /* Mismo cálculo que el servidor, sólo para mostrarlo: quien cobra es él. */
+  const costoZona = (z, unidades) =>
+    (Number.isInteger(z.gratisDesde) && z.gratisDesde > 0 && unidades >= z.gratisDesde) ? 0
+      : (precioValido(z.costo) ? z.costo : null);
+  const vendible = (p) => precioValido(precioDe(p)) && !agotado(p);
+  const abierta = !!TIENDA.activo && CATALOGO.some(vendible);
+  const pesos = (n) => "$" + Number(n).toLocaleString("es-CL");
+
+  const LLAVE = "rdr-carrito";
+  let carro = [];
+  try { carro = JSON.parse(localStorage.getItem(LLAVE) || "[]"); } catch (e) { carro = []; }
+  if (!Array.isArray(carro)) carro = [];
+  /* Alguien vuelve a los diez días: lo que ya no se vende no puede seguir en
+     su carrito, o el servidor le rechazaría el pago sin que entienda por qué. */
+  carro = carro.filter((l) => {
+    const p = CATALOGO.find((x) => x.id === l.id);
+    const tope = stockDe(p) === null ? 20 : Math.min(20, stockDe(p));
+    return p && vendible(p) && Number.isInteger(l.cantidad) && l.cantidad > 0 && l.cantidad <= tope;
+  });
+  const guardarCarro = () => { try { localStorage.setItem(LLAVE, JSON.stringify(carro)); } catch (e) {} };
+  const unidades = () => carro.reduce((a, l) => a + l.cantidad, 0);
+
+  /* Hasta 20 de algo, o lo que quede si hay stock cargado. */
+  const tope = (id) => {
+    const p = CATALOGO.find((x) => x.id === id);
+    return p && stockDe(p) !== null ? Math.min(20, stockDe(p)) : 20;
+  };
+  function agregar(p) {
+    const y = carro.find((l) => l.id === p.id);
+    if (y) { if (y.cantidad < tope(p.id)) y.cantidad++; } else { carro.push({ id: p.id, cantidad: 1 }); }
+    guardarCarro(); refrescarCarro(); abreCarro();
+  }
+  function cambiar(id, d) {
+    const l = carro.find((x) => x.id === id); if (!l) return;
+    l.cantidad += d;
+    if (l.cantidad < 1) carro = carro.filter((x) => x.id !== id);
+    if (l.cantidad > tope(id)) l.cantidad = tope(id);
+    guardarCarro(); refrescarCarro(); pintaLineas();
+  }
+  function botonAgregar(p, clase) {
+    const b = crear("button", clase);
+    b.type = "button";
+    b.textContent = "Agregar";
+    b.addEventListener("click", (e) => { e.stopPropagation(); agregar(p); });
+    return b;
+  }
+
+  /* Las piezas del catálogo de scrunchies son fotos cuadradas sobre blanco y
+     se ven en cuadrado; las líneas de producto, en 4:5, que es como vienen
+     las fotos reales (en vertical) y deja la cuadrícula pareja. La línea de
+     scrunchies usa una de esas fotos sobre blanco: entera dentro del 4:5. */
+  const encuadre = (p) => p.fam ? "marco--11" : (p.desdeFamilias ? "marco--45 marco--entera" : "marco--45");
+
+  function marcoDe(p, src, clase) {
+    const m = crear("div", "marco " + clase);
+    if (src) {
+      const img = crear("img");
+      img.src = src; img.loading = "lazy";
+      img.alt = (p.alt && src === imagenes(p)[0]) ? String(p.alt) : p.nombre + " hecho a mano por R de Retazos";
+      m.appendChild(img);
+    } else {
+      m.setAttribute("aria-hidden", "true");
+      m.innerHTML = '<div class="marco__t"></div><span class="marco__et">' + esc(p.nombre) + "</span>";
+    }
+    return m;
+  }
+
+  function tarjeta(p) {
+    const li = crear("li", "t rev rev--retazo");
+    const fotos = imagenes(p);
+
+    /* La foto y el nombre abren la ficha; el botón de consultar sigue siendo el
+       salto directo. Quien ya sabe lo que quiere no da un paso de más. */
+    const caja = crear("div", "t__f");
+    caja.appendChild(marcoDe(p, fotos[0], encuadre(p)));
+    li.appendChild(caja);
+
+    /* El botón vive DENTRO del h3, no al revés: un encabezado dentro de un
+       botón no es HTML válido y los lectores de pantalla pierden el nivel.
+       El ::after del botón se estira sobre la tarjeta entera, así que con el
+       ratón se puede pulsar cualquier parte y sigue habiendo un solo control. */
+    const info = crear("div");
+    info.innerHTML =
+      '<p class="t__c">' + esc(nombreCat(p)) + "</p>" +
+      '<h3 class="t__n"><button type="button" class="t__abre">' + esc(p.nombre) + "</button></h3>" +
+      '<p class="t__d">' + esc(p.desc) + "</p>";
+    info.querySelector(".t__abre").addEventListener("click", () => abreFicha(p));
+    li.appendChild(info);
+
+    const pie = crear("div", "t__p");
+    pie.appendChild(nodoPrecio(p));
+
+    sellos(p, pie);
+
+    if (abierta && vendible(p)) pie.appendChild(botonAgregar(p, "b b--p b--sm"));
+
+    const b = crear("a", "b b--l b--sm");
+    b.href = enlace(mensajeProducto(p));
+    b.innerHTML = "Consultar" + '<span class="sr"> por ' + esc(p.nombre) + " por " + esc(CORTA) + "</span>";
+    fuera(b);
+    pie.appendChild(b);
+
+    li.appendChild(pie);
+    return li;
+  }
+
+  /* --- Ficha de producto -------------------------------------------------
+     <dialog> nativo: el foco queda dentro, Esc cierra y el fondo se inerta sin
+     escribir una línea de ello. Se construye una vez y se rellena al abrir. */
+  const dlg = crear("dialog", "ficha-p");
+  dlg.setAttribute("aria-labelledby", "fp-titulo");
+  dlg.innerHTML =
+    '<button class="fp__cerrar" type="button" aria-label="Cerrar la ficha">&times;</button>' +
+    '<div class="fp__r"><div class="fp__izq"></div><div class="fp__der"></div></div>';
+  document.body.appendChild(dlg);
+  const fpIzq = dlg.querySelector(".fp__izq"), fpDer = dlg.querySelector(".fp__der");
+  dlg.querySelector(".fp__cerrar").addEventListener("click", () => dlg.close());
+  /* Pulsar fuera de la ficha la cierra, como se espera de un modal. */
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+
+  function abreFicha(p) {
+    const fotos = imagenes(p);
+    fpIzq.textContent = "";
+    const principal = marcoDe(p, fotos[0], encuadre(p));
+    fpIzq.appendChild(principal);
+
+    if (fotos.length > 1) {
+      const minis = crear("div", "fp__minis");
+      fotos.forEach((src, i) => {
+        const b = crear("button", "fp__mini");
+        b.type = "button";
+        b.setAttribute("aria-current", String(i === 0));
+        b.setAttribute("aria-label", "Ver la foto " + (i + 1) + " de " + fotos.length);
+        b.innerHTML = '<img src="' + esc(src) + '" alt="" loading="lazy">';
+        b.addEventListener("click", () => {
+          const img = principal.querySelector("img");
+          if (img) img.src = src;
+          minis.querySelectorAll(".fp__mini").forEach((o, j) => o.setAttribute("aria-current", String(i === j)));
+        });
+        minis.appendChild(b);
+      });
+      fpIzq.appendChild(minis);
+    }
+
+    fpDer.textContent = "";
+    const cab = crear("div");
+    cab.innerHTML =
+      '<p class="fp__cat">' + esc(nombreCat(p)) + "</p>" +
+      '<h2 class="fp__n" id="fp-titulo">' + esc(p.nombre) + "</h2>" +
+      '<p class="fp__d">' + esc(p.desc) + "</p>";
+    fpDer.appendChild(cab);
+
+    const pre = crear("div", "fp__p");
+    pre.appendChild(nodoPrecio(p));
+    sellos(p, pre);
+    fpDer.appendChild(pre);
+
+    const nota = crear("p", "nota");
+    nota.style.marginTop = ".9rem";
+    nota.textContent = "¿La imaginas en otra tela? Consulta según las telas que haya disponibles.";
+    fpDer.appendChild(nota);
+
+    const acc = crear("div", "fp__acc");
+    if (abierta && vendible(p)) {
+      const ag = botonAgregar(p, "b b--p b--sm");
+      ag.addEventListener("click", () => dlg.close());
+      acc.appendChild(ag);
+    }
+    const ir = crear("a", abierta && vendible(p) ? "b b--l b--sm" : "b b--p b--sm");
+    ir.href = enlace(mensajeProducto(p));
+    ir.textContent = hayWa ? "Consultar por WhatsApp" : "Consultar por Instagram";
+    fuera(ir);
+    acc.appendChild(ir);
+    const cerrar = crear("button", "b b--l b--sm");
+    cerrar.type = "button"; cerrar.textContent = "Seguir mirando";
+    cerrar.addEventListener("click", () => dlg.close());
+    acc.appendChild(cerrar);
+    fpDer.appendChild(acc);
+
+    if (typeof dlg.showModal === "function") dlg.showModal();
+    else { dlg.setAttribute("open", ""); }
+  }
+
+  function pinta() {
+    rejilla.textContent = "";
+    const visibles = DATOS.productos.filter((p) => filtro === "todo" || p.cat === filtro);
+    visibles.forEach((p) => rejilla.appendChild(tarjeta(p)));
+    revelar(rejilla.querySelectorAll(".rev"));
+
+    /* Si una categoría se queda sin nada, la rejilla no se queda en blanco. */
+    if (!visibles.length) {
+      const li = crear("li");
+      li.style.gridColumn = "1/-1";
+      li.innerHTML = '<p class="nota">Ahora mismo no tengo nada en esta categoría. ' +
+        "Escríbeme y lo hacemos por encargo.</p>";
+      rejilla.appendChild(li);
+    }
+
+    /* Cambiar el filtro repinta la rejilla sin mover el foco: quien usa lector
+       de pantalla no se entera de nada si no se le dice. */
+    const estado = document.getElementById("estado-catalogo");
+    if (estado) {
+      const cat = DATOS.categorias.find((c) => c.id === filtro);
+      estado.textContent = visibles.length
+        ? visibles.length + " de " + DATOS.productos.length + " productos" + (cat ? " en " + cat.nombre : "")
+        : "Sin productos en " + (cat ? cat.nombre : "esta categoría");
+    }
+  }
+
+  const lista = [{ id:"todo", nombre:"Todo" }].concat(DATOS.categorias);
+  lista.forEach((c) => {
+    const b = crear("button", "chip");
+    b.type = "button"; b.textContent = c.nombre;
+    b.setAttribute("aria-pressed", String(c.id === filtro));
+    b.addEventListener("click", () => {
+      filtro = c.id;
+      chips.querySelectorAll(".chip").forEach((o, i) => o.setAttribute("aria-pressed", String(lista[i].id === filtro)));
+      pinta();
+    });
+    chips.appendChild(b);
+  });
+  pinta();
+
+  const sinPrecio = CATALOGO.filter((p) => precioDe(p) == null).length;
+  /* Un precio mal escrito se nombra donde está escrito: en el producto, o en
+     la familia de scrunchies de la que lo heredan sus piezas. */
+  const preciosMalEscritos = DATOS.productos.concat(DATOS.scrunchies, DATOS.familiasScrunchie || [])
+    .filter((p) => p.precio != null && !precioValido(p.precio));
+  const notaPrecios = $("#nota-precios");
+  if (sinPrecio + preciosMalEscritos.length === CATALOGO.length) {
+    notaPrecios.textContent = "Los precios todavía no están publicados. Escríbeme y te los paso al tiro.";
+  } else { notaPrecios.hidden = true; }
+
+  const MARCA = DATOS.marca || {};
+
+  /* --- Detrás de R de Retazos ---------------------------------------------
+     La historia es exactamente la de DATOS, párrafo por párrafo. El retrato
+     entra en cuanto exista; mientras tanto, en su marco va el sello de la
+     marca, que es real, en vez de un hueco vacío. */
+  const nombre = (DATOS.artesana.nombre || "").trim();
+  const primerNombre = nombre.split(/\s+/)[0] || "";
+  if (primerNombre) $("#t-sobre").innerHTML = "Detrás de cada pieza, <em>" + esc(primerNombre) + "</em>.";
+  const hist = $("#historia");
+  const parrafos = (DATOS.artesana.historia || []).map((t) => String(t || "").trim()).filter(Boolean);
+  if (parrafos.length) {
+    parrafos.forEach((t) => { const q = crear("p", "bajada"); q.textContent = t; hist.appendChild(q); });
+  } else {
+    hist.innerHTML = '<p class="bajada"><span class="pend">Falta tu historia</span></p>';
+  }
+  const fig = $("#retrato");
+  const sRetrato = ruta(MARCA.retrato);
+  const sSello = ruta(MARCA.logoGrande) || ruta(MARCA.logo);
+  if (sRetrato) {
+    fig.classList.add("retrato--foto");
+    const im = crear("img");
+    im.src = sRetrato; im.loading = "lazy"; im.decoding = "async";
+    im.alt = nombre ? nombre + ", creadora de R de Retazos" : "Quien está detrás de R de Retazos";
+    fig.appendChild(im);
+  } else if (sSello) {
+    fig.classList.add("retrato--sello");
+    fig.setAttribute("aria-hidden", "true");
+    const im = crear("img");
+    im.src = sSello; im.alt = ""; im.loading = "lazy"; im.decoding = "async";
+    fig.appendChild(im);
+  }
+
+  /* --- Galería «Del taller» -------------------------------------------------
+     Fotos como copias en papel: un borde claro, una sombra y un ángulo cada
+     una. Al bajar se van enderezando y acomodando (--orden, de 0 a 1). Se
+     arma con las fotos reales del taller que haya en DATOS y se completa con
+     piezas del catálogo: nunca queda un marco vacío. */
+  const galeria = $("#galeria");
+  const ETIQ = { gabriela: primerNombre || "En el taller", proceso: "En el taller", materiales: "Telas",
+                 lifestyle: "Puesto", empaque: "Empaque" };
+  const fotosGal = [
+    { src: MARCA.taller, alt: "Cosiendo a máquina en el taller de R de Retazos", tipo: "proceso" },
+    { src: MARCA.telas, alt: "Retazos y telas del taller", tipo: "materiales" },
+    { src: MARCA.empaque, alt: "Un pedido empacado a mano", tipo: "empaque" }
+  ].concat(Array.isArray(MARCA.galeria) ? MARCA.galeria : [])
+   .map((f) => f && { src: ruta(f.src), alt: String(f.alt || ""), tipo: f.tipo })
+   .filter((f) => f && f.src);
+  const FAMS = DATOS.familiasScrunchie || [];
+  const famDe = (p) => { const f = FAMS.find((x) => x.id === p.fam); return f ? f.nombre : ""; };
+  (MARCA.galeriaCatalogo || []).forEach((id) => {
+    const p = CATALOGO.find((x) => x.id === id);
+    if (p && imagenes(p)[0]) fotosGal.push({ src: imagenes(p)[0], alt: p.nombre + ", scrunchie hecho a mano", producto: p });
+  });
+  const GIROS = [[-2.6, -16, 12], [2, 14, -9], [-1.4, -10, 10], [2.8, 16, -12], [-2, -12, 8]];
+  fotosGal.slice(0, 5).forEach((f, i) => {
+    const g = GIROS[i % GIROS.length];
+    const fi = crear("figure", "foto");
+    fi.setAttribute("role", "listitem");
+    fi.style.setProperty("--rot", g[0] + "deg");
+    fi.style.setProperty("--dx", g[1] + "px");
+    fi.style.setProperty("--dy", g[2] + "px");
+    const im = crear("img");
+    im.src = f.src; im.alt = f.alt; im.loading = "lazy"; im.decoding = "async";
+    if (f.producto) {
+      /* Una pieza del catálogo abre su ficha, como en el carrusel. */
+      const b = crear("button", "foto__b");
+      b.type = "button";
+      b.setAttribute("aria-label", "Ver " + f.producto.nombre);
+      b.appendChild(im);
+      b.addEventListener("click", () => abreFicha(f.producto));
+      fi.appendChild(b);
+    } else {
+      fi.appendChild(im);
+    }
+    const cap = crear("figcaption");
+    cap.textContent = f.producto ? f.producto.nombre + " · " + famDe(f.producto) : (ETIQ[f.tipo] || "");
+    fi.appendChild(cap);
+    galeria.appendChild(fi);
+  });
+
+  /* --- El encargo de «Regalos y recuerdos» ---------------------------------
+     Sólo si existe en DATOS: sin él, la sección queda como estaba. */
+  const enc = MARCA.encargo;
+  if (enc && ruta(enc.src)) {
+    const im = $("#encargo-img");
+    im.src = ruta(enc.src); im.alt = String(enc.alt || "");
+    const pie = $("#encargo-pie");
+    if (enc.pie) pie.textContent = String(enc.pie); else pie.remove();
+    $("#encargo").hidden = false;
+    $("#regalos-c").classList.add("regalos--foto");
+  }
+
+  /* El logotipo sustituye al monograma tipográfico en cuanto exista. */
+  if (ruta(MARCA.logo)) {
+    const hueco = document.querySelector(".marca__r");
+    if (hueco) {
+      hueco.textContent = "";
+      hueco.style.border = "0";
+      const l = crear("img");
+      l.src = ruta(MARCA.logo); l.alt = "R de Retazos";
+      l.style.cssText = "width:100%;height:100%;object-fit:contain";
+      hueco.appendChild(l);
+    }
+  }
+
+
+  /* --- Portada que se transforma ------------------------------------------
+     El scroll sigue siendo el del navegador: no se captura la rueda, no se
+     llama a preventDefault y no hay un contador propio de píxeles. Lo único
+     que hace el oyente —pasivo— es mirar dónde va la sección y escribir --p,
+     un número entre 0 y 1. El dibujo lo hace el CSS a partir de ahí.
+
+     Con "reducir movimiento" ni siquiera se registra el oyente: --p se queda
+     en 1, que es el estado final, y la portada se ve entera y quieta. */
+  const morf = $(".morf");
+  if (morf) {
+    const sello = $("#morf-sello"), anillo = $("#morf-anillo"), disco = $("#morf-disco");
+
+    const sLogo = ruta(MARCA.logo), sLogoG = ruta(MARCA.logoGrande);
+    if (sLogo || sLogoG) {
+      const l = crear("img");
+      l.src = sLogoG || sLogo;
+      if (sLogoG && sLogo) {
+        l.srcset = sLogo + " 512w, " + sLogoG + " 1024w";
+        l.sizes = "(min-width:900px) 250px, 33vw";
+      }
+      l.alt = ""; l.width = 1024; l.height = 1024; l.decoding = "async";
+      sello.appendChild(l);
+    }
+
+    /* El disco central guarda el sitio del video de la marca. Mientras no
+       exista se usa la foto de portada; si tampoco está, no se dibuja nada:
+       no se rellena con material de archivo. */
+    const vid = MARCA.videoHero;
+    if (vid && ruta(vid.src)) {
+      const v = document.createElement("video");
+      v.src = ruta(vid.src); v.muted = true; v.loop = true; v.autoplay = true;
+      v.playsInline = true; v.setAttribute("playsinline", ""); v.preload = "metadata";
+      if (ruta(vid.cartel)) v.poster = ruta(vid.cartel);
+      disco.appendChild(v); disco.hidden = false; morf.classList.add("morf--disco");
+    } else if (ruta(MARCA.portada)) {
+      const f = crear("img");
+      f.src = ruta(MARCA.portada); f.alt = ""; f.decoding = "async";
+      disco.appendChild(f); disco.hidden = false; morf.classList.add("morf--disco");
+    }
+
+    /* Ocho piezas de verdad, repartidas entre las cuatro familias. Si algún
+       día el catálogo está vacío, el anillo simplemente no se dibuja. */
+    const PIEZAS_ANILLO = 8;
+    const fuente = DATOS.scrunchies || [];
+    const elegidas = [];
+    if (fuente.length) {
+      const salto = fuente.length / PIEZAS_ANILLO;
+      for (let i = 0; i < PIEZAS_ANILLO && i < fuente.length; i++) {
+        elegidas.push(fuente[Math.floor(i * salto)]);
+      }
+    }
+    elegidas.forEach((p, i) => {
+      const d = crear("div", "morf__f");
+      d.style.setProperty("--a", (i * (360 / elegidas.length) - 90) + "deg");
+      const img = crear("img");
+      img.src = ruta(p.mini) || imagenes(p)[0] || "";
+      img.alt = ""; img.width = 280; img.height = 280;
+      img.loading = i < 4 ? "eager" : "lazy"; img.decoding = "async";
+      d.appendChild(img);
+      anillo.appendChild(d);
+    });
+
+    const quieto = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!quieto) {
+      const pista = morf.querySelector(".morf__pista");
+      /* El morfeo termina antes de que la sección se despegue, para que el
+         estado final se vea quieto un momento y no de refilón. */
+      const TRAMO = 0.78;
+      let pedido = 0;
+      function avance() {
+        const r = pista.getBoundingClientRect();
+        const recorrido = r.height - window.innerHeight;
+        if (recorrido <= 0) return 1;
+        const bruto = -r.top / recorrido;
+        return Math.min(1, Math.max(0, bruto / TRAMO));
+      }
+      function aplica() { pedido = 0; morf.style.setProperty("--p", avance().toFixed(4)); }
+      function alMover() { if (!pedido) pedido = requestAnimationFrame(aplica); }
+      window.addEventListener("scroll", alMover, { passive: true });
+      window.addEventListener("resize", alMover, { passive: true });
+      aplica();
+    }
+  }
+
+  /* --- Carrusel de scrunchies ---------------------------------------------
+     El contenedor se desplaza con el scroll horizontal del navegador, con
+     scroll-snap. El relieve de cada carta se calcula a partir de scrollLeft:
+     una sola lectura por fotograma y ninguna medida del maquetado. */
+  const flujo = $("#flujo");
+  if (flujo && (DATOS.scrunchies || []).length) {
+    const FAM = DATOS.familiasScrunchie || [];
+    const nombreFam = (id) => { const f = FAM.find((x) => x.id === id); return f ? f.nombre : ""; };
+    const ant = $("#scr-ant"), sig = $("#scr-sig"), pie = $("#scr-pie");
+    let fam = "todo", visibles = [], paso = 0, pedido = 0, ultimo = -1, avisa = 0;
+
+    function carta(p) {
+      const li = crear("li", "flujo__c");
+      li.style.setProperty("--tono", p.tono || "#2E2A26");
+      const b = crear("button", "flujo__t");
+      b.type = "button";
+      const foto = imagenes(p)[0] || "";
+      b.innerHTML =
+        '<div class="marco marco--11">' +
+          (foto ? '<img src="' + esc(foto) + '" alt="' + esc(p.nombre) +
+                  ', scrunchie hecho a mano por R de Retazos" loading="lazy" decoding="async">'
+                : '<div class="marco__t"></div><span class="marco__et">' + esc(p.nombre) + "</span>") +
+        "</div>" +
+        '<p class="flujo__fam">' + esc(nombreFam(p.fam)) + "</p>" +
+        '<p class="flujo__n2">' + esc(p.nombre) + "</p>" +
+        '<p class="flujo__pr">' + (agotado(p) ? "Agotado"
+          : (precioValido(precioDe(p)) ? pesos(precioDe(p)) : "Precio a consultar")) + "</p>";
+      b.addEventListener("click", () => abreFicha(p));
+      li.appendChild(b);
+      return li;
+    }
+
+    /* Una sola medida del maquetado, y sólo al pintar o al cambiar de tamaño:
+       cuánto mide una carta, cuánto el hueco y dónde empieza la tira. Con eso
+       la posición de cada carta sale de scrollLeft con pura aritmética. */
+    let ancho = 0, borde = 0;
+    function medirPaso() {
+      const a = flujo.firstElementChild;
+      if (!a) { paso = 0; return; }
+      const cs = getComputedStyle(flujo);
+      ancho = a.getBoundingClientRect().width;
+      borde = parseFloat(cs.paddingInlineStart || cs.paddingLeft) || 0;
+      paso = ancho + (parseFloat(cs.columnGap || cs.gap) || 0);
+    }
+    /* Qué carta está en el centro de lo que se ve, en números decimales. */
+    const centrado = () =>
+      paso ? (flujo.scrollLeft + flujo.clientWidth / 2 - borde - ancho / 2) / paso : 0;
+    const indice = () => Math.round(centrado());
+
+    function colocar() {
+      pedido = 0;
+      if (!paso) medirPaso();
+      if (!paso) return;
+      const centro = centrado(), hijos = flujo.children;
+      for (let i = 0; i < hijos.length; i++) {
+        const d = i - centro, ad = Math.abs(d);
+        const t = Math.max(-3, Math.min(3, d)), at = Math.abs(t);
+        const st = hijos[i].style;
+        st.setProperty("--ry", (-t * 21).toFixed(2) + "deg");
+        st.setProperty("--z", (-at * 96).toFixed(0) + "px");
+        st.setProperty("--sc", (1 - at * 0.07).toFixed(3));
+        /* Punto de fuga común: el centro de lo que se ve, dicho en porcentaje
+           del ancho de esta carta. Sin esto cada una se giraría sobre sí misma. */
+        st.setProperty("--po", (50 - t * (paso / ancho) * 100).toFixed(1) + "%");
+        st.setProperty("--op", (ad > 3.4 ? 0.12 : Math.max(0.12, 1 - at * 0.24)).toFixed(3));
+        /* Son hermanas en una fila, así que el navegador las pinta en orden de
+           documento: sin esto, la de más a la derecha taparía a la del centro. */
+        st.zIndex = String(60 - Math.round(at * 10));
+        hijos[i].classList.toggle("es", ad < 0.5);
+      }
+      ant.disabled = flujo.scrollLeft < 4;
+      sig.disabled = flujo.scrollLeft > flujo.scrollWidth - flujo.clientWidth - 4;
+      /* El aviso al lector de pantalla espera a que el carrusel se detenga:
+         anunciarlo en cada fotograma sería un ruido continuo. */
+      clearTimeout(avisa);
+      avisa = setTimeout(anuncia, 220);
+    }
+    function anuncia() {
+      const i = Math.min(visibles.length - 1, Math.max(0, indice()));
+      if (i === ultimo || !visibles.length) return;
+      ultimo = i;
+      const p = visibles[i];
+      pie.textContent = (i + 1) + " de " + visibles.length + " · " + p.nombre + " · " + nombreFam(p.fam);
+    }
+    function alMover() { if (!pedido) pedido = requestAnimationFrame(colocar); }
+
+    /* Se apunta al centro exacto de la carta, que es su punto de snap: así un
+       salto largo (Inicio, Fin) no se queda enganchado en una carta del camino. */
+    function irA(i) {
+      const tope = Math.max(0, visibles.length - 1);
+      const n = flujo.children[Math.min(tope, Math.max(0, i))];
+      if (!n) return;
+      /* Sólo el carrusel se mueve, y sólo de lado. scrollIntoView también
+         desplazaba la página si la carta no cabía entera en vertical. El
+         `behavior` lo pone el CSS: suave, o inmediato con «reducir movimiento». */
+      const r = n.getBoundingClientRect(), f = flujo.getBoundingClientRect();
+      flujo.scrollTo({ left: flujo.scrollLeft + (r.left - f.left) - (flujo.clientWidth - r.width) / 2 });
+    }
+
+    function pinta() {
+      flujo.textContent = "";
+      visibles = DATOS.scrunchies.filter((p) => fam === "todo" || p.fam === fam);
+      visibles.forEach((p) => flujo.appendChild(carta(p)));
+      flujo.scrollLeft = 0;
+      ultimo = -1;
+      medirPaso(); colocar(); anuncia();
+    }
+
+    const fams = [{ id: "todo", nombre: "Todas" }].concat(FAM);
+    const cont = $("#scr-chips");
+    fams.forEach((f) => {
+      const b = crear("button", "chip");
+      b.type = "button";
+      /* El precio de lista va en el mismo filtro: la lista completa, de un vistazo. */
+      b.textContent = f.nombre + (precioValido(f.precio) ? " · $" + f.precio.toLocaleString("es-CL") : "");
+      b.setAttribute("aria-pressed", String(f.id === fam));
+      b.addEventListener("click", () => {
+        fam = f.id;
+        cont.querySelectorAll(".chip").forEach((o, i) => o.setAttribute("aria-pressed", String(fams[i].id === fam)));
+        pinta();
+      });
+      cont.appendChild(b);
+    });
+
+    flujo.addEventListener("scroll", alMover, { passive: true });
+    window.addEventListener("resize", () => { medirPaso(); alMover(); }, { passive: true });
+    ant.addEventListener("click", () => irA(indice() - 1));
+    sig.addEventListener("click", () => irA(indice() + 1));
+    /* Las flechas mueven el carrusel carta a carta. Sólo izquierda y derecha:
+       arriba y abajo siguen moviendo la página, como debe ser. */
+    flujo.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); irA(indice() + 1); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); irA(indice() - 1); }
+      else if (e.key === "Home") { e.preventDefault(); irA(0); }
+      else if (e.key === "End") { e.preventDefault(); irA(visibles.length - 1); }
+    });
+    pinta();
+  }
+
+  /* --- El hilo -------------------------------------------------------------
+     Un solo trazo SVG baja por el margen del recorrido, ondulando apenas como
+     un hilo de verdad. Se mide una vez (y otra si cambia el alto, por ejemplo
+     al cargar una foto) y en cada fotograma sólo se lee dónde va la sección:
+     el largo dibujado es stroke-dashoffset, y la aguja va en la punta. */
+  const reco = $("#recorrido"), hiloP = $("#hilo-p"), nudosG = $("#hilo-nudos"), aguja = $("#aguja");
+  const tijeraFin = $("#tijeras-corte");
+  if (reco && hiloP && nudosG) {
+    const NS = "http://www.w3.org/2000/svg";
+    let largo = 0, nudos = [], pedidoH = 0, cerca = false, cortado = false;
+
+    function trazar() {
+      const alto = reco.offsetHeight;
+      const rr = reco.getBoundingClientRect();
+      const cont = reco.querySelector(".contenedor");
+      const izq = cont ? cont.getBoundingClientRect().left - rr.left : 0;
+      /* En pantalla ancha va por el margen; en el teléfono, pegado al borde. */
+      const x = izq > 70 ? izq - 30 : 9;
+      const amp = izq > 70 ? 7 : 2.5;
+      const y0 = 34, y1 = Math.max(y0 + 40, alto - 42), tramo = 190;
+      let d = "M" + x + " " + y0 + " Q" + (x + amp) + " " + (y0 + tramo / 2) + " " + x + " " + Math.min(y1, y0 + tramo);
+      for (let y = y0 + tramo; y + tramo <= y1; y += tramo) d += " T" + x + " " + (y + tramo);
+      d += " L" + x + " " + y1;
+      hiloP.setAttribute("d", d);
+      largo = hiloP.getTotalLength();
+      hiloP.style.strokeDasharray = largo + " " + largo;
+      reco.style.setProperty("--hx", x + "px");
+
+      nudosG.textContent = "";
+      nudos = Array.prototype.map.call(reco.querySelectorAll("[data-nudo]"), (sec) => {
+        const y = Math.min(y1, Math.max(y0, sec.offsetTop + 62));
+        const f = (y - y0) / (y1 - y0);
+        const pt = hiloP.getPointAtLength(largo * f);
+        const c = document.createElementNS(NS, "circle");
+        c.setAttribute("class", "nudo"); c.setAttribute("r", "3.6");
+        c.setAttribute("cx", pt.x.toFixed(1)); c.setAttribute("cy", pt.y.toFixed(1));
+        nudosG.appendChild(c);
+        return { el: c, f: f };
+      });
+    }
+
+    function avanza() {
+      pedidoH = 0;
+      if (!largo) return;
+      const r = reco.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, (window.innerHeight * 0.7 - r.top) / Math.max(1, r.height - 70)));
+      hiloP.style.strokeDashoffset = (largo * (1 - p)).toFixed(1);
+      nudos.forEach((n) => n.el.classList.toggle("on", p >= n.f - 0.002));
+      if (aguja) {
+        const a = hiloP.getPointAtLength(largo * p), b = hiloP.getPointAtLength(Math.max(0, largo * p - 5));
+        const ang = Math.atan2(a.y - b.y, a.x - b.x) * 180 / Math.PI;
+        aguja.setAttribute("transform", "translate(" + a.x.toFixed(1) + " " + a.y.toFixed(1) + ") rotate(" + ang.toFixed(1) + ")");
+        aguja.style.opacity = p > 0.003 && p < 0.994 ? "1" : "0";
+      }
+      /* Al llegar al final, las tijeras cortan el hilo. Una sola vez. */
+      if (!cortado && p >= 0.994 && tijeraFin) { cortado = true; tijeraFin.classList.add("corta"); }
+    }
+
+    trazar();
+    if (QUIETO) {
+      /* Sin movimiento: el hilo entero, todas las puntadas, ni aguja ni corte. */
+      hiloP.style.strokeDashoffset = "0";
+      nudos.forEach((n) => n.el.classList.add("on"));
+      if (aguja) aguja.style.display = "none";
+      if ("ResizeObserver" in window) new ResizeObserver(() => {
+        trazar(); nudos.forEach((n) => n.el.classList.add("on"));
+      }).observe(reco);
+    } else {
+      const pide = () => { if (cerca && !pedidoH) pedidoH = requestAnimationFrame(avanza); };
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver((en) => { cerca = en[0].isIntersecting; pide(); },
+          { rootMargin: "20% 0px 20% 0px" }).observe(reco);
+      } else { cerca = true; }
+      window.addEventListener("scroll", pide, { passive: true });
+      window.addEventListener("resize", pide, { passive: true });
+      if ("ResizeObserver" in window) new ResizeObserver(() => { trazar(); avanza(); }).observe(reco);
+      avanza();
+    }
+  }
+
+  /* Las tijeras de «Hecho a mano» cortan una vez, cuando aparecen. */
+  const tijeraTaller = $(".taller__cab .tijeras");
+  if (tijeraTaller && !QUIETO && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((en) => {
+      if (!en[0].isIntersecting) return;
+      setTimeout(() => tijeraTaller.classList.add("corta"), 250);
+      io.disconnect();
+    }, { threshold: 0.9 });
+    io.observe(tijeraTaller);
+  }
+
+  /* La galería se ordena mientras sube por la pantalla: --orden de 0 a 1. */
+  if (galeria && galeria.children.length && !QUIETO) {
+    let pedidoG = 0, cercaG = false;
+    const ordena = () => {
+      pedidoG = 0;
+      const r = galeria.getBoundingClientRect(), vh = window.innerHeight;
+      galeria.style.setProperty("--orden", Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.75))).toFixed(3));
+    };
+    const pideG = () => { if (cercaG && !pedidoG) pedidoG = requestAnimationFrame(ordena); };
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((en) => { cercaG = en[0].isIntersecting; pideG(); }).observe(galeria);
+    } else { cercaG = true; }
+    window.addEventListener("scroll", pideG, { passive: true });
+    ordena();
+  }
+
+  /* --- Entregas y pagos ---------------------------------------------------
+     Todo lo que se dice de entregas y pagos sale de DATOS, en frases cortas y
+     sólo con lo confirmado. Lo que no está definido no se dice: se apunta en
+     la barra de borrador. La misma fuente sirve a «Cómo comprar» y a las
+     preguntas frecuentes, así que nunca pueden contradecirse. */
+  const frasesEntrega = () => TX.frasesEntrega(DATOS);
+  const MEDIOS = TX.mediosPago(DATOS);
+  const frasePagos = () => TX.frasePagos(DATOS);
+  const fraseEnLinea = () => TX.fraseEnLinea(DATOS);
+
+  /* --- Cómo comprar -------------------------------------------------------- */
+  const cfx = $("#comprar-fichas");
+  const fichaTexto = (titulo, lineas, extra) => {
+    const d = crear("div", "ficha rev rev--retazo");
+    d.innerHTML = "<h3>" + esc(titulo) + "</h3>" + lineas.map((l) => "<p>" + esc(l) + "</p>").join("") + (extra || "");
+    return d;
+  };
+  const fE = frasesEntrega();
+  if (RETIRO) cfx.appendChild(fichaTexto("Retiro", fE.filter((t) => /^Retiro/.test(t))));
+  if (ZONAS.length) cfx.appendChild(fichaTexto("Despacho", fE.filter((t) => !/^Retiro/.test(t))));
+  if (MEDIOS.length) {
+    cfx.appendChild(fichaTexto("Formas de pago", [frasePagos()],
+      abierta ? "" : '<p class="nota" style="margin-top:.6rem">El pago en línea desde la web todavía no está habilitado.</p>'));
+  }
+
+  /* --- Preguntas --------------------------------------------------------- */
+  const faq = $("#faq");
+  DATOS.faq.forEach((item, i) => {
+    const d = crear("details");
+    if (i === 0) d.open = true;
+    const s = crear("summary"); s.textContent = item.p; d.appendChild(s);
+    const p = crear("p");
+    const r = item.desde === "entrega" ? frasesEntrega().join(" ")
+      : item.desde === "pagos" ? frasePagos()
+      : item.desde === "enLinea" ? fraseEnLinea()
+      : item.r;
+    if (r) p.textContent = r;
+    else p.innerHTML = '<span class="pend">Falta tu respuesta</span> Esta pregunta se publica en cuanto me confirmes ' + esc(item.falta || "el dato") + ".";
+    d.appendChild(p);
+    faq.appendChild(d);
+  });
+
+  /* --- Contacto ---------------------------------------------------------- */
+  const cf = $("#contacto-fichas");
+
+  const f2 = crear("div", "ficha rev rev--retazo");
+  if (hayWa) {
+    f2.innerHTML = "<h3>WhatsApp</h3><p>" + esc(telLegible(tel)) + "</p><p style=\"font-size:.88rem\">La vía más rápida para consultar, cotizar y coordinar la entrega.</p>";
+    const a = crear("a", "b b--p b--sm");
+    a.href = enlace(SALUDO); a.textContent = "Escribir por WhatsApp"; fuera(a);
+    f2.appendChild(a);
+  } else {
+    f2.innerHTML = '<h3>WhatsApp</h3><p><span class="pend">Falta el número</span></p>';
+  }
+  cf.appendChild(f2);
+
+  const f1 = crear("div", "ficha rev rev--retazo");
+  if (ig) {
+    f1.innerHTML = "<h3>Instagram</h3><p>@" + esc(ig) +
+      "</p><p style=\"font-size:.88rem\">Ahí publico lo nuevo y lo que queda disponible.</p>";
+    const a = crear("a", "b b--l b--sm");
+    a.href = igURL; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = "Ver @" + ig;
+    f1.appendChild(a);
+    cf.appendChild(f1);
+  }
+
+  const f3 = crear("div", "ficha rev rev--retazo");
+  f3.innerHTML = "<h3>Entregas</h3>" + fE.slice(0, 2).map((t) => "<p style=\"font-size:.92rem\">" + esc(t) + "</p>").join("") +
+    '<p style="font-size:.88rem"><a href="#comprar">Ver cómo comprar</a></p>';
+  cf.appendChild(f3);
+
+  /* El pie: quién hace las cosas y por dónde encontrarla. El número se ve
+     escrito, no sólo detrás de un botón: hay quien prefiere llamar o anotarlo. */
+  if (nombre) $("#pie-marca").textContent = "Hecho a mano por " + nombre + " en " + DATOS.contacto.ciudad + ".";
+  $("#pie-contacto").innerHTML =
+    (hayWa ? '<li><a href="' + esc(enlace(SALUDO)) + '" target="_blank" rel="noopener noreferrer">WhatsApp<br><span class="pie__num">' + esc(telLegible(tel)) + "</span></a></li>" : "") +
+    (ig ? '<li><a href="' + igURL + '" target="_blank" rel="noopener noreferrer">Instagram @' + esc(ig) + "</a></li>" : "");
+
+  /* El menú del teléfono termina con el número, a la vista. */
+  const pwa = $("#panel-wa");
+  if (pwa && hayWa) { pwa.textContent = "WhatsApp · " + telLegible(tel); pwa.hidden = false; }
+
+  /* «Cómo comprar»: los pasos según lo que de verdad se puede hacer hoy. */
+  const PASOS = abierta ? [
+    ["Elige tu producto", "En el catálogo o en el carrusel de scrunchies."],
+    ["Revisa tu pedido", "En el carrito ves cada producto, la cantidad, el precio y el total."],
+    ["Elige la entrega", "Retiro o despacho, según tu zona."],
+    ["Paga", "Con Webpay, en el sitio de Transbank. Si prefieres otro medio, escríbeme."],
+    ["Confirmamos", "Ves tu número de pedido y coordinamos la entrega por WhatsApp."]
+  ] : [
+    ["Elige tu producto", "En el catálogo o en el carrusel de scrunchies."],
+    ["Escríbeme por WhatsApp", "Con lo que elegiste. Te confirmo disponibilidad y precio."],
+    ["Elige la entrega", "Retiro o despacho, según tu zona."],
+    ["Elige cómo pagar", MEDIOS.length ? TX.enLista(MEDIOS.map((t, i) => i ? t.charAt(0).toLowerCase() + t.slice(1) : t), "o") + "." : "Te cuento las opciones."],
+    ["Confirmamos", "Coordinamos el día de la entrega."]
+  ];
+  const lp = $("#comprar-pasos");
+  PASOS.forEach((x) => {
+    const li = crear("li", "paso rev rev--retazo");
+    li.innerHTML = "<h3>" + esc(x[0]) + "</h3><p>" + esc(x[1]) + "</p>";
+    lp.appendChild(li);
+  });
+  if (hayWa) {
+    $("#comprar-tel").innerHTML = "¿Prefieres anotarlo? Mi WhatsApp es el " +
+      '<a href="' + esc(enlace(TX.MENSAJES.pedido)) + '" target="_blank" rel="noopener noreferrer">' + esc(telLegible(tel)) + "</a>.";
+  }
+
+  /* --- Botones sueltos --------------------------------------------------- */
+  ["#cta-cabecera", "#cta-flotante"].forEach((sel) => {
+    const a = $(sel); if (!a) return;
+    a.href = enlace(SALUDO);
+    /* El flotante va corto a propósito: con la etiqueta larga ocupaba media
+       pantalla y tapaba el "Consultar" de la tarjeta que tuviera debajo. */
+    a.textContent = sel === "#cta-flotante" ? (hayWa ? "WhatsApp" : "Escríbeme") : CORTA;
+    if (sel === "#cta-flotante" && hayWa) a.setAttribute("aria-label", "Escribir por WhatsApp");
+    fuera(a);
+  });
+  /* Cada botón lleva el mensaje de su contexto (data-wa); si no, el general. */
+  document.querySelectorAll(".cta-gen,[data-wa]").forEach((a) => {
+    a.href = enlace(TX.MENSAJES[a.getAttribute("data-wa")] || SALUDO); fuera(a);
+  });
+
+  /* --- Menú de móvil ----------------------------------------------------- */
+  const mb = $("#menu-b"), panel = $("#panel");
+  mb.addEventListener("click", () => {
+    const ab = mb.getAttribute("aria-expanded") === "true";
+    mb.setAttribute("aria-expanded", String(!ab));
+    panel.hidden = ab;
+  });
+  panel.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") { panel.hidden = true; mb.setAttribute("aria-expanded", "false"); }
+  });
+  /* Esc cierra el menú y devuelve el foco al botón que lo abrió. */
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !panel.hidden) { panel.hidden = true; mb.setAttribute("aria-expanded", "false"); mb.focus(); }
+  });
+
+  /* --- Formulario -------------------------------------------------------- */
+  const sel = $("#f-que");
+  DATOS.productos.forEach((p) => { const o = crear("option"); o.value = p.nombre; o.textContent = p.nombre; sel.appendChild(o); });
+  const otro = crear("option"); otro.value = "Otra cosa"; otro.textContent = "Otra cosa"; sel.appendChild(otro);
+
+  $("#f-enviar").textContent = hayWa ? "Enviar por WhatsApp" : "Preparar el mensaje";
+  $("#form-nota").textContent = hayWa
+    ? "Se abre WhatsApp con el mensaje ya escrito. La página no guarda nada."
+    : "Te dejo el mensaje listo para copiar y pegar en el DM. La página no guarda nada.";
+
+  const resultado = crear("div");
+  resultado.hidden = true;
+  resultado.style.cssText = "margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--lino)";
+  $("#form").appendChild(resultado);
+
+  $("#form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nota = $("#form-nota"), nom = $("#f-nombre");
+    if (!nom.value.trim()) {
+      nota.textContent = "Escribe tu nombre para saber con quién hablo.";
+      nom.setAttribute("aria-invalid", "true");
+      nom.focus();
+      return;
+    }
+    nom.removeAttribute("aria-invalid");
+
+    const l = [
+      "Hola, soy " + nom.value.trim() + " y me gustaría consultar por una creación especial.",
+      "Me gustaría: " + sel.value,
+      "Cantidad: " + ($("#f-cantidad").value || "1")
+    ];
+    if ($("#f-telas").value.trim()) l.push("Telas o colores: " + $("#f-telas").value.trim());
+    if ($("#f-fecha").value.trim()) l.push("Lo necesito: " + $("#f-fecha").value.trim());
+    if ($("#f-detalle").value.trim()) l.push("Mi idea: " + $("#f-detalle").value.trim());
+    const mensaje = l.join("\n");
+
+    resultado.hidden = false;
+    resultado.innerHTML =
+      '<p class="nota" style="font-weight:700;color:var(--carbon)">Tu mensaje</p>' +
+      '<textarea id="f-salida" readonly rows="6" style="margin-top:.6rem;width:100%;font:inherit;font-size:.92rem;' +
+      'color:var(--carbon);background:var(--marfil);border:1.5px solid var(--lino);border-radius:var(--r);padding:.7rem .85rem"></textarea>';
+    $("#f-salida").value = mensaje;
+
+    const acc = crear("div", "form__p");
+    const copiar = crear("button", "b b--l b--sm");
+    copiar.type = "button"; copiar.textContent = "Copiar";
+    copiar.addEventListener("click", () => {
+      const ta = $("#f-salida");
+      const ok = () => { copiar.textContent = "Copiado"; setTimeout(() => { copiar.textContent = "Copiar"; }, 2200); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(mensaje).then(ok, () => { ta.focus(); ta.select(); copiar.textContent = "Selecciónalo y copia"; });
+      } else { ta.focus(); ta.select(); copiar.textContent = "Selecciónalo y copia"; }
+    });
+    acc.appendChild(copiar);
+
+    if (canal !== "nada") {
+      const ir = crear("a", "b b--p b--sm");
+      ir.href = enlace(mensaje); ir.textContent = hayWa ? "Abrir WhatsApp" : "Abrir el DM de Instagram";
+      fuera(ir);
+      acc.appendChild(ir);
+    }
+    resultado.appendChild(acc);
+    resultado.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+
+  /* --- Revelado al bajar: el resto de la página ----------------------------- */
+  revelar(document.querySelectorAll(".rev:not(.visto)"));
+  /* Red de seguridad: si el observador fallara, nada de lo que ya está a la
+     vista o más arriba se queda invisible. Lo de más abajo conserva su
+     entrada para cuando se llegue a ello. */
+  setTimeout(() => {
+    document.querySelectorAll(".rev:not(.visto)").forEach((n) => {
+      if (n.getBoundingClientRect().top < window.innerHeight) n.classList.add("visto");
+    });
+  }, 2500);
+
+  /* --- El carrito en pantalla --------------------------------------------
+     Se construye una vez y luego sólo se repintan las líneas y las sumas: si
+     se rehiciera entero a cada cambio de cantidad, el formulario a medio
+     rellenar se borraría debajo de las manos. */
+  const elCarro = $("#carro"), btnCarro = $("#abrir-carro");
+  let carroHecho = false;
+
+  function refrescarCarro() {
+    if (!abierta) return;
+    const n = unidades();
+    btnCarro.hidden = false;
+    $("#carro-n").textContent = String(n);
+    btnCarro.setAttribute("aria-label", "Tu pedido, " + n + (n === 1 ? " artículo" : " artículos"));
+  }
+
+  function sumas() {
+    /* Busca en todo el catálogo —líneas de trabajo y scrunchies—, y descarta
+       una línea cuyo producto ya no exista: antes reventaba el carrito entero. */
+    const lineas = carro.map((l) => {
+      const p = CATALOGO.find((x) => x.id === l.id);
+      return p && vendible(p)
+        ? { p: p, cantidad: l.cantidad, sub: precioDe(p) * l.cantidad } : null;
+    }).filter(Boolean);
+    const subtotal = lineas.reduce((a, x) => a + x.sub, 0);
+    const unidades = lineas.reduce((a, x) => a + x.cantidad, 0);
+    /* El valor del radio es "retiro" o "despacho:<zona>". */
+    const marcada = document.querySelector('input[name="entrega"]:checked');
+    const valor = marcada ? marcada.value : (RETIRO ? "retiro" : "");
+    const entrega = valor.indexOf("despacho:") === 0 ? "despacho" : "retiro";
+    const zona = entrega === "despacho" ? valor.slice(9) : null;
+    const z = zona ? ZONAS.find((x) => x.id === zona) : null;
+    const despacho = z ? (costoZona(z, unidades) || 0) : 0;
+    return { lineas: lineas, subtotal: subtotal, unidades: unidades, despacho: despacho,
+             total: subtotal + despacho, entrega: entrega, zona: zona, zonaNombre: z ? z.zona : "" };
+  }
+
+  const verDireccion = () => { const c = $("#c-dir-caja"); if (c) c.hidden = sumas().entrega !== "despacho"; };
+
+  function pintaEntrega() {
+    const caja = $("#carro-entrega");
+    if (!caja) return;
+    const antes = (caja.querySelector("input:checked") || {}).value || (RETIRO ? "retiro" : "");
+    const unidades = carro.reduce((a, l) => a + l.cantidad, 0);
+    let html = "";
+    if (RETIRO) {
+      html += '<label class="op"><input type="radio" name="entrega" value="retiro">' +
+        "<span><b>Retiro en " + esc(RETIRO.lugar) + "</b>Gratis. Coordinamos el día por WhatsApp.</span></label>";
+    }
+    ZONAS.forEach((z) => {
+      const c = costoZona(z, unidades);
+      const no = c === null;
+      html += '<label class="op' + (no ? " op--no" : "") + '"><input type="radio" name="entrega" value="despacho:' + esc(z.id) + '"' +
+        (no ? " disabled" : "") + ">" +
+        "<span><b>Despacho a " + esc(z.zona) + "</b>" +
+        (no ? (z.gratisDesde ? "Gratis desde " + z.gratisDesde + " productos. Para menos, coordinamos por WhatsApp."
+                             : "El valor se coordina por WhatsApp; todavía no se puede pagar aquí.")
+            : (c === 0 ? "Gratis" : esc(pesos(c)))) +
+        (z.plazo ? " · " + esc(z.plazo) : "") + "</span></label>";
+    });
+    caja.innerHTML = html;
+    const radios = Array.prototype.slice.call(caja.querySelectorAll("input:not([disabled])"));
+    const sigue = radios.find((r) => r.value === antes) || radios[0];
+    if (sigue) sigue.checked = true;
+    verDireccion();
+  }
+
+  function pintaLineas() {
+    pintaEntrega();
+    const cont = $("#carro-lineas"), caja = $("#carro-sumas");
+    cont.textContent = "";
+    const s = sumas();
+
+    if (!s.lineas.length) {
+      cont.innerHTML = '<p class="carro__vacio">Tu pedido está vacío. Elige algo en el catálogo y aparecerá aquí.</p>' +
+        '<p><a class="b b--l b--sm" href="#catalogo" id="carro-ir">Ver el catálogo</a></p>';
+      $("#carro-ir").addEventListener("click", () => elCarro.close());
+      caja.hidden = true; $("#carro-form").hidden = true;
+      return;
+    }
+    caja.hidden = false; $("#carro-form").hidden = false;
+
+    s.lineas.forEach((x) => {
+      const li = crear("div", "linea");
+      const fam = x.p.fam && (DATOS.familiasScrunchie || []).find((f) => f.id === x.p.fam);
+      li.innerHTML =
+        '<p class="linea__n">' + esc(x.p.nombre) + "</p>" +
+        '<p class="linea__p">' + esc(pesos(x.sub)) + "</p>" +
+        '<p class="linea__u">' + esc(pesos(precioDe(x.p))) + " c/u" + (fam ? " · Scrunchie " + esc(fam.nombre.toLowerCase()) : "") + "</p>";
+      const c = crear("div", "linea__c");
+      const menos = crear("button", "cant"); menos.type = "button";
+      menos.textContent = "−"; menos.setAttribute("aria-label", "Quitar uno de " + x.p.nombre);
+      menos.addEventListener("click", () => cambiar(x.p.id, -1));
+      const v = crear("span", "linea__v"); v.textContent = String(x.cantidad);
+      const mas = crear("button", "cant"); mas.type = "button";
+      mas.textContent = "+"; mas.setAttribute("aria-label", "Agregar otro " + x.p.nombre);
+      if (x.cantidad >= tope(x.p.id)) mas.disabled = true;
+      mas.addEventListener("click", () => cambiar(x.p.id, 1));
+      const q = crear("button", "quitar"); q.type = "button"; q.textContent = "Quitar";
+      q.setAttribute("aria-label", "Quitar " + x.p.nombre + " del pedido");
+      q.addEventListener("click", () => cambiar(x.p.id, -99));
+      c.append(menos, v, mas, q);
+      li.appendChild(c);
+      cont.appendChild(li);
+    });
+
+    caja.innerHTML =
+      "<div><span>Productos</span><span>" + esc(pesos(s.subtotal)) + "</span></div>" +
+      "<div><span>" + (s.entrega === "retiro" ? "Retiro" : "Despacho a " + esc(s.zonaNombre)) + "</span><span>" +
+        (s.despacho ? esc(pesos(s.despacho)) : "Sin costo") + "</span></div>" +
+      '<div class="tot"><span>Total</span><span>' + esc(pesos(s.total)) + "</span></div>";
+  }
+
+  function construirCarro() {
+    if (carroHecho) return;
+    carroHecho = true;
+    $("#carro-cuerpo").innerHTML =
+      '<div id="carro-lineas"></div>' +
+      '<div class="sumas" id="carro-sumas"></div>' +
+      '<form id="carro-form" novalidate>' +
+        '<div class="entrega" id="carro-entrega" role="radiogroup" aria-label="Cómo lo recibes"></div>' +
+        '<div class="campos">' +
+          '<div class="campo"><label for="c-nombre">Tu nombre</label><input id="c-nombre" autocomplete="name" maxlength="50" required></div>' +
+          '<div class="campo"><label for="c-tel">Teléfono</label><input id="c-tel" type="tel" autocomplete="tel" maxlength="16" required></div>' +
+          '<div class="campo campo--w"><label for="c-mail">Correo</label><input id="c-mail" type="email" autocomplete="email" maxlength="60" required></div>' +
+          '<div class="campo campo--w" id="c-dir-caja" hidden><label for="c-dir">Dirección de despacho</label><input id="c-dir" autocomplete="street-address" maxlength="120"></div>' +
+          '<div class="campo campo--w"><label for="c-nota">Algo que deba saber <span class="o">(opcional)</span></label><input id="c-nota" maxlength="120"></div>' +
+        "</div>" +
+        /* El aviso va antes del botón: se lee antes de aceptar, no después. */
+        '<p class="nota carro__legal">Al pagar, aceptas los <a href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a> ' +
+        'y la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>. ' +
+        'Ver también <a href="cambios.html" target="_blank" rel="noopener">cambios y devoluciones</a>.' +
+        (hayWa ? " ¿Dudas? Escríbeme al " + esc(telLegible(tel)) + "." : "") + "</p>" +
+        '<p class="carro__err" id="carro-err" role="alert" hidden></p>' +
+        '<div class="form__p"><button class="b b--p" id="carro-pagar" type="submit">Pagar con Webpay</button>' +
+        '<p class="nota">Te lleva al sitio de Webpay, de Transbank, para pagar con tarjeta. Nosotros no vemos ni guardamos tu tarjeta.</p></div>' +
+      "</form>";
+
+    $("#carro-entrega").addEventListener("change", () => { verDireccion(); pintaLineas(); });
+    $("#carro-form").addEventListener("submit", pagar);
+    $("#carro-form").addEventListener("input", (e) => e.target.removeAttribute("aria-invalid"));
+  }
+
+  function abreCarro() {
+    construirCarro();
+    pintaLineas();
+    if (typeof elCarro.showModal === "function") elCarro.showModal();
+    else elCarro.setAttribute("open", "");
+  }
+
+  async function pagar(e) {
+    e.preventDefault();
+    const err = $("#carro-err"), btn = $("#carro-pagar");
+    /* El mensaje se lee (role="alert") y el foco va al campo que hay que arreglar. */
+    const falla = (m, campo) => {
+      err.textContent = m; err.hidden = false; btn.disabled = false; btn.textContent = "Pagar con Webpay";
+      if (campo) { const c = $(campo); c.setAttribute("aria-invalid", "true"); c.focus(); }
+    };
+    err.hidden = true;
+
+    const s = sumas();
+    const comprador = {
+      nombre: $("#c-nombre").value.trim(), telefono: $("#c-tel").value.trim(),
+      correo: $("#c-mail").value.trim(), direccion: $("#c-dir").value.trim(),
+      nota: $("#c-nota").value.trim()
+    };
+    if (!comprador.nombre) return falla("Escribe tu nombre.", "#c-nombre");
+    if (!comprador.telefono) return falla("Escribe un teléfono por si hay que coordinar.", "#c-tel");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(comprador.correo)) return falla("Revisa el correo.", "#c-mail");
+    if (s.entrega === "despacho" && !comprador.direccion) return falla("Escribe la dirección de despacho.", "#c-dir");
+
+    btn.disabled = true; btn.textContent = "Conectando con Webpay…";
+    try {
+      const r = await fetch("/api/crear", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: carro, entrega: s.entrega, zona: s.zona, comprador: comprador })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.url || !j.token) {
+        const er = new Error(j.error || "No se pudo iniciar el pago. Inténtalo de nuevo en un momento.");
+        er.propio = true; throw er;
+      }
+      /* Webpay exige llegar por POST con el token. */
+      const f = $("#ir-a-webpay");
+      f.action = j.url; $("#token-ws").value = j.token; f.submit();
+    } catch (ex) {
+      /* Un corte de red da mensajes del navegador en inglés («Failed to
+         fetch»): esos no se muestran. Sólo los que escribimos nosotros. */
+      const propio = ex && ex.propio;
+      falla(propio ? ex.message : "Se cortó la conexión. Revisa tu internet e inténtalo de nuevo: no se hizo ningún cargo.");
+    }
+  }
+
+  /* Si el comprador vuelve atrás desde Webpay, el navegador puede mostrar la
+     página tal como quedó, con el botón en «Conectando…»: se deja listo. */
+  window.addEventListener("pageshow", (e) => {
+    const btn = $("#carro-pagar");
+    if (e.persisted && btn) { btn.disabled = false; btn.textContent = "Pagar con Webpay"; }
+  });
+
+  if (abierta) {
+    refrescarCarro();
+    btnCarro.addEventListener("click", abreCarro);
+    $("#carro-cerrar").addEventListener("click", () => elCarro.close());
+    elCarro.addEventListener("click", (e) => { if (e.target === elCarro) elCarro.close(); });
+  }
+
+  /* --- Barra de borrador -------------------------------------------------- */
+  const faltan = [];
+  if (!hayWa) faltan.push("Número de WhatsApp (hoy los botones van al DM de Instagram)");
+  if (!nombre) faltan.push("Tu nombre para «Detrás de R de Retazos»");
+  /* Las fotos no se cuentan como pendientes: el material es el que hay, y
+     cada hueco sin foto ya tiene su versión terminada (sello, ficha de tela). */
+
+  const famSinPrecio = (DATOS.familiasScrunchie || []).filter((f) => f.precio == null).map((f) => f.nombre);
+  if (famSinPrecio.length) faltan.push("Precio de los scrunchies: " + famSinPrecio.join(", "));
+  const famSinMedida = (DATOS.familiasScrunchie || []).filter((f) => !f.medida).map((f) => f.nombre);
+  if (famSinMedida.length) faltan.push("Medida o diferencia de tamaño: " + famSinMedida.join(", "));
+  ZONAS.forEach((z) => {
+    if (!precioValido(z.costo)) faltan.push("Costo del despacho a " + z.zona +
+      (z.gratisDesde ? " para menos de " + z.gratisDesde + " productos" : ""));
+    if (!z.plazo) faltan.push("Plazo del despacho a " + z.zona);
+  });
+  if (!(DATOS.sitio && DATOS.sitio.dominio)) faltan.push("Dominio propio (todavía sin definir)");
+  preciosMalEscritos.forEach((p) =>
+    faltan.push("Precio mal escrito en «" + p.nombre + "»: va un número entero, sin puntos ni $"));
+  (DATOS.porConfirmar || []).forEach((t) => faltan.push("Confirmar: " + t));
+  DATOS.faq.filter((f) => !f.r && !f.desde).forEach((f) => faltan.push("Respuesta: " + f.p));
+
+  const barra = $("#borrador");
+  if (!faltan.length) barra.hidden = true;
+  else {
+    $("#borrador-texto").textContent = "Vista de borrador · faltan " + faltan.length +
+      " datos reales. Ninguno está inventado: los huecos quedan marcados y preparados.";
+    const ul = $("#borrador-lista");
+    faltan.forEach((f) => { const li = crear("li"); li.textContent = f; ul.appendChild(li); });
+    const b = $("#borrador-b");
+    b.addEventListener("click", () => {
+      const ab = b.getAttribute("aria-expanded") === "true";
+      b.setAttribute("aria-expanded", String(!ab));
+      ul.hidden = ab;
+      b.textContent = ab ? "Ver qué falta" : "Ocultar";
+    });
+  }
+
+  /* --- Datos estructurados: sólo lo confirmado ---------------------------- */
+  const ld = {
+    "@context":"https://schema.org","@type":"Store",
+    name:"R de Retazos",
+    description:"Productos textiles hechos a mano: moños, scrunchies, bolsos, artículos para el hogar y regalos personalizados.",
+    address:{ "@type":"PostalAddress", addressLocality:"Santo Domingo", addressCountry:"CL" }
+  };
+  if (hayWa) ld.telephone = "+" + tel;
+  if (ig) ld.sameAs = [igURL];
+  const sc = document.createElement("script");
+  sc.type = "application/ld+json";
+  sc.textContent = JSON.stringify(ld);
+  document.head.appendChild(sc);
+})();
+</script>
+
+</body>
+</html>

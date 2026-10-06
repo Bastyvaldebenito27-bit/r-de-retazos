@@ -1,0 +1,10 @@
+{
+  "name": "r-de-retazos",
+  "private": true,
+  "type": "module",
+  "description": "Sitio de R de Retazos. Estatico, sin build. Las funciones de /api sirven el cobro con Webpay.",
+  "scripts": {
+    "test": "node --test",
+    "test:navegador": "node pruebas/navegador.mjs"
+  }
+}

@@ -1,0 +1,5 @@
+# Credenciales y configuración local: nunca al repositorio.
+.env
+.env.*
+.vercel
+node_modules/
