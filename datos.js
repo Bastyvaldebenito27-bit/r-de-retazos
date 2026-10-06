@@ -57,7 +57,11 @@ export const DATOS = {
        | "empaque". La galería se completa con fotos del catálogo hasta tener
        seis, así que nunca queda un hueco vacío.
        Ej: { src:"fotos/marca/taller-2.webp", alt:"Gabriela cortando tela", tipo:"proceso" } */
-    galeria: [],
+    galeria: [
+      /* foto_real_02: los recuerdos recién cosidos, con el hilo y las tijeras. */
+      { src:"fotos/marca/taller-corazones.webp", tipo:"proceso",
+        alt:"Corazones de tela rosados y a cuadrillé recién cosidos sobre una mesa de madera, junto al hilo y las tijeras" }
+    ],
     /* Piezas del catálogo que completan la galería mientras no haya fotos del
        taller. Son fotos reales; se pueden cambiar por cualquier id. */
     galeriaCatalogo: ["doble-limones-rayas", "l-cuadrille-verde", "sesgo-leopardo-naranja",
@@ -70,7 +74,17 @@ export const DATOS = {
        Formato esperado: MP4 (H.264) vertical o cuadrado, sin audio, ≤ 8 s.
        `cartel` es el primer fotograma en imagen, para que no haya un hueco
        negro mientras carga. */
-    videoHero: null,  /* { src:"fotos/marca/portada.mp4", cartel:"fotos/marca/portada.webp", alt:"" } */
+    videoHero: null,
+
+    /* Un encargo real, para «Regalos y recuerdos». La imagen es la pieza que
+       hizo la marca, con sus propios textos: se muestra entera, sin recortar.
+       `alt` repite esos textos para quien no ve la imagen. null = no se muestra. */
+    encargo: {
+      src: "fotos/marca/encargo-mamita-especial.webp",
+      alt: "Recuerdos de baby shower: corazones de tela a cuadrillé rosado en un canasto con cinta. " +
+           "Texto de la imagen: «Un trabajo creado para una mamita muy especial. Cada puntada, llena de amor y dedicación».",
+      pie: "Recuerdos de baby shower, hechos a mano para una mamita muy especial."
+    },  /* { src:"fotos/marca/portada.mp4", cartel:"fotos/marca/portada.webp", alt:"" } */
   },
 
   /* Cobro en línea con Webpay.
@@ -118,6 +132,8 @@ export const DATOS = {
     "Que Gabriela lea y apruebe los textos de la web",
     "Datos legales y condiciones de términos, privacidad y cambios (ver LEGAL.md)",
     "Si «despacho gratuito desde 3 pedidos» significa 3 productos en una misma compra",
+    "Que el estuche a rayas con asa de muñeca se muestre como cosmetiquero",
+    "Permiso de la familia para mostrar el encargo «mamita muy especial»: la tarjeta de la foto lleva el nombre de la bebé",
     "Las fotos originales de los scrunchies en alta, si las tiene: las del catálogo salen " +
       "a 374–580 px de lado, suficiente para la rejilla pero justo para pantallas retina"
   ],
@@ -129,18 +145,24 @@ export const DATOS = {
     { id:"regalos",    nombre:"Regalos" }
   ],
 
-  /* Las cuatro familias del catálogo de scrunchies, con el nombre tal cual
-     aparece impreso en el PDF que mandó la marca. */
-  /* precio  — entero en pesos, el mismo para todas las piezas de la familia.
+  /* Las cuatro familias de scrunchies, con el nombre y el precio de la
+     «Lista de precios · Scrunchies» oficial de la marca (precio_scrunchies.jpg).
+
+     «XL con sesgo» es la familia que el catálogo PDF llamaba «L con sesgo»:
+     la pieza de ejemplo de la lista de precios es la misma «Lila liso · sesgo
+     rosa» (l-lila) del catálogo. Es otra familia que «Doble con sesgo»: no
+     se mezclan. El id "ele" se mantiene sólo por dentro.
+
+     precio  — entero en pesos, el mismo para todas las piezas de la familia.
                 Una pieza puede tener su propio `precio`, que manda sobre este.
      medida  — texto corto con el tamaño. null = sin confirmar.
      descripcion — qué distingue a esta familia. null = sin confirmar.
-     Los cuatro están pendientes: no se inventan. */
+     Precios: confirmados. Medidas y descripciones: pendientes, no se inventan. */
   familiasScrunchie: [
-    { id:"simples", nombre:"Simples",           precio:null, medida:null, descripcion:null },
-    { id:"sesgo",   nombre:"Simples con sesgo", precio:null, medida:null, descripcion:null },
-    { id:"dobles",  nombre:"Dobles con sesgo",  precio:null, medida:null, descripcion:null },
-    { id:"ele",     nombre:"L con sesgo",       precio:null, medida:null, descripcion:null }
+    { id:"simples", nombre:"Simple",           precio:2900, medida:null, descripcion:null },
+    { id:"sesgo",   nombre:"Simple con sesgo", precio:3900, medida:null, descripcion:null },
+    { id:"ele",     nombre:"XL con sesgo",     precio:4900, medida:null, descripcion:null },
+    { id:"dobles",  nombre:"Doble con sesgo",  precio:5900, medida:null, descripcion:null }
   ],
 
   /* Las 29 piezas del catálogo real, en el orden del PDF.
@@ -256,41 +278,55 @@ export const DATOS = {
     { id:"l-cuadrille-verde", nombre:"Cuadrillé verde · sesgo negro",
       fam:"ele", cat:"accesorios", precio:null, tono:"#76654C",
       fotos:["fotos/scrunchies/l-cuadrille-verde.webp"], mini:"fotos/scrunchies/l-cuadrille-verde-280.webp",
-      desc:"Scrunchie L, con el sesgo en contraste, del catálogo." },
+      desc:"Scrunchie XL, con el sesgo en contraste, del catálogo." },
     { id:"l-leopardo-beige", nombre:"Leopardo beige · sesgo negro",
       fam:"ele", cat:"accesorios", precio:null, tono:"#764C5A",
       fotos:["fotos/scrunchies/l-leopardo-beige.webp"], mini:"fotos/scrunchies/l-leopardo-beige-280.webp",
-      desc:"Scrunchie L, con el sesgo en contraste, del catálogo." },
+      desc:"Scrunchie XL, con el sesgo en contraste, del catálogo." },
     { id:"l-leopardo-mostaza", nombre:"Leopardo mostaza · sesgo mostaza",
       fam:"ele", cat:"accesorios", precio:null, tono:"#F0C644",
       fotos:["fotos/scrunchies/l-leopardo-mostaza.webp"], mini:"fotos/scrunchies/l-leopardo-mostaza-280.webp",
-      desc:"Scrunchie L, con el sesgo en contraste, del catálogo." },
+      desc:"Scrunchie XL, con el sesgo en contraste, del catálogo." },
     { id:"l-lila", nombre:"Lila liso · sesgo rosa",
       fam:"ele", cat:"accesorios", precio:null, tono:"#C5ADE1",
       fotos:["fotos/scrunchies/l-lila.webp"], mini:"fotos/scrunchies/l-lila-280.webp",
-      desc:"Scrunchie L, con el sesgo en contraste, del catálogo." },
+      desc:"Scrunchie XL, con el sesgo en contraste, del catálogo." },
     { id:"l-leopardo-mostaza-2", nombre:"Leopardo mostaza · sesgo mostaza (II)",
       fam:"ele", cat:"accesorios", precio:null, tono:"#F0B540",
       fotos:["fotos/scrunchies/l-leopardo-mostaza-2.webp"], mini:"fotos/scrunchies/l-leopardo-mostaza-2-280.webp",
-      desc:"Scrunchie L, con el sesgo en contraste, del catálogo." }
+      desc:"Scrunchie XL, con el sesgo en contraste, del catálogo." }
   ],
 
   /* El orden es el orden en la página: primero lo que más se pide. */
   productos: [
-    { id:"monos", nombre:"Moños y lazos", cat:"accesorios", precio:null, fotos:[], estado:null,
+    /* fotos — fotos reales de la marca (ZIP «fotos completas»), sólo de
+       referencia: mostrar una pieza no la pone a la venta ni le da precio.
+       alt   — lo que se ve en la primera foto, descrito sin agregar nada. */
+    { id:"monos", nombre:"Moños y lazos", cat:"accesorios", precio:null, estado:null,
+      fotos:["fotos/productos/monos-tres-telas.webp"],
+      alt:"Tres moños de tela: uno lila liso, uno con manchas negras y mostaza, y uno floral en rosa y lila",
       desc:"El moño XL, en tela suave y ligera. Liso, estampado o de cuero sintético." },
-    { id:"scrunchies", nombre:"Scrunchies", cat:"accesorios", precio:null, estado:null,
+    /* desdeFamilias: la tarjeta dice «Desde $…» con el menor precio de lista. */
+    { id:"scrunchies", nombre:"Scrunchies", cat:"accesorios", precio:null, estado:null, desdeFamilias:true,
       /* Las fotos salen del catálogo real, más abajo en este mismo archivo. */
       fotos:["fotos/scrunchies/sesgo-estrellas-rosa.webp",
              "fotos/scrunchies/doble-limones-rayas.webp",
              "fotos/scrunchies/l-cuadrille-verde.webp",
              "fotos/scrunchies/simple-citricos-coral.webp"],
-      desc:"Simples, con sesgo, dobles y L. El catálogo completo, pieza por pieza, está más abajo." },
-    { id:"tote", nombre:"Tote bags", cat:"bolsos", precio:null, fotos:[], estado:null,
+      desc:"Simple, simple con sesgo, XL con sesgo y doble con sesgo. El catálogo completo, pieza por pieza, está más abajo." },
+    { id:"tote", nombre:"Tote bags", cat:"bolsos", precio:null, estado:null,
+      fotos:["fotos/productos/tote-rayas-rosa-rojo.webp"],
+      alt:"Tote bag a rayas rosadas y rojas, con asas fucsia, colgada de un perchero",
       desc:"En denim reciclado y otras telas. Amplias, cómodas y cada una distinta." },
-    { id:"porta", nombre:"Bolsos para computador", cat:"bolsos", precio:null, fotos:[], estado:null,
+    { id:"porta", nombre:"Bolsos para computador", cat:"bolsos", precio:null, estado:null,
+      fotos:["fotos/productos/bolso-computador-rayas.webp"],
+      alt:"Bolso para computador a rayas celeste y rosado, con asas café y el cargador amarrado con una tira de la misma tela",
       desc:"Hechos por pedido. Pueden llevar su porta cables a juego, en la misma tela." },
-    { id:"cosmetiqueros", nombre:"Cosmetiqueros", cat:"accesorios", precio:null, fotos:[], estado:null,
+    /* La foto es un estuche con cierre y asa de muñeca: POR CONFIRMAR que
+       Gabriela lo cuente como cosmetiquero. */
+    { id:"cosmetiqueros", nombre:"Cosmetiqueros", cat:"accesorios", precio:null, estado:null,
+      fotos:["fotos/productos/estuche-rayas-rosa-rojo.webp"],
+      alt:"Estuche con cierre a rayas rosadas y rojas, con asa fucsia para la muñeca",
       desc:"Para llevar lo justo ordenado, en distintas combinaciones de telas." },
     { id:"cojines", nombre:"Cojines", cat:"hogar", precio:null, fotos:[], estado:null,
       desc:"39 × 49 cm, relleno sintético, con terminación de pestaña o simple." },
@@ -300,7 +336,11 @@ export const DATOS = {
       desc:"Un detalle chico de tela, para regalar o para sumar a un pedido." },
     { id:"cajas", nombre:"Cajas de regalo", cat:"regalos", precio:null, fotos:[], estado:null,
       desc:"El set armado: lo que elijas dentro, su caja, la cinta y la tarjeta." },
-    { id:"recuerdos", nombre:"Recuerdos para celebraciones", cat:"regalos", precio:null, fotos:[], estado:null,
+    /* Recorte del canasto de la foto del encargo «mamita muy especial»: sin
+       los textos de la imagen ni la tarjeta con el nombre. */
+    { id:"recuerdos", nombre:"Recuerdos para celebraciones", cat:"regalos", precio:null, estado:null,
+      fotos:["fotos/productos/recuerdos-canasto.webp"],
+      alt:"Recuerdos de baby shower: corazones de tela rosados y a cuadrillé en un canasto con cinta",
       desc:"Para baby showers, la llegada de la primavera y otras celebraciones." }
   ],
 

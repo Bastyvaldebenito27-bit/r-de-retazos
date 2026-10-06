@@ -192,6 +192,9 @@ section[id],div[id]{scroll-margin-top:86px}
 .marco{position:relative;width:100%;max-width:100%;aspect-ratio:4/5;border-radius:var(--r-g);
   overflow:hidden;background:var(--arena);border:1px solid var(--lino)}
 .marco--11{aspect-ratio:1/1}
+.marco--45{aspect-ratio:4/5}
+/* Una foto de catálogo sobre blanco, en un marco 4:5: entera, sin cortar la pieza. */
+.marco--entera img{object-fit:contain;background:#fff}
 .marco--43{aspect-ratio:4/3}
 .marco--34{aspect-ratio:3/4}
 .marco__t{position:absolute;inset:0;
@@ -633,6 +636,21 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
   .t:hover .t__f img{transform:scale(1.035) translate(.4%, -.4%)}
 }
 .op--no{opacity:.62;cursor:default}
+
+/* --- Un encargo real en «Regalos y recuerdos» ------------------------------
+   La imagen es una pieza de la marca con sus propios textos: se ve entera,
+   como una copia en papel igual que las del taller. Con ella, las fichas
+   pasan a una columna a su lado. */
+.encargo{margin:2.4rem auto 0;max-width:340px;background:#FFFDF9;padding:10px 10px 0;border-radius:3px;
+  box-shadow:0 1px 2px rgba(46,42,38,.08),0 16px 32px -20px rgba(46,42,38,.4);transform:rotate(-1.2deg)}
+.encargo img{display:block;width:100%;height:auto;aspect-ratio:9/16;background:var(--arena)}
+.encargo figcaption{font-family:var(--display);font-style:italic;font-size:.98rem;color:var(--taupe);
+  text-align:center;padding:.55rem .3rem .7rem;line-height:1.3}
+@media (min-width:900px){
+  .regalos--foto{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start}
+  .regalos--foto .encargo{margin:2.4rem 0 0}
+  .regalos--foto .fichas{grid-template-columns:1fr}
+}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -744,7 +762,7 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
       <div class="scr__t rev">
         <p class="rotulo">Catálogo de scrunchies</p>
         <h2 class="titulo" id="t-scr">Veintinueve piezas, <em>cortadas una a una</em>.</h2>
-        <p class="bajada">Las cuatro familias del catálogo: simples, simples con sesgo, dobles con sesgo y talla L con sesgo. Las fotos son las del catálogo de la marca. ¿Te gusta una tela en otro formato? Consulta según disponibilidad.</p>
+        <p class="bajada">Las cuatro familias, con su precio de lista: simple, simple con sesgo, XL con sesgo y doble con sesgo. Las fotos son las del catálogo de la marca. ¿Te gusta una tela en otro formato? Consulta según disponibilidad.</p>
         <div class="chips" id="scr-chips" role="group" aria-label="Filtrar por familia"></div>
       </div>
 
@@ -889,6 +907,11 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
         <h2 class="titulo" id="t-reg">Cuando el detalle <em>es el regalo</em>.</h2>
         <p class="bajada">Armo cajas y recuerdos para fechas concretas: la pieza, la caja, la cinta y la tarjeta van juntas y listas para entregar.</p>
       </div>
+      <div class="regalos" id="regalos-c">
+      <figure class="encargo rev" id="encargo" hidden>
+        <img id="encargo-img" alt="" width="900" height="1600" loading="lazy" decoding="async">
+        <figcaption id="encargo-pie"></figcaption>
+      </figure>
       <div class="fichas">
         <div class="ficha rev rev--retazo">
           <h3>Cajas de regalo</h3>
@@ -905,6 +928,7 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
           <p>Delantales y artículos textiles personalizados con el nombre de tu marca, en la tela que necesites.</p>
           <a class="b b--l b--sm cta-gen" data-wa="negocio" href="#contacto">Pedir una cotización</a>
         </div>
+      </div>
       </div>
       <p class="nota rev" style="margin-top:1.8rem">Para pedidos con varias unidades conviene avisar con tiempo. Escríbeme y te confirmo el plazo.</p>
     </div>
@@ -1100,6 +1124,16 @@ import * as TX from "./textos.js";
      igual que el servidor, así que lo que se ve es lo que se cobra. */
   function nodoPrecio(p) {
     const v = precioDe(p);
+    /* Una línea con familias (los scrunchies) no tiene precio propio: dice
+       desde cuánto, con el menor de los precios de lista. No se vende sola. */
+    if (!precioValido(v) && p.desdeFamilias) {
+      const ps = (DATOS.familiasScrunchie || []).map((f) => f.precio).filter(precioValido);
+      if (ps.length) {
+        const n = crear("p", "precio");
+        n.textContent = "Desde $" + Math.min(...ps).toLocaleString("es-CL");
+        return n;
+      }
+    }
     const n = crear("p", precioValido(v) ? "precio" : "precio precio--c");
     n.textContent = precioValido(v) ? "$" + v.toLocaleString("es-CL") : "Precio a consultar";
     return n;
@@ -1166,11 +1200,18 @@ import * as TX from "./textos.js";
     return b;
   }
 
+  /* Las piezas del catálogo de scrunchies son fotos cuadradas sobre blanco y
+     se ven en cuadrado; las líneas de producto, en 4:5, que es como vienen
+     las fotos reales (en vertical) y deja la cuadrícula pareja. La línea de
+     scrunchies usa una de esas fotos sobre blanco: entera dentro del 4:5. */
+  const encuadre = (p) => p.fam ? "marco--11" : (p.desdeFamilias ? "marco--45 marco--entera" : "marco--45");
+
   function marcoDe(p, src, clase) {
     const m = crear("div", "marco " + clase);
     if (src) {
       const img = crear("img");
-      img.src = src; img.alt = p.nombre + " hecho a mano por R de Retazos"; img.loading = "lazy";
+      img.src = src; img.loading = "lazy";
+      img.alt = (p.alt && src === imagenes(p)[0]) ? String(p.alt) : p.nombre + " hecho a mano por R de Retazos";
       m.appendChild(img);
     } else {
       m.setAttribute("aria-hidden", "true");
@@ -1186,7 +1227,7 @@ import * as TX from "./textos.js";
     /* La foto y el nombre abren la ficha; el botón de consultar sigue siendo el
        salto directo. Quien ya sabe lo que quiere no da un paso de más. */
     const caja = crear("div", "t__f");
-    caja.appendChild(marcoDe(p, fotos[0], "marco--11"));
+    caja.appendChild(marcoDe(p, fotos[0], encuadre(p)));
     li.appendChild(caja);
 
     /* El botón vive DENTRO del h3, no al revés: un encabezado dentro de un
@@ -1235,7 +1276,7 @@ import * as TX from "./textos.js";
   function abreFicha(p) {
     const fotos = imagenes(p);
     fpIzq.textContent = "";
-    const principal = marcoDe(p, fotos[0], "marco--11");
+    const principal = marcoDe(p, fotos[0], encuadre(p));
     fpIzq.appendChild(principal);
 
     if (fotos.length > 1) {
@@ -1425,6 +1466,18 @@ import * as TX from "./textos.js";
     fi.appendChild(cap);
     galeria.appendChild(fi);
   });
+
+  /* --- El encargo de «Regalos y recuerdos» ---------------------------------
+     Sólo si existe en DATOS: sin él, la sección queda como estaba. */
+  const enc = MARCA.encargo;
+  if (enc && ruta(enc.src)) {
+    const im = $("#encargo-img");
+    im.src = ruta(enc.src); im.alt = String(enc.alt || "");
+    const pie = $("#encargo-pie");
+    if (enc.pie) pie.textContent = String(enc.pie); else pie.remove();
+    $("#encargo").hidden = false;
+    $("#regalos-c").classList.add("regalos--foto");
+  }
 
   /* El logotipo sustituye al monograma tipográfico en cuanto exista. */
   if (ruta(MARCA.logo)) {

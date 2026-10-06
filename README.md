@@ -78,15 +78,20 @@ entera sin tocar código (comprobado en navegador con un `DATOS` completo).
 
 ## Lo que falta para publicar
 
-- Precio de los 4 tipos de scrunchie, y de las demás líneas si se quieren
-  mostrar.
+- Precio de las demás líneas, si se quieren mostrar. Los 4 tipos de scrunchie
+  ya tienen el suyo, de la lista oficial: Simple $2.900, Simple con sesgo
+  $3.900, XL con sesgo $4.900 y Doble con sesgo $5.900.
 - Medida o diferencia de tamaño de los 4 tipos.
 - Costo y plazo del despacho a San Antonio (y a Santo Domingo con menos de 3).
 - Confirmar si «despacho gratuito desde 3 pedidos» es 3 productos en una compra.
 - Plazo de elaboración de un pedido.
 - El video de la portada. El hueco está hecho y vacío a propósito.
-- Foto de Gabriela, y fotos del taller, telas y empaque (las tiene).
-- Fotos de 9 de las 10 líneas de producto.
+- Foto de Gabriela, y fotos de la máquina, las telas y el empaque (las tiene).
+- Fotos de cojines, delantales, llaveros y cajas de regalo. Moños, tote bags,
+  bolsos para computador, cosmetiqueros y recuerdos ya tienen foto real
+  (ver FOTOGRAFIAS.md).
+- Que el estuche a rayas se muestre como cosmetiquero, y el permiso de la
+  familia para mostrar el encargo «mamita muy especial».
 - Los originales de las fotos del catálogo, si los tiene.
 - El dominio.
 - Que Gabriela lea y apruebe los textos.

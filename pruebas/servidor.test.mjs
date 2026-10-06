@@ -83,8 +83,15 @@ const pedidoDe = (extra = {}) => ({
 test("la tienda nace cerrada y sin precios inventados", () => {
   assert.equal(DATOS.tienda.activo, false);
   assert.equal(T.tiendaAbierta(), false);
-  assert.equal(CATALOGO.filter((p) => precioDe(p) != null).length, 0, "ningún precio publicado");
-  DATOS.familiasScrunchie.forEach((f) => { assert.equal(f.precio, null); assert.equal(f.medida, null); });
+  /* Los únicos precios confirmados: la lista oficial de scrunchies. */
+  assert.deepEqual(DATOS.familiasScrunchie.map((f) => [f.id, f.nombre, f.precio]), [
+    ["simples", "Simple", 2900], ["sesgo", "Simple con sesgo", 3900],
+    ["ele", "XL con sesgo", 4900], ["dobles", "Doble con sesgo", 5900]]);
+  DATOS.familiasScrunchie.forEach((f) => assert.equal(f.medida, null));
+  /* Ninguna pieza ni producto tiene precio propio: bolsos, estuches y demás, a consultar. */
+  CATALOGO.forEach((p) => assert.equal(p.precio, null, p.id));
+  assert.equal(DATOS.productos.filter((p) => precioDe(p) != null).length, 0, "sin precios de otros productos");
+  assert.ok(DATOS.scrunchies.every((p) => [2900, 3900, 4900, 5900].includes(precioDe(p))));
   DATOS.tienda.entrega.despacho.forEach((z) => { assert.equal(z.costo, null); assert.equal(z.plazo, null); });
 });
 

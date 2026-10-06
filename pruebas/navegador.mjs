@@ -77,7 +77,7 @@ const hostil = (s) => s
   .replace(/fotos:\["fotos\/scrunchies\/simple-conchas-celeste\.webp"\]/, 'fotos:["javascript:alert(2)"]')
   .replace(/mini:"fotos\/scrunchies\/simple-conchas-durazno-280\.webp"/, 'mini:"https://127.0.0.1:9/rastreo.png"')
   .replace(/tono:"#F797D8"/, 'tono:"red; } body { display:none } :root{--x:"')
-  .replace(/\{ id:"simples", nombre:"Simples",/, '{ id:"simples", nombre:"<b onmouseover=alert(3)>Simples</b>",')
+  .replace(/\{ id:"simples", nombre:"Simple",/, '{ id:"simples", nombre:"<b onmouseover=alert(3)>Simple</b>",')
   .replace(/"Efectivo",/, '"<img src=y onerror=alert(4)>Efectivo",')
   .replace(/zona:"San Antonio"/, 'zona:"<svg onload=alert(5)>San Antonio"')
   .replace(/galeria: \[\],/, 'galeria: [{ src:"//127.0.0.1:9/x.webp", alt:"x", tipo:"proceso" }, { src:"https://127.0.0.1:9/y.webp", alt:"y" }],')
@@ -133,7 +133,13 @@ console.log("\n== El sitio tal como está ==");
   c("despachos entre Santo Domingo y San Antonio", /Despachos entre Santo Domingo y San Antonio\./.test(texto));
   c("despacho gratuito en Santo Domingo desde 3 pedidos", /Despacho gratuito en Santo Domingo desde 3 pedidos\./.test(texto));
   c("el pago en línea se dice no habilitado", /todavía no está habilitado/.test(texto));
-  c("ningún precio en pesos publicado", !/\$\s?\d/.test(texto.replace(/\$5\.000/g, "")));
+  const montos = (texto.replace(/\$5\.000/g, "").match(/\$\s?[\d.]+/g) || []);
+  c("sólo los cuatro precios oficiales de scrunchies", montos.length > 0 && montos.every((m) => /^\$[2-5]\.900$/.test(m)), [...new Set(montos)]);
+  c("la línea Scrunchies dice desde $2.900", /Desde \$2\.900/.test(texto));
+  const consultar = await pg.$$eval("#catalogo .t", (ts) => ts.filter((t) => /Precio a consultar/.test(t.textContent))
+    .map((t) => t.querySelector(".t__abre").textContent));
+  c("bolsos, estuches y demás siguen «a consultar»", ["Tote bags", "Bolsos para computador", "Cosmetiqueros", "Moños y lazos", "Recuerdos para celebraciones"]
+    .every((n) => consultar.includes(n)), consultar);
   c("ninguna promesa de personalizar cualquier cosa", !/cualquier (idea|tela)|se puede hacer en otra tela/i.test(texto));
 
   /* Imágenes */
@@ -173,14 +179,16 @@ console.log("\n== El sitio tal como está ==");
   await pg.waitForFunction(() => { const f = document.getElementById("flujo"); return f.scrollLeft > f.scrollWidth - f.clientWidth - 4; }, null, { timeout: 5000 });
   await pg.waitForTimeout(400);
   c("Fin llega a la última y lo anuncia", /29 de 29/.test(await pg.textContent("#scr-pie")));
-  await pg.click("#scr-chips .chip >> nth=3"); await pg.waitForTimeout(400);
-  c("filtro «Dobles con sesgo»: 4 piezas", (await pg.$$eval("#flujo .flujo__c", (a) => a.length)) === 4);
+  await pg.click("#scr-chips .chip >> text=Doble con sesgo"); await pg.waitForTimeout(400);
+  c("filtro «Doble con sesgo»: 4 piezas", (await pg.$$eval("#flujo .flujo__c", (a) => a.length)) === 4);
+  await pg.click("#scr-chips .chip >> text=XL con sesgo"); await pg.waitForTimeout(400);
+  c("filtro «XL con sesgo»: 5 piezas, otra familia", (await pg.$$eval("#flujo .flujo__c", (a) => a.length)) === 5);
   await pg.click("#scr-chips .chip >> nth=0"); await pg.waitForTimeout(400);
   await pg.click("#scr-sig"); await pg.waitForTimeout(700);
   const nom = (await pg.textContent("#flujo .flujo__c.es .flujo__n2")).trim();
   await pg.click("#flujo .flujo__c.es .flujo__t"); await pg.waitForTimeout(500);
   c("la carta abre su ficha (" + nom + ")", (await pg.textContent("#fp-titulo")).trim() === nom);
-  c("sin precio dice «Precio a consultar»", /consultar/i.test(await pg.textContent(".ficha-p .precio")));
+  c("la ficha del scrunchie lleva el precio de lista de su familia", /^\$[2-5]\.900$/.test((await pg.textContent(".ficha-p .precio")).trim()));
   await pg.keyboard.press("Escape");
 
   /* Galería: una pieza abre su ficha */
@@ -207,6 +215,50 @@ console.log("\n== El sitio tal como está ==");
   c("el sello es el archivo original, cuadrado y sin deformar", sello.crudo[0] === sello.crudo[1] && sello.crudo[0] >= 512 &&
     Math.abs(sello.prop - 1) < 0.02 && Math.abs(sello.cab - 1) < 0.02, sello);
   c("sin errores de JavaScript ni de consola", errs.length === 0, errs);
+  await ctx.close();
+}
+
+console.log("\n== Fotos reales de la marca ==");
+{
+  const { pg, ctx, errs, fallos, fuera } = await abrir(sitio.url);
+  await pg.evaluate(() => document.querySelectorAll("img").forEach((i) => (i.loading = "eager")));
+  await pg.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 700) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 25)); } });
+  await pg.waitForLoadState("networkidle"); await pg.waitForTimeout(300);
+  const r = await pg.evaluate(() => {
+    const tarjeta = (n) => [...document.querySelectorAll("#catalogo .t")].find((t) => t.querySelector(".t__abre").textContent === n);
+    const foto = (n) => { const t = tarjeta(n), i = t && t.querySelector(".marco img"), m = t && t.querySelector(".marco");
+      return i ? { src: i.getAttribute("src"), alt: i.alt, ok: i.complete && i.naturalWidth > 0,
+                   prop: Math.round(m.clientWidth / m.clientHeight * 100) / 100 } : null; };
+    const enc = document.getElementById("encargo"), ei = document.getElementById("encargo-img");
+    const g0 = document.querySelector("#galeria .foto img");
+    return {
+      monos: foto("Moños y lazos"), tote: foto("Tote bags"), porta: foto("Bolsos para computador"),
+      cosm: foto("Cosmetiqueros"), recu: foto("Recuerdos para celebraciones"), scr: foto("Scrunchies"),
+      sinFoto: [...document.querySelectorAll("#catalogo .t")].filter((t) => !t.querySelector(".marco img")).map((t) => t.querySelector(".t__abre").textContent),
+      enc: { visible: !enc.hidden && enc.getBoundingClientRect().height > 0, ok: ei.complete && ei.naturalWidth === 900,
+             alt: ei.alt, pie: document.getElementById("encargo-pie").textContent },
+      gal: { src: g0.getAttribute("src"), alt: g0.alt, cap: document.querySelector("#galeria .foto figcaption").textContent },
+      rotas: [...document.images].filter((i) => i.getAttribute("src") && i.complete && i.naturalWidth === 0).map((i) => i.getAttribute("src"))
+    };
+  });
+  const esta = (f, archivo) => f && f.ok && f.src === "fotos/productos/" + archivo && f.alt.length > 25 && f.prop === 0.8;
+  c("moños: su foto real, cargada, con alt descriptivo y marco 4:5", esta(r.monos, "monos-tres-telas.webp"), r.monos);
+  c("tote bags: la tote a rayas", esta(r.tote, "tote-rayas-rosa-rojo.webp"), r.tote);
+  c("bolsos para computador: el bolso con su porta cables", esta(r.porta, "bolso-computador-rayas.webp"), r.porta);
+  c("cosmetiqueros: el estuche a rayas", esta(r.cosm, "estuche-rayas-rosa-rojo.webp"), r.cosm);
+  c("recuerdos: el canasto, sin el nombre de la tarjeta", esta(r.recu, "recuerdos-canasto.webp"), r.recu);
+  c("la cuadrícula queda pareja: también la línea Scrunchies va en 4:5", r.scr && r.scr.prop === 0.8, r.scr);
+  c("sin foto quedan sólo las líneas sin foto real", r.sinFoto.join(",") === "Cojines,Delantales personalizados,Llaveros,Cajas de regalo", r.sinFoto);
+  c("«Regalos y recuerdos» muestra el encargo entero, con sus textos en el alt",
+    r.enc.visible && r.enc.ok && /mamita muy especial/.test(r.enc.alt) && /amor y dedicación/.test(r.enc.alt) && /mamita muy especial/.test(r.enc.pie), r.enc);
+  c("la galería del taller abre con la foto real del proceso", r.gal.src === "fotos/marca/taller-corazones.webp" && /tijeras/.test(r.gal.alt) && r.gal.cap === "En el taller", r.gal);
+  c("ninguna imagen rota", r.rotas.length === 0, r.rotas);
+  c("ninguna petición fuera del sitio ni respuesta con error", fuera.length === 0 && fallos.length === 0, { fuera, fallos });
+  c("sin errores de JavaScript", errs.length === 0, errs);
+  await pg.click("#catalogo .t .t__abre >> text=Bolsos para computador"); await pg.waitForTimeout(400);
+  const ficha = await pg.evaluate(() => { const m = document.querySelector(".ficha-p .marco"), i = m.querySelector("img");
+    return { prop: Math.round(m.clientWidth / m.clientHeight * 100) / 100, src: i && i.getAttribute("src"), precio: document.querySelector(".ficha-p .precio").textContent }; });
+  c("su ficha: la misma foto en 4:5 y «Precio a consultar», sin inventar precio", ficha.prop === 0.8 && /bolso-computador/.test(ficha.src) && /consultar/i.test(ficha.precio), ficha);
   await ctx.close();
 }
 

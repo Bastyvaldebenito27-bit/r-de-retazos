@@ -6,10 +6,28 @@ es cuestión de recuperar el original, no de volver a fotografiar.
 **Formato:** JPG, mínimo 1600 px el lado corto, luz natural, fondo claro.
 Sin filtros que cambien el color real de la tela.
 
-## Catálogo — cuadradas (1:1)
+## Fotos reales ya incorporadas (ZIP «fotos completas»)
+
+Las entregó la marca. Se pasaron a WebP y se achicaron, sin retoques ni
+filtros. Mostrar una pieza **no la pone a la venta ni le da precio**.
+
+| Foto original | Archivo en el sitio | Dónde se ve |
+|---|---|---|
+| `foto_real_05.jpg` — tres moños | `fotos/productos/monos-tres-telas.webp` | Tarjeta y ficha de «Moños y lazos» |
+| `foto_real_06.jpg` — tote a rayas | `fotos/productos/tote-rayas-rosa-rojo.webp` | Tarjeta y ficha de «Tote bags» |
+| `foto_real_03.jpg` — bolso para computador con porta cables | `fotos/productos/bolso-computador-rayas.webp` | Tarjeta y ficha de «Bolsos para computador» |
+| `foto_real_01.jpg` — estuche a rayas con asa | `fotos/productos/estuche-rayas-rosa-rojo.webp` | Tarjeta y ficha de «Cosmetiqueros» (**por confirmar** que sea uno) |
+| `foto_real_04.jpg` — recorte del canasto | `fotos/productos/recuerdos-canasto.webp` | Tarjeta y ficha de «Recuerdos para celebraciones». Sin los textos ni la tarjeta con el nombre |
+| `foto_real_02.jpg` — corazones recién cosidos, hilo y tijeras | `fotos/marca/taller-corazones.webp` | Primera foto, la grande, de la galería «Del taller» |
+| `foto_real_04.jpg` — entera | `fotos/marca/encargo-mamita-especial.webp` | «Regalos y recuerdos», como ejemplo de encargo. **Por confirmar** el permiso de la familia: la tarjeta lleva el nombre de la bebé |
+| `precio_scrunchies.jpg` | — (no se publica) | Fuente de los cuatro precios de scrunchies en `datos.js` |
+
+## Catálogo — 4:5
 
 De 2 a 4 por producto. **La primera es la portada de la tarjeta**; el resto
-salen como miniaturas dentro de la ficha.
+salen como miniaturas dentro de la ficha. Las tarjetas y las fichas recortan a
+4:5 (las piezas sueltas de scrunchies, a 1:1). Las que todavía no tienen foto:
+cojines, delantales, llaveros y cajas de regalo.
 
 | Producto | Archivo | Qué debe verse |
 |---|---|---|
