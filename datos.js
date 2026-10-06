@@ -76,13 +76,15 @@ export const DATOS = {
        negro mientras carga. */
     videoHero: null,
 
-    /* Un encargo real, para «Regalos y recuerdos». La imagen es la pieza que
-       hizo la marca, con sus propios textos: se muestra entera, sin recortar.
-       `alt` repite esos textos para quien no ve la imagen. null = no se muestra. */
+    /* Un encargo real, para «Regalos y recuerdos»: la mitad de abajo de la
+       pieza «mamita muy especial» que hizo la marca, con el canasto y su frase.
+       La mitad de arriba no se publica: muestra la tarjeta con el nombre de la
+       bebé, y no hay permiso confirmado para eso.
+       `alt` repite el texto de la imagen para quien no la ve. null = no se muestra. */
     encargo: {
-      src: "fotos/marca/encargo-mamita-especial.webp",
+      src: "fotos/marca/encargo-canasto.webp",
       alt: "Recuerdos de baby shower: corazones de tela a cuadrillé rosado en un canasto con cinta. " +
-           "Texto de la imagen: «Un trabajo creado para una mamita muy especial. Cada puntada, llena de amor y dedicación».",
+           "Texto de la imagen: «Cada puntada, llena de amor y dedicación».",
       pie: "Recuerdos de baby shower, hechos a mano para una mamita muy especial."
     },  /* { src:"fotos/marca/portada.mp4", cartel:"fotos/marca/portada.webp", alt:"" } */
   },
@@ -133,9 +135,6 @@ export const DATOS = {
     "Datos legales y condiciones de términos, privacidad y cambios (ver LEGAL.md)",
     "Si «despacho gratuito desde 3 pedidos» significa 3 productos en una misma compra",
     "Que el estuche a rayas con asa de muñeca se muestre como cosmetiquero",
-    "Permiso de la familia para mostrar el encargo «mamita muy especial»: la tarjeta de la foto lleva el nombre de la bebé",
-    "Las fotos originales de los scrunchies en alta, si las tiene: las del catálogo salen " +
-      "a 374–580 px de lado, suficiente para la rejilla pero justo para pantallas retina"
   ],
 
   categorias: [
@@ -353,7 +352,7 @@ export const DATOS = {
     { p:"¿Cómo hago un pedido?",
       r:"Me escribes por WhatsApp contándome qué te interesa. Ahí confirmamos disponibilidad, precio y entrega antes de que pagues." },
     { p:"¿Las telas son recicladas?",
-      r:"Buena parte sí. Las tote bags se hacen en denim reciclado, y gran parte del trabajo es darle una nueva vida a telas que ya existían. Por eso casi nunca hay dos piezas iguales." },
+      r:"Buena parte sí. Las tote bags se hacen en denim reciclado y en otras telas, y gran parte del trabajo es darle una nueva vida a telas que ya existían. Por eso casi nunca hay dos piezas iguales." },
     { p:"¿Puedo elegir la tela, el color o el estampado?",
       r:"Depende de las telas que tenga disponibles en ese momento. Cuéntame lo que buscas y te muestro las opciones que hay." },
     { p:"¿Cuánto demora un pedido?", r:"", falta:"los plazos de elaboración" },

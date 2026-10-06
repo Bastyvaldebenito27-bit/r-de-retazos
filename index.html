@@ -118,6 +118,7 @@ section[id],div[id]{scroll-margin-top:86px}
 
 /* --- Barra de borrador --------------------------------------------------- */
 .borrador{background:var(--carbon);color:#EFE6DC;font-size:.85rem}
+html:not(.js) .borrador{display:none}
 .borrador__fila{display:flex;align-items:center;gap:.9rem;padding-block:.6rem;flex-wrap:wrap}
 .borrador__texto{flex:1 1 17rem;min-width:0}
 .borrador__b{background:none;border:1px solid rgba(255,255,255,.32);color:inherit;font:inherit;
@@ -209,6 +210,13 @@ section[id],div[id]{scroll-margin-top:86px}
    900 — un peso que no existe en Karla y que el navegador falseaba. */
 .marco__n b{display:block;font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
 .marco img{width:100%;height:100%;object-fit:cover}
+/* Una línea sin foto no es un hueco: es la ficha de tela, con su nombre en una
+   etiqueta cosida, como la que lleva cada pieza. */
+.marco__et{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-2deg);
+  width:max-content;max-width:86%;background:#FFFDF9;color:var(--carbon);font-family:var(--display);
+  font-style:italic;font-size:clamp(.95rem,2.6vw,1.35rem);line-height:1.2;text-align:center;
+  padding:clamp(.7rem,1.6vw,.85rem) clamp(.8rem,2vw,1.15rem);border-radius:4px;outline:1px dashed var(--mauve);outline-offset:-5px;
+  box-shadow:0 12px 26px -18px rgba(46,42,38,.55)}
 
 /* --- Tira de valores ----------------------------------------------------- */
 .valores{border-block:1px solid var(--lino);background:var(--marfil)}
@@ -638,12 +646,12 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
 .op--no{opacity:.62;cursor:default}
 
 /* --- Un encargo real en «Regalos y recuerdos» ------------------------------
-   La imagen es una pieza de la marca con sus propios textos: se ve entera,
+   La imagen es parte de una pieza de la marca, con su propia frase: se ve
    como una copia en papel igual que las del taller. Con ella, las fichas
    pasan a una columna a su lado. */
 .encargo{margin:2.4rem auto 0;max-width:340px;background:#FFFDF9;padding:10px 10px 0;border-radius:3px;
   box-shadow:0 1px 2px rgba(46,42,38,.08),0 16px 32px -20px rgba(46,42,38,.4);transform:rotate(-1.2deg)}
-.encargo img{display:block;width:100%;height:auto;aspect-ratio:9/16;background:var(--arena)}
+.encargo img{display:block;width:100%;height:auto;aspect-ratio:900/975;background:var(--arena)}
 .encargo figcaption{font-family:var(--display);font-style:italic;font-size:.98rem;color:var(--taupe);
   text-align:center;padding:.55rem .3rem .7rem;line-height:1.3}
 @media (min-width:900px){
@@ -655,12 +663,15 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<a class="salta" href="#catalogo">Saltar al catálogo</a>
+<a class="salta" href="#catalogo">Saltar a las creaciones</a>
 
-<div class="borrador" id="borrador" hidden>
+<!-- Visible desde el HTML, con el mismo texto que pone el motor: así ocupa su
+     lugar desde el primer pintado y no empuja la página al cargar los datos.
+     Sin JavaScript no se muestra; si un día no falta nada, el motor la oculta. -->
+<div class="borrador" id="borrador">
   <div class="contenedor">
     <div class="borrador__fila">
-      <p class="borrador__texto" id="borrador-texto"></p>
+      <p class="borrador__texto" id="borrador-texto">Vista de borrador · faltan datos reales. Ninguno está inventado: los huecos quedan marcados y preparados.</p>
       <button class="borrador__b" id="borrador-b" type="button" aria-expanded="false" aria-controls="borrador-lista">Ver qué falta</button>
     </div>
     <ul class="borrador__lista" id="borrador-lista" hidden></ul>
@@ -675,7 +686,7 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
         <span class="marca__t">R de Retazos<small>Hecho a mano</small></span>
       </a>
       <nav class="nav" aria-label="Secciones">
-        <a href="#catalogo">Catálogo</a>
+        <a href="#catalogo">Creaciones</a>
         <a href="#scrunchies">Scrunchies</a>
         <a href="#sobre">Detrás de R</a>
         <a href="#personalizados">Tu idea</a>
@@ -688,7 +699,7 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
       <a class="b b--l b--sm" id="cta-cabecera" href="#contacto">Escríbeme</a>
     </div>
     <nav class="panel" id="panel" aria-label="Secciones" hidden>
-      <a href="#catalogo">Catálogo</a>
+      <a href="#catalogo">Creaciones</a>
       <a href="#scrunchies">Los scrunchies</a>
       <a href="#sobre">Detrás de R de Retazos</a>
       <a href="#taller">Hecho a mano</a>
@@ -713,10 +724,10 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
             <h1>Una tela que ya existía,<br><em>convertida en algo tuyo</em>.</h1>
             <p class="hero__b">Moños, scrunchies, bolsos, cojines y regalos. Cada pieza la corto y la coso yo, eligiendo la tela una por una. Casi nunca salen dos iguales.</p>
             <div class="hero__cta">
-              <a class="b b--p" href="#catalogo">Ver el catálogo</a>
+              <a class="b b--p" href="#catalogo">Ver las creaciones</a>
               <a class="b b--l cta-gen" href="#contacto">Consultar por WhatsApp</a>
             </div>
-            <p class="hero__pie">Las tote bags se hacen en denim reciclado.</p>
+            <p class="hero__pie">Las tote bags se hacen en denim reciclado y en otras telas.</p>
             <p class="morf__baja" aria-hidden="true">Baja y mira</p>
           </div>
 
@@ -746,9 +757,9 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
   <section class="seccion" id="catalogo" aria-labelledby="t-cat">
     <div class="contenedor">
       <div class="rev">
-        <p class="rotulo">Catálogo</p>
-        <h2 class="titulo" id="t-cat">Lo que hay hoy.</h2>
-        <p class="bajada">Todo lo que hago hoy, ordenado por tipo. ¿Te gusta algo pero lo imaginas en otra tela? Consulta según las telas que haya disponibles.</p>
+        <p class="rotulo">Creaciones</p>
+        <h2 class="titulo" id="t-cat">Lo que hago.</h2>
+        <p class="bajada">Trabajos reales de R de Retazos, ordenados por tipo. Los scrunchies tienen precio de lista; el resto se conversa por WhatsApp según la tela y la cantidad. ¿Lo imaginas en otra tela? Consulta según las telas que haya disponibles.</p>
       </div>
       <div class="chips rev" id="chips" role="group" aria-label="Filtrar por categoría"></div>
       <p class="sr" id="estado-catalogo" role="status"></p>
@@ -812,7 +823,7 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
         </div>
         <div class="taller__txt rev">
           <p class="bajada">Retazos es eso: pedazos de tela que sobraron, que quedaron guardados o que iban a terminar en la basura. Siempre que se puede, el trabajo es darles una segunda oportunidad y convertirlos en algo que de verdad se use.</p>
-          <p class="bajada">Por eso las tote bags son de denim reciclado y por eso casi nunca salen dos piezas iguales: todo depende de la tela que hay sobre la mesa. Se corta, se arma, se cose en la máquina y se revisa cada terminación antes de empacarla.</p>
+          <p class="bajada">Por eso muchas tote bags son de denim reciclado y por eso casi nunca salen dos piezas iguales: todo depende de la tela que hay sobre la mesa. Se corta, se arma, se cose en la máquina y se revisa cada terminación antes de empacarla.</p>
           <p class="bajada">No es producción en serie. Es una persona, una máquina y el tiempo que cada pieza necesita.</p>
         </div>
         <div class="galeria" id="galeria" role="list" aria-label="Fotos del taller y de las piezas"></div>
@@ -909,7 +920,7 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
       </div>
       <div class="regalos" id="regalos-c">
       <figure class="encargo rev" id="encargo" hidden>
-        <img id="encargo-img" alt="" width="900" height="1600" loading="lazy" decoding="async">
+        <img id="encargo-img" alt="" width="900" height="975" loading="lazy" decoding="async">
         <figcaption id="encargo-pie"></figcaption>
       </figure>
       <div class="fichas">
@@ -972,7 +983,7 @@ dialog.carro::backdrop{background:rgba(46,42,38,.55)}
       <p class="pie__t">La tienda</p>
       <ul>
         <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#catalogo">Productos</a></li>
+        <li><a href="#catalogo">Creaciones</a></li>
         <li><a href="#sobre">Sobre R de Retazos</a></li>
         <li><a href="#comprar">Cómo comprar</a></li>
         <li><a href="#preguntas">Preguntas frecuentes</a></li>
@@ -1215,7 +1226,7 @@ import * as TX from "./textos.js";
       m.appendChild(img);
     } else {
       m.setAttribute("aria-hidden", "true");
-      m.innerHTML = '<div class="marco__t"></div><div class="marco__n"><b>Foto pendiente</b>' + esc(p.nombre) + "</div>";
+      m.innerHTML = '<div class="marco__t"></div><span class="marco__et">' + esc(p.nombre) + "</span>";
     }
     return m;
   }
@@ -1598,7 +1609,7 @@ import * as TX from "./textos.js";
         '<div class="marco marco--11">' +
           (foto ? '<img src="' + esc(foto) + '" alt="' + esc(p.nombre) +
                   ', scrunchie hecho a mano por R de Retazos" loading="lazy" decoding="async">'
-                : '<div class="marco__t"></div><div class="marco__n"><b>Foto pendiente</b>' + esc(p.nombre) + "</div>") +
+                : '<div class="marco__t"></div><span class="marco__et">' + esc(p.nombre) + "</span>") +
         "</div>" +
         '<p class="flujo__fam">' + esc(nombreFam(p.fam)) + "</p>" +
         '<p class="flujo__n2">' + esc(p.nombre) + "</p>" +
@@ -1663,13 +1674,17 @@ import * as TX from "./textos.js";
     }
     function alMover() { if (!pedido) pedido = requestAnimationFrame(colocar); }
 
-    /* Se usa scrollIntoView y no scrollTo: con scroll-snap obligatorio, un
-       salto largo hecho a mano se queda enganchado en una carta del camino.
-       "nearest" evita además que la página se mueva en vertical. */
+    /* Se apunta al centro exacto de la carta, que es su punto de snap: así un
+       salto largo (Inicio, Fin) no se queda enganchado en una carta del camino. */
     function irA(i) {
       const tope = Math.max(0, visibles.length - 1);
       const n = flujo.children[Math.min(tope, Math.max(0, i))];
-      if (n) n.scrollIntoView({ inline: "center", block: "nearest" });
+      if (!n) return;
+      /* Sólo el carrusel se mueve, y sólo de lado. scrollIntoView también
+         desplazaba la página si la carta no cabía entera en vertical. El
+         `behavior` lo pone el CSS: suave, o inmediato con «reducir movimiento». */
+      const r = n.getBoundingClientRect(), f = flujo.getBoundingClientRect();
+      flujo.scrollTo({ left: flujo.scrollLeft + (r.left - f.left) - (flujo.clientWidth - r.width) / 2 });
     }
 
     function pinta() {
@@ -1685,7 +1700,9 @@ import * as TX from "./textos.js";
     const cont = $("#scr-chips");
     fams.forEach((f) => {
       const b = crear("button", "chip");
-      b.type = "button"; b.textContent = f.nombre;
+      b.type = "button";
+      /* El precio de lista va en el mismo filtro: la lista completa, de un vistazo. */
+      b.textContent = f.nombre + (precioValido(f.precio) ? " · $" + f.precio.toLocaleString("es-CL") : "");
       b.setAttribute("aria-pressed", String(f.id === fam));
       b.addEventListener("click", () => {
         fam = f.id;
@@ -2240,23 +2257,13 @@ import * as TX from "./textos.js";
   const faltan = [];
   if (!hayWa) faltan.push("Número de WhatsApp (hoy los botones van al DM de Instagram)");
   if (!nombre) faltan.push("Tu nombre para «Detrás de R de Retazos»");
-  if (!MARCA.logo) faltan.push("Logo original en alta (hoy va el monograma en tipografía)");
-  if (!(MARCA.videoHero && MARCA.videoHero.src))
-    faltan.push("Video de la portada (el hueco está hecho; hoy la portada se arma con fotos del catálogo)");
-
-  const sinFoto = CATALOGO.filter((p) => !imagenes(p).length).length;
-  if (sinFoto) faltan.push("Fotos de producto (" + sinFoto + " de " + CATALOGO.length + ")");
-
-  const deMarca = [["retrato", "Foto de " + (primerNombre || "la artesana") + " (hoy va el sello en su lugar)"],
-                   ["taller", "Foto del taller"], ["telas", "Foto de las telas"],
-                   ["empaque", "Foto del empaque"]].filter(([k]) => !ruta(MARCA[k]));
-  if (deMarca.length) faltan.push("Fotos de marca: " + deMarca.map((x) => x[1]).join(", "));
+  /* Las fotos no se cuentan como pendientes: el material es el que hay, y
+     cada hueco sin foto ya tiene su versión terminada (sello, ficha de tela). */
 
   const famSinPrecio = (DATOS.familiasScrunchie || []).filter((f) => f.precio == null).map((f) => f.nombre);
   if (famSinPrecio.length) faltan.push("Precio de los scrunchies: " + famSinPrecio.join(", "));
   const famSinMedida = (DATOS.familiasScrunchie || []).filter((f) => !f.medida).map((f) => f.nombre);
   if (famSinMedida.length) faltan.push("Medida o diferencia de tamaño: " + famSinMedida.join(", "));
-  if (sinPrecio) faltan.push("Precios (" + sinPrecio + " de " + CATALOGO.length + ")");
   ZONAS.forEach((z) => {
     if (!precioValido(z.costo)) faltan.push("Costo del despacho a " + z.zona +
       (z.gratisDesde ? " para menos de " + z.gratisDesde + " productos" : ""));
@@ -2268,9 +2275,9 @@ import * as TX from "./textos.js";
   (DATOS.porConfirmar || []).forEach((t) => faltan.push("Confirmar: " + t));
   DATOS.faq.filter((f) => !f.r && !f.desde).forEach((f) => faltan.push("Respuesta: " + f.p));
 
-  if (faltan.length) {
-    const barra = $("#borrador");
-    barra.hidden = false;
+  const barra = $("#borrador");
+  if (!faltan.length) barra.hidden = true;
+  else {
     $("#borrador-texto").textContent = "Vista de borrador · faltan " + faltan.length +
       " datos reales. Ninguno está inventado: los huecos quedan marcados y preparados.";
     const ul = $("#borrador-lista");

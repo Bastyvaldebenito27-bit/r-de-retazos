@@ -175,10 +175,23 @@ console.log("\n== El sitio tal como está ==");
   await pg.focus("#flujo"); const y0 = await pg.evaluate(() => scrollY);
   await pg.keyboard.press("ArrowRight"); await pg.waitForTimeout(500);
   c("la flecha mueve el carrusel y no la página", (await sl()) > a0 && Math.abs((await pg.evaluate(() => scrollY)) - y0) < 3);
+  /* Con el carrusel a medias en pantalla (las cartas cortadas abajo), sus
+     botones y flechas mueven sólo el carrusel: la página no salta. */
+  await pg.evaluate(() => { const f = document.getElementById("flujo");
+    scrollTo({ top: scrollY + f.getBoundingClientRect().top - innerHeight + 120, behavior: "instant" }); });
+  await pg.waitForTimeout(300);
+  const y1 = await pg.evaluate(() => scrollY), a2 = await sl();
+  await pg.evaluate(() => document.getElementById("scr-sig").click()); await pg.waitForTimeout(600);
+  await pg.evaluate(() => document.getElementById("flujo").focus({ preventScroll: true }));
+  await pg.keyboard.press("ArrowRight"); await pg.waitForTimeout(600);
+  const y2 = await pg.evaluate(() => scrollY);
+  c("con el carrusel a medias en pantalla, la página no salta", (await sl()) > a2 && Math.abs(y2 - y1) < 3, { y1, y2 });
   await pg.keyboard.press("End");
   await pg.waitForFunction(() => { const f = document.getElementById("flujo"); return f.scrollLeft > f.scrollWidth - f.clientWidth - 4; }, null, { timeout: 5000 });
   await pg.waitForTimeout(400);
   c("Fin llega a la última y lo anuncia", /29 de 29/.test(await pg.textContent("#scr-pie")));
+  c("los filtros muestran la lista de precios oficial", (await pg.$$eval("#scr-chips .chip", (x) => x.map((e) => e.textContent))).join("|") ===
+    "Todas|Simple · $2.900|Simple con sesgo · $3.900|XL con sesgo · $4.900|Doble con sesgo · $5.900");
   await pg.click("#scr-chips .chip >> text=Doble con sesgo"); await pg.waitForTimeout(400);
   c("filtro «Doble con sesgo»: 4 piezas", (await pg.$$eval("#flujo .flujo__c", (a) => a.length)) === 4);
   await pg.click("#scr-chips .chip >> text=XL con sesgo"); await pg.waitForTimeout(400);
@@ -230,12 +243,17 @@ console.log("\n== Fotos reales de la marca ==");
       return i ? { src: i.getAttribute("src"), alt: i.alt, ok: i.complete && i.naturalWidth > 0,
                    prop: Math.round(m.clientWidth / m.clientHeight * 100) / 100 } : null; };
     const enc = document.getElementById("encargo"), ei = document.getElementById("encargo-img");
+    const texto = document.body.innerText;
+    const etiquetas = [...document.querySelectorAll("#catalogo .marco__et")].map((e) => e.textContent);
+    const borrador = [...document.querySelectorAll("#borrador-lista li")].map((l) => l.textContent);
     const g0 = document.querySelector("#galeria .foto img");
     return {
       monos: foto("Moños y lazos"), tote: foto("Tote bags"), porta: foto("Bolsos para computador"),
       cosm: foto("Cosmetiqueros"), recu: foto("Recuerdos para celebraciones"), scr: foto("Scrunchies"),
       sinFoto: [...document.querySelectorAll("#catalogo .t")].filter((t) => !t.querySelector(".marco img")).map((t) => t.querySelector(".t__abre").textContent),
+      texto, etiquetas, borrador,
       enc: { visible: !enc.hidden && enc.getBoundingClientRect().height > 0, ok: ei.complete && ei.naturalWidth === 900,
+             src: ei.getAttribute("src"),
              alt: ei.alt, pie: document.getElementById("encargo-pie").textContent },
       gal: { src: g0.getAttribute("src"), alt: g0.alt, cap: document.querySelector("#galeria .foto figcaption").textContent },
       rotas: [...document.images].filter((i) => i.getAttribute("src") && i.complete && i.naturalWidth === 0).map((i) => i.getAttribute("src"))
@@ -249,8 +267,14 @@ console.log("\n== Fotos reales de la marca ==");
   c("recuerdos: el canasto, sin el nombre de la tarjeta", esta(r.recu, "recuerdos-canasto.webp"), r.recu);
   c("la cuadrícula queda pareja: también la línea Scrunchies va en 4:5", r.scr && r.scr.prop === 0.8, r.scr);
   c("sin foto quedan sólo las líneas sin foto real", r.sinFoto.join(",") === "Cojines,Delantales personalizados,Llaveros,Cajas de regalo", r.sinFoto);
-  c("«Regalos y recuerdos» muestra el encargo entero, con sus textos en el alt",
-    r.enc.visible && r.enc.ok && /mamita muy especial/.test(r.enc.alt) && /amor y dedicación/.test(r.enc.alt) && /mamita muy especial/.test(r.enc.pie), r.enc);
+  c("«Regalos y recuerdos» muestra el encargo en su versión sin datos personales, con su frase en el alt",
+    r.enc.visible && r.enc.ok && r.enc.src === "fotos/marca/encargo-canasto.webp" && /amor y dedicación/.test(r.enc.alt) &&
+    /mamita muy especial/.test(r.enc.pie), r.enc);
+  c("la imagen con el nombre de la bebé no se publica", !fs.existsSync(path.join(RAIZ, "fotos/marca/encargo-mamita-especial.webp")) &&
+    !/encargo-mamita-especial/.test(fs.readFileSync(path.join(RAIZ, "datos.js"), "utf8") + fs.readFileSync(path.join(RAIZ, "index.html"), "utf8")));
+  c("ninguna tarjeta dice «Foto pendiente»: las líneas sin foto llevan su etiqueta de tela",
+    !/Foto pendiente/i.test(r.texto) && r.etiquetas.join(",") === "Cojines,Delantales personalizados,Llaveros,Cajas de regalo", r.etiquetas);
+  c("la barra de borrador no pide fotos ni video", !r.borrador.some((t) => /foto|video/i.test(t)), r.borrador);
   c("la galería del taller abre con la foto real del proceso", r.gal.src === "fotos/marca/taller-corazones.webp" && /tijeras/.test(r.gal.alt) && r.gal.cap === "En el taller", r.gal);
   c("ninguna imagen rota", r.rotas.length === 0, r.rotas);
   c("ninguna petición fuera del sitio ni respuesta con error", fuera.length === 0 && fallos.length === 0, { fuera, fallos });
@@ -277,7 +301,7 @@ console.log("\n== Terminaciones ==");
     return { idea: t("#cta-idea"), pedido: t('[data-wa="pedido"]'), caja: t('[data-wa="caja"]'), general: t("#cta-flotante"),
              producto: t("#rejilla .t:nth-child(2) .t__p a") };
   });
-  c("mensaje de creaciones especiales", msj.idea === "Hola, me gustaría consultar por una creación especial.", msj.idea);
+  c("mensaje de creaciones especiales", msj.idea === "Hola, quiero consultar por una creación especial.", msj.idea);
   c("mensaje general", msj.general === "Hola, me gustaría consultar por los productos de R de Retazos.", msj.general);
   c("mensaje de pedido y de caja de regalo, cada uno el suyo", /hacer un pedido/.test(msj.pedido) && /caja de regalo/.test(msj.caja), msj);
   c("el de un producto dice cuál", /«Scrunchies»/.test(msj.producto), msj.producto);

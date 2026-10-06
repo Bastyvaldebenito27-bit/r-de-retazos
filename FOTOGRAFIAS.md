@@ -1,8 +1,11 @@
-# Fotografías que faltan
+# Fotografías
 
-Casi todas existen ya en el Instagram de la marca; en la mayoría de los casos
-es cuestión de recuperar el original, no de volver a fotografiar.
+**El material es el que entregó la marca: no hay más fotos por llegar.** El
+sitio está armado para verse terminado con él. Donde no hay foto no queda un
+hueco: el retrato lleva el sello, la galería se completa con piezas reales del
+catálogo, y las líneas sin foto llevan una etiqueta de tela con su nombre.
 
+Las tablas de más abajo dicen dónde iría una foto nueva, si algún día la hay.
 **Formato:** JPG, mínimo 1600 px el lado corto, luz natural, fondo claro.
 Sin filtros que cambien el color real de la tela.
 
@@ -19,15 +22,16 @@ filtros. Mostrar una pieza **no la pone a la venta ni le da precio**.
 | `foto_real_01.jpg` — estuche a rayas con asa | `fotos/productos/estuche-rayas-rosa-rojo.webp` | Tarjeta y ficha de «Cosmetiqueros» (**por confirmar** que sea uno) |
 | `foto_real_04.jpg` — recorte del canasto | `fotos/productos/recuerdos-canasto.webp` | Tarjeta y ficha de «Recuerdos para celebraciones». Sin los textos ni la tarjeta con el nombre |
 | `foto_real_02.jpg` — corazones recién cosidos, hilo y tijeras | `fotos/marca/taller-corazones.webp` | Primera foto, la grande, de la galería «Del taller» |
-| `foto_real_04.jpg` — entera | `fotos/marca/encargo-mamita-especial.webp` | «Regalos y recuerdos», como ejemplo de encargo. **Por confirmar** el permiso de la familia: la tarjeta lleva el nombre de la bebé |
+| `foto_real_04.jpg` — mitad de abajo | `fotos/marca/encargo-canasto.webp` | «Regalos y recuerdos», como ejemplo de encargo: el canasto y la frase «Cada puntada, llena de amor y dedicación» |
+| `foto_real_04.jpg` — mitad de arriba | **no se publica** | Muestra la tarjeta con el nombre de la bebé. Sólo con permiso confirmado de la familia |
 | `precio_scrunchies.jpg` | — (no se publica) | Fuente de los cuatro precios de scrunchies en `datos.js` |
 
 ## Catálogo — 4:5
 
 De 2 a 4 por producto. **La primera es la portada de la tarjeta**; el resto
 salen como miniaturas dentro de la ficha. Las tarjetas y las fichas recortan a
-4:5 (las piezas sueltas de scrunchies, a 1:1). Las que todavía no tienen foto:
-cojines, delantales, llaveros y cajas de regalo.
+4:5 (las piezas sueltas de scrunchies, a 1:1). Cojines, delantales, llaveros y
+cajas de regalo no tienen foto: llevan su etiqueta de tela.
 
 | Producto | Archivo | Qué debe verse |
 |---|---|---|
@@ -86,9 +90,10 @@ pieza se llama por su color y su estampado («Estrellas de mar fucsia»,
 «Leopardo durazno · sesgo negro»). En cuanto haya nombres oficiales, se
 cambian en `DATOS.scrunchies`.
 
-## Video de la portada
+## Video de la portada (opcional)
 
-Hueco preparado, vacío a propósito. En el centro del sello de la portada hay un
+No hace falta: la portada está terminada con el sello y los scrunchies. Si
+algún día hay un video, el hueco está preparado. En el centro del sello de la portada hay un
 disco que espera el video real de la marca. Mientras `DATOS.marca.videoHero`
 sea `null` no se pone nada en su lugar: ni un video de archivo, ni una modelo
 generada.

@@ -85,14 +85,10 @@ entera sin tocar código (comprobado en navegador con un `DATOS` completo).
 - Costo y plazo del despacho a San Antonio (y a Santo Domingo con menos de 3).
 - Confirmar si «despacho gratuito desde 3 pedidos» es 3 productos en una compra.
 - Plazo de elaboración de un pedido.
-- El video de la portada. El hueco está hecho y vacío a propósito.
-- Foto de Gabriela, y fotos de la máquina, las telas y el empaque (las tiene).
-- Fotos de cojines, delantales, llaveros y cajas de regalo. Moños, tote bags,
-  bolsos para computador, cosmetiqueros y recuerdos ya tienen foto real
-  (ver FOTOGRAFIAS.md).
-- Que el estuche a rayas se muestre como cosmetiquero, y el permiso de la
-  familia para mostrar el encargo «mamita muy especial».
-- Los originales de las fotos del catálogo, si los tiene.
+- Que el estuche a rayas se muestre como cosmetiquero.
+
+Las fotos no están en esta lista: el material es el que entregó la marca y el
+sitio está terminado con él (ver FOTOGRAFIAS.md).
 - El dominio.
 - Que Gabriela lea y apruebe los textos.
 - Los datos legales y las condiciones de cambios y devoluciones (ver `LEGAL.md`).

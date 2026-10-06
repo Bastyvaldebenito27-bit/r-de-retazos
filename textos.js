@@ -22,7 +22,7 @@ export const enlaceWhatsapp = (texto, d = DATOS) =>
 export const MENSAJES = {
   general: "Hola, me gustaría consultar por los productos de R de Retazos.",
   pedido: "Hola, me gustaría hacer un pedido en R de Retazos.",
-  idea: "Hola, me gustaría consultar por una creación especial.",
+  idea: "Hola, quiero consultar por una creación especial.",
   caja: "Hola, me gustaría consultar por una caja de regalo.",
   recuerdos: "Hola, me gustaría consultar por recuerdos para una celebración.",
   negocio: "Hola, me gustaría cotizar artículos para mi negocio.",
